@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<score>
+    <game>
+        <gameID>3</gameID>
+        <gameScore>434</gameScore>
+    </game>
+    <game>
+        <gameID>1</gameID>
+        <gameScore>40</gameScore>
+    </game>
+    <game>
+        <gameID>2</gameID>
+        <gameScore>422</gameScore>
+    </game>
+    <totalScore>344</totalScore>
+    <userName>s</userName>
+</score>
