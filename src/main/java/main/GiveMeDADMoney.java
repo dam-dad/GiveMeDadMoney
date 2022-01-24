@@ -9,7 +9,7 @@ public class GiveMeDADMoney extends Application {
 
 	private MenuRootController menu;
 	
-	private Stage primaryStage; 
+	private static Stage primaryStage; 
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -28,7 +28,7 @@ public class GiveMeDADMoney extends Application {
 		launch(args);
 	}
 
-	public Stage getPrimaryStage() {
+	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
