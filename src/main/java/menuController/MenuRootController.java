@@ -58,7 +58,7 @@ public class MenuRootController implements Initializable {
 		scoreLabel.textProperty().bind(total_score.asString());
 
 		score_file.addListener((o, ov, nv) -> {
-			System.out.println("listo");
+			System.out.println("score");
 
 			total_score.set(nv.getTotalScore());
 
@@ -66,7 +66,6 @@ public class MenuRootController implements Initializable {
 
 		load_score();
 		
-		load_total_score();
 
 	}
 
@@ -80,20 +79,16 @@ public class MenuRootController implements Initializable {
 		}
 	}
 	private void load_total_score() {
-			
 		int suma_score = 0 ;
 		for (int i = 1; i < score_file.getValue().getGame().size(); i++) {
 			suma_score += score_file.getValue().getGame().get(i).getGameScore();
 		}
 		total_score.set(suma_score);
-
-			
-		
 	}
 
 	private void saveScore() {
 		try {
-			getScore_file().setTotalScore(total_score.get());
+			load_total_score();
 			getScore_file().save();
 		} catch (Exception e) {
 			e.printStackTrace();

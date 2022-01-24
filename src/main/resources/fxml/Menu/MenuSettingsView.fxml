@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane fx:id="settingsView" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<BorderPane fx:id="settingsView" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -17,4 +16,12 @@
          </children>
       </HBox>
    </center>
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="downloadScoreButton" mnemonicParsing="false" onAction="#onDownloadScoreAction" text="Descargar" />
+            <Button fx:id="importScoreButton" mnemonicParsing="false" onAction="#onImportScoreAction" text="Importar" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
