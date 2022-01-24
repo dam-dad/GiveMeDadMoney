@@ -1,7 +1,11 @@
 package menuController;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -86,11 +90,25 @@ public class MenuSettingsController implements Initializable {
 	void onDownloadScoreAction(ActionEvent event) {
 
 		File fichero = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
-		if (fichero != null) {
+		File origen = new File("score.xml");
+		if (fichero != null && origen != null) {
 			try {
-				
+		        fichero.createNewFile();
+		        InputStream in = new FileInputStream(origen);
+                OutputStream out = new FileOutputStream(fichero);
+
+                byte[] buf = new byte[1024];
+                int len;
+
+                while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                }
+
+                in.close();
+                out.close();
+
 			} catch (Exception e1) {
-				
+				System.err.println(e1.getMessage());
 			}
 		}
 
@@ -98,7 +116,24 @@ public class MenuSettingsController implements Initializable {
 
 	@FXML
 	void onImportScoreAction(ActionEvent event) {
-
+		File fichero = fileChooser.showOpenDialog(GiveMeDADMoney.getPrimaryStage());
+		if (fichero != null) {
+			try {
+				File file = new File("score.xml");
+				load_score(fichero);
+			} catch (Exception e1) {
+				
+			}
+		}
+	}
+	
+	private void load_score(File file) {
+		Score score = new Score();
+		try {
+			score_file.set(score.read(file));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void showOnStage(Window owner) {
