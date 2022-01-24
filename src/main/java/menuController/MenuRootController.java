@@ -3,6 +3,7 @@ package menuController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -15,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import main.GiveMeDADMoney;
 import score.Score;
 
 public class MenuRootController implements Initializable {
@@ -33,6 +36,11 @@ public class MenuRootController implements Initializable {
 
 	@FXML
 	private Button startButton;
+	
+	//CONTROLLER
+	
+	private MenuSettingsController settingsController = new MenuSettingsController();
+	
 
 	// MODEL
 
@@ -57,6 +65,8 @@ public class MenuRootController implements Initializable {
 		});
 
 		load_score();
+		
+		load_total_score();
 
 	}
 
@@ -69,13 +79,23 @@ public class MenuRootController implements Initializable {
 			System.out.println(e.getMessage());
 		}
 	}
+	private void load_total_score() {
+			
+		int suma_score = 0 ;
+		for (int i = 1; i < score_file.getValue().getGame().size(); i++) {
+			suma_score += score_file.getValue().getGame().get(i).getGameScore();
+		}
+		total_score.set(suma_score);
+
+			
+		
+	}
 
 	private void saveScore() {
 		try {
 			getScore_file().setTotalScore(total_score.get());
 			getScore_file().save();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -83,12 +103,15 @@ public class MenuRootController implements Initializable {
 
 	@FXML
 	void onExitAction(ActionEvent event) {
+		System.out.println("salvando");
 		saveScore();
 	}
 
 	@FXML
 	void onSettingsAction(ActionEvent event) {
-
+		settingsController.setScore_file(getScore_file());
+		settingsController.showOnStage(GiveMeDADMoney.getPrimaryStage());
+		setScore_file(settingsController.getScore_file());
 	}
 
 	@FXML
