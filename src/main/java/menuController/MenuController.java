@@ -1,9 +1,8 @@
 package menuController;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
+
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -16,11 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import main.GiveMeDADMoney;
 import score.Score;
 
-public class MenuRootController implements Initializable {
+public class MenuController implements Initializable {
 
 	
 	@FXML
@@ -35,18 +32,14 @@ public class MenuRootController implements Initializable {
 	@FXML
 	private Button startButton;
 	
-	//CONTROLLER
 	
-	private MenuSettingsController settingsController = new MenuSettingsController();
 	
-
 	// MODEL
-
 	private IntegerProperty total_score = new SimpleIntegerProperty();
 	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
 
-	public MenuRootController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuRootView.fxml"));
+	public MenuController() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
@@ -57,14 +50,10 @@ public class MenuRootController implements Initializable {
 
 		score_file.addListener((o, ov, nv) -> {
 			System.out.println("score");
-
 			total_score.set(nv.getTotalScore());
-
 		});
 
 		load_score();
-		
-
 	}
 
 	private void load_score() {
@@ -87,10 +76,12 @@ public class MenuRootController implements Initializable {
 
 
 	@FXML
-	void onSettingsAction(ActionEvent event) {
-		settingsController.setScore_file(getScore_file());
-		settingsController.showOnStage(GiveMeDADMoney.getPrimaryStage());
-		setScore_file(settingsController.getScore_file());
+	void onSettingsAction(ActionEvent event) throws IOException {
+		BaseController.getInstance().showSetting(score_file.get());
+
+		//settingsController.setScore_file(getScore_file());
+		//settingsController.showOnStage(GiveMeDADMoney.getPrimaryStage());
+		//setScore_file(settingsController.getScore_file());
 	}
 
 	@FXML

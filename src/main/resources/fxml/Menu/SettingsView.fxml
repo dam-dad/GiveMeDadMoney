@@ -24,4 +24,7 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAcction" text="Button" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

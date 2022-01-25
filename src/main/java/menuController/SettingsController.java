@@ -29,7 +29,7 @@ import javafx.stage.Window;
 import main.GiveMeDADMoney;
 import score.Score;
 
-public class MenuSettingsController implements Initializable {
+public class SettingsController implements Initializable {
 
 	@FXML
 	private Button changeUserNameButton;
@@ -46,7 +46,8 @@ public class MenuSettingsController implements Initializable {
 	@FXML
 	private Button importScoreButton;
 
-	private Stage stage;
+	@FXML
+	private Button backButton;
 
 	// MODELO
 	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
@@ -54,8 +55,8 @@ public class MenuSettingsController implements Initializable {
 
 	private FileChooser fileChooser;
 
-	public MenuSettingsController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuSettingsView.fxml"));
+	public SettingsController() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/SettingsView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
@@ -72,10 +73,17 @@ public class MenuSettingsController implements Initializable {
 
 	}
 
-	private void load() {
+	public void load() {
 		userNameText.textProperty().set(score_file.getValue().getUserName());
 
 	}
+	
+	
+	@FXML
+    void onBackAcction(ActionEvent event) {
+		BaseController.getInstance().showMenu();
+    }
+	
 
 	@FXML
 	void onChangeUserNameAction(ActionEvent event) {
@@ -83,6 +91,7 @@ public class MenuSettingsController implements Initializable {
 		score_file.getValue().setUserName(userName.getValue());
 
 		System.out.println(score_file.getValue().getUserName());
+
 	}
 
 	@FXML
@@ -93,12 +102,10 @@ public class MenuSettingsController implements Initializable {
 			try {
 				destino.createNewFile();
 				copiarXML(origen, destino);
-
 			} catch (Exception e1) {
 				System.err.println(e1.getMessage());
 			}
 		}
-
 	}
 
 	@FXML
@@ -127,16 +134,6 @@ public class MenuSettingsController implements Initializable {
 		}
 	}
 
-	public void showOnStage(Window owner) {
-		stage = new Stage();
-		stage.setTitle("Editar propiedad");
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(owner);
-		stage.setScene(new Scene(settingsView, 400, 200));
-		load();
-		stage.showAndWait();
-	}
-	
 	private void copiarXML(File origen, File destino) {
 
 		try {

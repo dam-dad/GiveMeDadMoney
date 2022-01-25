@@ -6,20 +6,20 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import menuController.MenuRootController;
+import menuController.BaseController;
+
 
 public class GiveMeDADMoney extends Application {
 
-	private MenuRootController menu;
-	
 	private static Stage primaryStage; 
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		this.primaryStage = primaryStage;
-		menu = new MenuRootController();
-
-		Scene scene = new Scene(menu.getView());
+		GiveMeDADMoney.primaryStage = primaryStage;
+		
+	
+	
+		Scene scene = new Scene(BaseController.getInstance().getView());
 
 		primaryStage.setTitle("GiveMeDADMoney");
 		primaryStage.setScene(scene);
@@ -55,7 +55,8 @@ public class GiveMeDADMoney extends Application {
 	}
 	@Override
 	public void stop() throws Exception {
-		menu.getScore_file().save();
+	
+		BaseController.getScore().save();
 		super.stop();
 	}
 
@@ -66,6 +67,7 @@ public class GiveMeDADMoney extends Application {
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
+	
 
 
 }
