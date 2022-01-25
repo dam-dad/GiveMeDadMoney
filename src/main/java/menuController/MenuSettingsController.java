@@ -46,12 +46,11 @@ public class MenuSettingsController implements Initializable {
 	@FXML
 	private Button importScoreButton;
 
+	private Stage stage;
+
 	// MODELO
 	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
-
 	private StringProperty userName = new SimpleStringProperty();
-
-	private Stage stage;
 
 	private FileChooser fileChooser;
 
@@ -88,24 +87,12 @@ public class MenuSettingsController implements Initializable {
 
 	@FXML
 	void onDownloadScoreAction(ActionEvent event) {
-
-		File fichero = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
+		File destino = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
 		File origen = new File("score.xml");
-		if (fichero != null && origen != null) {
+		if (destino != null && origen != null) {
 			try {
-		        fichero.createNewFile();
-		        InputStream in = new FileInputStream(origen);
-                OutputStream out = new FileOutputStream(fichero);
-
-                byte[] buf = new byte[1024];
-                int len;
-
-                while ((len = in.read(buf)) > 0) {
-                        out.write(buf, 0, len);
-                }
-
-                in.close();
-                out.close();
+				destino.createNewFile();
+				copiarXML(origen, destino);
 
 			} catch (Exception e1) {
 				System.err.println(e1.getMessage());
@@ -116,17 +103,21 @@ public class MenuSettingsController implements Initializable {
 
 	@FXML
 	void onImportScoreAction(ActionEvent event) {
-		File fichero = fileChooser.showOpenDialog(GiveMeDADMoney.getPrimaryStage());
-		if (fichero != null) {
-			try {
-				File file = new File("score.xml");
-				load_score(fichero);
-			} catch (Exception e1) {
-				
+		if (GiveMeDADMoney.confirm("Importar", "Estas a punto de importar datos",
+				"Puede perder datos no guardados, ¿estas seguro?") == true) {
+			File fichero = fileChooser.showOpenDialog(GiveMeDADMoney.getPrimaryStage());
+			if (fichero != null) {
+				try {
+					File file = new File("score.xml");
+					copiarXML(fichero, file);
+					load_score(fichero);
+				} catch (Exception e1) {
+					System.err.println(e1.getMessage());
+				}
 			}
 		}
 	}
-	
+
 	private void load_score(File file) {
 		Score score = new Score();
 		try {
@@ -145,6 +136,28 @@ public class MenuSettingsController implements Initializable {
 		load();
 		stage.showAndWait();
 	}
+	
+	private void copiarXML(File origen, File destino) {
+
+		try {
+			InputStream in = new FileInputStream(origen);
+			OutputStream out = new FileOutputStream(destino);
+
+			byte[] buf = new byte[1024];
+			int len;
+
+			while ((len = in.read(buf)) > 0) {
+				out.write(buf, 0, len);
+			}
+
+			in.close();
+			out.close();
+
+		} catch (Exception e1) {
+			System.err.println(e1.getMessage());
+		}
+
+	}
 
 	public final ObjectProperty<Score> score_fileProperty() {
 		return this.score_file;
@@ -156,6 +169,10 @@ public class MenuSettingsController implements Initializable {
 
 	public final void setScore_file(final Score score_file) {
 		this.score_fileProperty().set(score_file);
+	}
+
+	public BorderPane getView() {
+		return settingsView;
 	}
 
 }
