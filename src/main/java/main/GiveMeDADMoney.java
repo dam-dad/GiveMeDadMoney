@@ -53,6 +53,11 @@ public class GiveMeDADMoney extends Application {
 		info.setContentText(content);
 		info.showAndWait();
 	}
+	@Override
+	public void stop() throws Exception {
+		menu.getScore_file().save();
+		super.stop();
+	}
 
 	public static void main(String[] args) {
 		launch(args);

@@ -22,9 +22,7 @@ import score.Score;
 
 public class MenuRootController implements Initializable {
 
-	@FXML
-	private Button exitButton;
-
+	
 	@FXML
 	private BorderPane menuRootView;
 
@@ -78,6 +76,7 @@ public class MenuRootController implements Initializable {
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	private void load_total_score() {
 		int suma_score = 0 ;
 		for (int i = 1; i < score_file.getValue().getGame().size(); i++) {
@@ -86,21 +85,6 @@ public class MenuRootController implements Initializable {
 		total_score.set(suma_score);
 	}
 
-	private void saveScore() {
-		try {
-			load_total_score();
-			getScore_file().save();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	void onExitAction(ActionEvent event) {
-		System.out.println("salvando");
-		saveScore();
-	}
 
 	@FXML
 	void onSettingsAction(ActionEvent event) {
