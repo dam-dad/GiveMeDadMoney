@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import menuController.BaseController;
 
 
@@ -26,6 +28,8 @@ public class GiveMeDADMoney extends Application {
 		primaryStage.show();
 
 	}
+	
+	
 	
 	public static void error(String header, String content) {
 		Alert error = new Alert(AlertType.ERROR);

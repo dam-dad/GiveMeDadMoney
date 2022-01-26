@@ -1,0 +1,27 @@
+.button{
+    -fx-font-weight: bold;
+    
+   
+    
+    
+}
+
+.downloadButton{
+    -fx-background-color: rgb(251, 73, 73);
+    -fx-padding: 0.8em ;
+}
+.uploadButton{
+    -fx-background-color: rgb(69, 110, 245);
+    -fx-padding: 0.8em ;
+
+}
+.backButton{
+    -fx-font-weight: bold;
+}
+.label{
+    -fx-font-weight: bold;
+}
+.fondo{
+	
+	-fx-background-image: url("../images/Menu/fondo.jpg");
+}
