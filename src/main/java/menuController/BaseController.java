@@ -35,6 +35,7 @@ public class BaseController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		getView().getStylesheets().add("/css/Menu/menu.css");
 		showMenu();
 		score_file.bind(menu.score_fileProperty());
 		

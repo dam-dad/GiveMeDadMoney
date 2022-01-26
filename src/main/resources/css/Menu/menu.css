@@ -1,4 +1,6 @@
-
+.root{
+    -fx-background-image: url("/images/Menu/fondo.jpg");
+}
 
 .fondo{
     -fx-background-image: url("/images/Menu/fondo.jpg");
