@@ -1,0 +1,10 @@
+.root{
+    -fx-background-image: url("/images/TragaPerras/fondo.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.fondito{
+    -fx-background-color: white ;
+}
