@@ -33,7 +33,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="importScoreButton" mnemonicParsing="false" onAction="#onImportScoreAction" text="Importar">
+            <Button fx:id="importScoreButton" mnemonicParsing="false" onAction="#onImportScoreAction" styleClass="uploadButton" text="Importar">
                <graphic>
                   <ImageView fitHeight="300.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +50,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAcction" text="&lt;-" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAcction" styleClass="backButton" text="&lt;-" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
