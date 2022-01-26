@@ -47,6 +47,7 @@ public class MenuController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		scoreLabel.textProperty().bind(total_score.asString());
+		getView().getStylesheets().add("/css/Menu/menu.css");
 
 		score_file.addListener((o, ov, nv) -> {
 			System.out.println("score");

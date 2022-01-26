@@ -1,9 +1,12 @@
+
+
+.fondo{
+    -fx-background-image: url("/images/Menu/fondo.jpg");
+}
+
+
 .button{
     -fx-font-weight: bold;
-    
-   
-    
-    
 }
 
 .downloadButton{
@@ -20,8 +23,4 @@
 }
 .label{
     -fx-font-weight: bold;
-}
-.fondo{
-	
-	-fx-background-image: url("../images/Menu/fondo.jpg");
 }
