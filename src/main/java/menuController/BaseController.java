@@ -1,9 +1,11 @@
 package menuController;
 
-
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.print.attribute.standard.Media;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,7 +13,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
+import main.Sounds;
 import score.Score;
+import javafx.application.Application;
+import javafx.scene.Group;
+
 
 
 public class BaseController implements Initializable {
@@ -21,11 +27,13 @@ public class BaseController implements Initializable {
 
 	private SettingsController setting = new SettingsController();
 	private MenuController menu = new MenuController();
-	
-	private static BaseController instance;
-	
-	public static ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
 
+	private static BaseController instance;
+
+	public static ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
+	
+	
+	public Sounds musica;
 
 	private BaseController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/BaseView.fxml"));
@@ -39,16 +47,27 @@ public class BaseController implements Initializable {
 		showMenu();
 		score_file.bind(menu.score_fileProperty());
 		
+		
+		try {
+			musica = new Sounds("sound/sound2.wav");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		musica.play();
+		
+		
+		
+
 	}
-	
-	
+
 	public void showSetting(Score file) {
 		root.setCenter(setting.getView());
 		setting.setScore_file(getScore());
 		setting.load();
 
 	}
-	
+
 	public void showMenu() {
 		root.setCenter(menu.getView());
 	}
@@ -56,9 +75,8 @@ public class BaseController implements Initializable {
 	public BorderPane getView() {
 		return root;
 	}
-	
-	
-	public static BaseController getInstance(){
+
+	public static BaseController getInstance() {
 		if (instance == null) {
 			try {
 				instance = new BaseController();
@@ -68,11 +86,9 @@ public class BaseController implements Initializable {
 		}
 		return instance;
 	}
-	
-	public static Score getScore(){
+
+	public static Score getScore() {
 		return score_file.get();
 	}
 
-	
-	
 }

@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,7 +22,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -32,22 +37,31 @@ import score.Score;
 public class SettingsController implements Initializable {
 
 	@FXML
-	private Button changeUserNameButton;
+    private Button backButton;
 
-	@FXML
-	private BorderPane settingsView;
+    @FXML
+    private Button changeUserNameButton;
 
-	@FXML
-	private TextField userNameText;
+    @FXML
+    private Button downloadScoreButton;
 
-	@FXML
-	private Button downloadScoreButton;
+    @FXML
+    private Button importScoreButton;
 
-	@FXML
-	private Button importScoreButton;
+    @FXML
+    private Button playMusicButton;
 
-	@FXML
-	private Button backButton;
+    @FXML
+    private BorderPane settingsView;
+
+    @FXML
+    private Button stopMusicButton;
+
+    @FXML
+    private TextField userNameText;
+
+    @FXML
+    private Slider volumenSlider;
 
 	// MODELO
 	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
@@ -77,13 +91,34 @@ public class SettingsController implements Initializable {
 		userNameText.textProperty().set(score_file.getValue().getUserName());
 
 	}
-	
-	
+
 	@FXML
-    void onBackAcction(ActionEvent event) {
+	void onMusicStopAcction(ActionEvent event) {
+		try {
+			BaseController.getInstance().musica.pause();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@FXML
+	void onMusicPlayAcction(ActionEvent event) {
+		try {
+			BaseController.getInstance().musica.play();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@FXML
+	void onVolumenChange(MouseEvent event) {
+		System.out.println(volumenSlider.getValue());
+	}
+
+	@FXML
+	void onBackAcction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
-    }
-	
+	}
 
 	@FXML
 	void onChangeUserNameAction(ActionEvent event) {
