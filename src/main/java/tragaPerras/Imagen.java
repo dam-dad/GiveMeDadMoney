@@ -25,7 +25,7 @@ public class Imagen {
 
     public Imagen cherry() {
 
-        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 2);
+        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 9);
 
         return cherry;
     }
@@ -35,13 +35,6 @@ public class Imagen {
         Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 5);
 
         return diamante;
-    }
-
-    public Imagen iconoSiete() {
-
-        Imagen icon = new Imagen("/images/TragaPerras/icono.png", 10);
-
-        return icon;
     }
 
     public Imagen limon() {
@@ -74,19 +67,18 @@ public class Imagen {
 
     public Imagen randomImagen() {
 
-        Imagen[] imagenes = new Imagen[8];
+        Imagen[] imagenes = new Imagen[7];
         Imagen imagen = new Imagen();
 
         imagenes[0] = bar();
         imagenes[1] = cherry();
         imagenes[2] = diamante();
-        imagenes[3] = iconoSiete();
-        imagenes[4] = limon();
-        imagenes[5] = sandia();
-        imagenes[6] = siete();
-        imagenes[7] = uva();
+        imagenes[3] = limon();
+        imagenes[4] = sandia();
+        imagenes[5] = siete();
+        imagenes[6] = uva();
 
-        imagen = imagenes[(int) (Math.random() * 7)];
+        imagen = imagenes[(int) (Math.random() * 6)];
 
         return imagen;
     }

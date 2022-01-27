@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     private Imagen imagen3 = new Imagen();
     private Imagen cambio = new Imagen();
 
-    private int valor1, valor2, valor3;
+    private int valor1, valor2, valor3, sumaPuntos;
 
     @FXML
     private Button apuesta1Button;
@@ -106,6 +106,8 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
+        puntosTotales.set("1000");
+
     }
 
     @FXML
@@ -131,6 +133,11 @@ public class Controller implements Initializable {
         imagen3Property.set(imagenNew);
         valor3 = cambio.getValor();
 
+        sumaPuntos = Integer.parseInt(puntosTotales.get());
+        sumaPuntos += recompensas(valor1, valor2, valor3) - 1;
+
+        puntosTotales.set(String.valueOf(sumaPuntos));
+
     }
 
     @FXML
@@ -138,14 +145,28 @@ public class Controller implements Initializable {
 
         Image imagenNew;
 
-        imagenNew = new Image(imagen1.randomImagen().getRuta());
+        cambio = imagen1.randomImagen();
+
+        imagenNew = new Image(cambio.getRuta());
         imagen1Property.set(imagenNew);
+        valor1 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor1);
 
-        imagenNew = new Image(imagen2.randomImagen().getRuta());
+        cambio = imagen2.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
         imagen2Property.set(imagenNew);
+        valor2 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor2);
 
-        imagenNew = new Image(imagen3.randomImagen().getRuta());
+        cambio = imagen3.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
         imagen3Property.set(imagenNew);
+        valor3 = cambio.getValor();
+
+        sumaPuntos = Integer.parseInt(puntosTotales.get());
+        sumaPuntos += recompensas(valor1, valor2, valor3) - 2;
+
+        puntosTotales.set(String.valueOf(sumaPuntos));
 
     }
 
@@ -154,19 +175,46 @@ public class Controller implements Initializable {
 
         Image imagenNew;
 
-        imagenNew = new Image(imagen1.randomImagen().getRuta());
+        cambio = imagen1.randomImagen();
+
+        imagenNew = new Image(cambio.getRuta());
         imagen1Property.set(imagenNew);
+        valor1 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor1);
 
-        imagenNew = new Image(imagen2.randomImagen().getRuta());
+        cambio = imagen2.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
         imagen2Property.set(imagenNew);
+        valor2 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor2);
 
-        imagenNew = new Image(imagen3.randomImagen().getRuta());
+        cambio = imagen3.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
         imagen3Property.set(imagenNew);
+        valor3 = cambio.getValor();
+
+        sumaPuntos = Integer.parseInt(puntosTotales.get());
+        sumaPuntos += recompensas(valor1, valor2, valor3) - 5;
+
+        puntosTotales.set(String.valueOf(sumaPuntos));
 
     }
 
     public BorderPane getView() {
         return view;
+    }
+
+    public int recompensas(int valor1, int valor2, int valor3) {
+        int numero = 0;
+
+        if (valor1 == valor2 && valor1 == valor3) {
+            numero = 100;
+
+        } else if (valor1 == valor2 || valor1 == valor3 || valor2 == valor3) {
+            numero = 5;
+        }
+
+        return numero;
     }
 
 }
