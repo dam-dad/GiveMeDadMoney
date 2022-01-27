@@ -18,49 +18,49 @@ public class Imagen {
 
     public Imagen bar() {
 
-        Imagen bar = new Imagen("/images/TragaPerras/bar.png", 1);
+        Imagen bar = new Imagen("/images/TragaPerras/bar.png", 150);
 
         return bar;
     }
 
     public Imagen cherry() {
 
-        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 2);
+        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 45);
 
         return cherry;
     }
 
     public Imagen diamante() {
 
-        Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 3);
+        Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 120);
 
         return diamante;
     }
 
     public Imagen limon() {
 
-        Imagen limon = new Imagen("/images/TragaPerras/leamon.png", 4);
+        Imagen limon = new Imagen("/images/TragaPerras/leamon.png", 30);
 
         return limon;
     }
 
     public Imagen sandia() {
 
-        Imagen sandia = new Imagen("/images/TragaPerras/sandia.png", 5);
+        Imagen sandia = new Imagen("/images/TragaPerras/sandia.png", 60);
 
         return sandia;
     }
 
     public Imagen uva() {
 
-        Imagen uva = new Imagen("/images/TragaPerras/uva.png", 6);
+        Imagen uva = new Imagen("/images/TragaPerras/uva.png", 90);
 
         return uva;
     }
 
     public Imagen siete() {
 
-        Imagen siete = new Imagen("/images/TragaPerras/seven.png", 7);
+        Imagen siete = new Imagen("/images/TragaPerras/seven.png", 180);
 
         return siete;
     }
