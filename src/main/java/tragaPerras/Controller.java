@@ -107,7 +107,7 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("100");
+        puntosTotales.set("1000");
 
     }
 
