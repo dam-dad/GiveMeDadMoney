@@ -16,51 +16,51 @@ public class Imagen {
 
     }
 
-    public Imagen bar() {
-
-        Imagen bar = new Imagen("/images/TragaPerras/bar.png", 150);
-
-        return bar;
-    }
-
-    public Imagen cherry() {
-
-        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 45);
-
-        return cherry;
-    }
-
-    public Imagen diamante() {
-
-        Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 120);
-
-        return diamante;
-    }
-
     public Imagen limon() {
 
-        Imagen limon = new Imagen("/images/TragaPerras/leamon.png", 30);
+        Imagen limon = new Imagen("/images/TragaPerras/leamon.png", 10);
 
         return limon;
     }
 
+    public Imagen cherry() {
+
+        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 25);
+
+        return cherry;
+    }
+
     public Imagen sandia() {
 
-        Imagen sandia = new Imagen("/images/TragaPerras/sandia.png", 60);
+        Imagen sandia = new Imagen("/images/TragaPerras/sandia.png", 35);
 
         return sandia;
     }
 
     public Imagen uva() {
 
-        Imagen uva = new Imagen("/images/TragaPerras/uva.png", 90);
+        Imagen uva = new Imagen("/images/TragaPerras/uva.png", 50);
 
         return uva;
     }
 
+    public Imagen diamante() {
+
+        Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 65);
+
+        return diamante;
+    }
+
+    public Imagen bar() {
+
+        Imagen bar = new Imagen("/images/TragaPerras/bar.png", 75);
+
+        return bar;
+    }
+
     public Imagen siete() {
 
-        Imagen siete = new Imagen("/images/TragaPerras/seven.png", 180);
+        Imagen siete = new Imagen("/images/TragaPerras/seven.png", 120);
 
         return siete;
     }

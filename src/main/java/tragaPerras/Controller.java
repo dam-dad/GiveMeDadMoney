@@ -107,7 +107,7 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("10");
+        puntosTotales.set("100");
 
     }
 
@@ -135,7 +135,7 @@ public class Controller implements Initializable {
             imagen3Property.set(imagenNew);
             valor3 = cambio.getValor();
 
-            sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 1;
+            sumaPuntos += recompensas(valor1, valor2, valor3) - 10;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
             App.alertaPuntos();
@@ -167,7 +167,7 @@ public class Controller implements Initializable {
             imagen3Property.set(imagenNew);
             valor3 = cambio.getValor();
 
-            sumaPuntos += recompensas(valor1, valor2, valor3) * 2 - 2;
+            sumaPuntos += recompensas(valor1, valor2, valor3) - 20;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
             App.alertaPuntos();
@@ -199,7 +199,7 @@ public class Controller implements Initializable {
             imagen3Property.set(imagenNew);
             valor3 = cambio.getValor();
 
-            sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 5;
+            sumaPuntos += recompensas(valor1, valor2, valor3) - 50;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
             App.alertaPuntos();
@@ -218,26 +218,26 @@ public class Controller implements Initializable {
         if (valor1 == valor2 && valor1 == valor3) {
 
             switch (valor1) {
-                case 1:
-                    numero = 4;
+                case 10:
+                    numero = valor1 * 2;
                     break;
-                case 2:
-                    numero = 4.2;
+                case 25:
+                    numero = valor1 * 3;
                     break;
-                case 3:
-                    numero = 4.4;
+                case 35:
+                    numero = valor1 * 4;
                     break;
-                case 4:
-                    numero = 4.6;
+                case 50:
+                    numero = valor1 * 5;
                     break;
-                case 5:
-                    numero = 4.8;
+                case 65:
+                    numero = valor1 * 6;
                     break;
-                case 6:
-                    numero = 5;
+                case 75:
+                    numero = valor1 * 7;
                     break;
-                case 7:
-                    numero = 10;
+                case 120:
+                    numero = valor1 * 8;
                     break;
 
             }
@@ -245,26 +245,54 @@ public class Controller implements Initializable {
         } else if (valor1 == valor2) {
 
             switch (valor1) {
-                case 1:
-                    numero = 1.5;
+                case 10:
+                    numero = valor1 * 0.5;
                     break;
-                case 2:
-                    numero = 1.7;
+                case 25:
+                    numero = valor1 * 0.75;
                     break;
-                case 3:
-                    numero = 2;
+                case 35:
+                    numero = valor1 * 1;
                     break;
-                case 4:
-                    numero = 2.5;
+                case 50:
+                    numero = valor1 * 1.25;
                     break;
-                case 5:
-                    numero = 2.7;
+                case 65:
+                    numero = valor1 * 1.5;
                     break;
-                case 6:
-                    numero = 3;
+                case 75:
+                    numero = valor1 * 2.5;
                     break;
-                case 7:
-                    numero = 5;
+                case 120:
+                    numero = valor1 * 3;
+                    break;
+
+            }
+
+        }
+        if (valor2 == valor3) {
+
+            switch (valor2) {
+                case 10:
+                    numero = valor2 * 0.5;
+                    break;
+                case 25:
+                    numero = valor2 * 0.75;
+                    break;
+                case 35:
+                    numero = valor2 * 1;
+                    break;
+                case 50:
+                    numero = valor2 * 1.5;
+                    break;
+                case 65:
+                    numero = valor2 * 2;
+                    break;
+                case 75:
+                    numero = valor2 * 2.5;
+                    break;
+                case 120:
+                    numero = valor2 * 3;
                     break;
 
             }
