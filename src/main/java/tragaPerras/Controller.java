@@ -235,36 +235,9 @@ public class Controller implements Initializable {
 
             }
 
-        } else if (valor1 == valor2 || valor1 == valor3) {
+        } else if (valor1 == valor2) {
 
             switch (valor1) {
-                case 1:
-                    numero = 1.5;
-                    break;
-                case 2:
-                    numero = 1.7;
-                    break;
-                case 3:
-                    numero = 2;
-                    break;
-                case 4:
-                    numero = 2.5;
-                    break;
-                case 5:
-                    numero = 2.7;
-                    break;
-                case 6:
-                    numero = 3;
-                    break;
-                case 7:
-                    numero = 5;
-                    break;
-
-            }
-
-        } else if (valor2 == valor3) {
-
-            switch (valor2) {
                 case 1:
                     numero = 1.5;
                     break;
