@@ -2,7 +2,6 @@ package menuController;
 
 import java.io.IOException;
 import java.net.URL;
-
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -16,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import score.Score;
+
 
 public class MenuController implements Initializable {
 
@@ -32,11 +32,17 @@ public class MenuController implements Initializable {
 	@FXML
 	private Button startButton;
 	
-	
+	@FXML
+    private Button tragaperrasButton;
+
 	
 	// MODEL
 	private IntegerProperty total_score = new SimpleIntegerProperty();
 	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
+	
+	
+	
+	
 
 	public MenuController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuView.fxml"));
@@ -56,6 +62,12 @@ public class MenuController implements Initializable {
 
 		load_score();
 	}
+	
+	@FXML
+    void onTragaperrasAction(ActionEvent event) {
+		BaseController.getInstance().showTragaPerras();
+    }
+		
 
 	private void load_score() {
 		Score score = new Score();

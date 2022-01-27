@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import main.Sounds;
 import score.Score;
+import tragaPerras.Controller;
 import javafx.application.Application;
 import javafx.scene.Group;
 
@@ -25,13 +26,18 @@ public class BaseController implements Initializable {
 	@FXML
 	private BorderPane root;
 
-	private SettingsController setting = new SettingsController();
-	private MenuController menu = new MenuController();
+	//CONTROLLER
+	private SettingsController settingController = new SettingsController();
+	private MenuController menuController = new MenuController();
 
 	private static BaseController instance;
 
+	//MODEL
 	public static ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
 	
+	
+	//CONTROLLER JUEGO
+	private Controller tragaPerrasController = new Controller();
 	
 	public Sounds musica;
 
@@ -45,7 +51,7 @@ public class BaseController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		getView().getStylesheets().add("/css/Menu/menu.css");
 		showMenu();
-		score_file.bind(menu.score_fileProperty());
+		score_file.bind(menuController.score_fileProperty());
 		
 		
 		try {
@@ -55,21 +61,22 @@ public class BaseController implements Initializable {
 		}
 		
 		musica.play();
-		
-		
-		
-
+		musica.volumen(-25.0F);
 	}
 
 	public void showSetting(Score file) {
-		root.setCenter(setting.getView());
-		setting.setScore_file(getScore());
-		setting.load();
-
+		root.setCenter(settingController.getView());
+		settingController.setScore_file(getScore());
+		settingController.load();
+	}
+	
+	public void showTragaPerras() {
+		root.setCenter(tragaPerrasController.getView());
+		
 	}
 
 	public void showMenu() {
-		root.setCenter(menu.getView());
+		root.setCenter(menuController.getView());
 	}
 
 	public BorderPane getView() {

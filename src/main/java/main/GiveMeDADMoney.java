@@ -18,23 +18,21 @@ public class GiveMeDADMoney extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		GiveMeDADMoney.primaryStage = primaryStage;
-		
-	
-	
+
 		Scene scene = new Scene(BaseController.getInstance().getView());
+		//primaryStage.getIcons().add(new Image("/images/icono.png"));
+
 
 		primaryStage.setTitle("GiveMeDADMoney");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
-	
-	
-	
-	public static void error(String header, String content) {
+
+	public static void error(String title, String header, String content) {
 		Alert error = new Alert(AlertType.ERROR);
 		error.initOwner(getPrimaryStage());
-		error.setTitle("Error");
+		error.setTitle(title);
 		error.setHeaderText(header);
 		error.setContentText(content);
 		error.showAndWait();
