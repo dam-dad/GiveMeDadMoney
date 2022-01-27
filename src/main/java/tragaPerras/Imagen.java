@@ -78,7 +78,7 @@ public class Imagen {
         imagenes[5] = siete();
         imagenes[6] = uva();
 
-        imagen = imagenes[(int) (Math.random() * 6)];
+        imagen = imagenes[(int) (Math.random() * 7)];
 
         return imagen;
     }
