@@ -1,10 +1,15 @@
 package tragaPerras;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -15,6 +20,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+    private ObjectProperty<Image> imagen1Property = new SimpleObjectProperty<>();
+    private ObjectProperty<Image> imagen2Property = new SimpleObjectProperty<>();
+    private ObjectProperty<Image> imagen3Property = new SimpleObjectProperty<>();
+    private StringProperty puntosTotales = new SimpleStringProperty();
+
+    private Imagen imagen1 = new Imagen();
+    private Imagen imagen2 = new Imagen();
+    private Imagen imagen3 = new Imagen();
+    private Imagen cambio = new Imagen();
+
+    private int valor1, valor2, valor3;
 
     @FXML
     private Button apuesta1Button;
@@ -64,21 +81,6 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void apuesta1(ActionEvent event) {
-
-    }
-
-    @FXML
-    void apuesta2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void apuesta5(ActionEvent event) {
-
-    }
-
-    @FXML
     void juegaDeNuevo(ActionEvent event) {
 
     }
@@ -92,9 +94,79 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        Image sieteImagen = new Image(imagen1.siete().getRuta());
+
+        imageBlock1.imageProperty().bind(imagen1Property);
+        imageBlock2.imageProperty().bind(imagen2Property);
+        imageBlock3.imageProperty().bind(imagen3Property);
+
+        puntosText.textProperty().bind(puntosTotales);
+
+        imagen1Property.set(sieteImagen);
+        imagen2Property.set(sieteImagen);
+        imagen3Property.set(sieteImagen);
+
+    }
+
+    @FXML
+    void apuesta1(ActionEvent event) {
+
+        Image imagenNew;
+
+        cambio = imagen1.randomImagen();
+
+        imagenNew = new Image(cambio.getRuta());
+        imagen1Property.set(imagenNew);
+        valor1 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor1);
+
+        cambio = imagen2.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
+        imagen2Property.set(imagenNew);
+        valor2 = cambio.getValor();
+        System.out.println(cambio.getRuta() + " " + valor2);
+
+        cambio = imagen3.randomImagen();
+        imagenNew = new Image(cambio.getRuta());
+        imagen3Property.set(imagenNew);
+        valor3 = cambio.getValor();
+
+    }
+
+    @FXML
+    void apuesta2(ActionEvent event) {
+
+        Image imagenNew;
+
+        imagenNew = new Image(imagen1.randomImagen().getRuta());
+        imagen1Property.set(imagenNew);
+
+        imagenNew = new Image(imagen2.randomImagen().getRuta());
+        imagen2Property.set(imagenNew);
+
+        imagenNew = new Image(imagen3.randomImagen().getRuta());
+        imagen3Property.set(imagenNew);
+
+    }
+
+    @FXML
+    void apuesta5(ActionEvent event) {
+
+        Image imagenNew;
+
+        imagenNew = new Image(imagen1.randomImagen().getRuta());
+        imagen1Property.set(imagenNew);
+
+        imagenNew = new Image(imagen2.randomImagen().getRuta());
+        imagen2Property.set(imagenNew);
+
+        imagenNew = new Image(imagen3.randomImagen().getRuta());
+        imagen3Property.set(imagenNew);
+
     }
 
     public BorderPane getView() {
         return view;
     }
+
 }
