@@ -23,7 +23,7 @@
         <children>
             <HBox alignment="CENTER" spacing="10.0">
               <children>
-                  <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="145.0" prefWidth="435.0" styleClass="fondito">
+                  <GridPane alignment="CENTER" prefHeight="145.0" prefWidth="435.0" styleClass="fondito">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="115.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="115.0" />

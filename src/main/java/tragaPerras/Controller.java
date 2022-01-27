@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import main.GiveMeDADMoney;
 
 import java.io.IOException;
 import java.net.URL;
@@ -138,7 +139,8 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 10;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            App.alertaPuntos();
+            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
+
         }
 
     }
@@ -170,7 +172,7 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 20;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            App.alertaPuntos();
+            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
         }
 
     }
@@ -202,7 +204,7 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 50;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            App.alertaPuntos();
+            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
         }
 
     }
