@@ -31,7 +31,8 @@ public class Controller implements Initializable {
     private Imagen imagen3 = new Imagen();
     private Imagen cambio = new Imagen();
 
-    private int valor1, valor2, valor3, sumaPuntos;
+    private int valor1, valor2, valor3;
+    private double sumaPuntos;
 
     @FXML
     private Button apuesta1Button;
@@ -120,13 +121,11 @@ public class Controller implements Initializable {
         imagenNew = new Image(cambio.getRuta());
         imagen1Property.set(imagenNew);
         valor1 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor1);
 
         cambio = imagen2.randomImagen();
         imagenNew = new Image(cambio.getRuta());
         imagen2Property.set(imagenNew);
         valor2 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor2);
 
         cambio = imagen3.randomImagen();
         imagenNew = new Image(cambio.getRuta());
@@ -134,9 +133,10 @@ public class Controller implements Initializable {
         valor3 = cambio.getValor();
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) - 1;
+        sumaPuntos += recompensas(valor1, valor2, valor3) * 1 - 1;
+        System.out.println(sumaPuntos);
 
-        puntosTotales.set(String.valueOf(sumaPuntos));
+        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
 
     }
 
@@ -150,13 +150,11 @@ public class Controller implements Initializable {
         imagenNew = new Image(cambio.getRuta());
         imagen1Property.set(imagenNew);
         valor1 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor1);
 
         cambio = imagen2.randomImagen();
         imagenNew = new Image(cambio.getRuta());
         imagen2Property.set(imagenNew);
         valor2 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor2);
 
         cambio = imagen3.randomImagen();
         imagenNew = new Image(cambio.getRuta());
@@ -164,9 +162,11 @@ public class Controller implements Initializable {
         valor3 = cambio.getValor();
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) - 2;
+        sumaPuntos += recompensas(valor1, valor2, valor3) * 2 - 2;
 
-        puntosTotales.set(String.valueOf(sumaPuntos));
+        System.out.println(sumaPuntos);
+
+        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
 
     }
 
@@ -180,13 +180,11 @@ public class Controller implements Initializable {
         imagenNew = new Image(cambio.getRuta());
         imagen1Property.set(imagenNew);
         valor1 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor1);
 
         cambio = imagen2.randomImagen();
         imagenNew = new Image(cambio.getRuta());
         imagen2Property.set(imagenNew);
         valor2 = cambio.getValor();
-        System.out.println(cambio.getRuta() + " " + valor2);
 
         cambio = imagen3.randomImagen();
         imagenNew = new Image(cambio.getRuta());
@@ -194,9 +192,11 @@ public class Controller implements Initializable {
         valor3 = cambio.getValor();
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) - 5;
+        sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 5;
 
-        puntosTotales.set(String.valueOf(sumaPuntos));
+        System.out.println(sumaPuntos);
+
+        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
 
     }
 
@@ -204,17 +204,93 @@ public class Controller implements Initializable {
         return view;
     }
 
-    public int recompensas(int valor1, int valor2, int valor3) {
-        int numero = 0;
+    public double recompensas(int valor1, int valor2, int valor3) {
+
+        double numero = 0;
 
         if (valor1 == valor2 && valor1 == valor3) {
-            numero = 100;
 
-        } else if (valor1 == valor2 || valor1 == valor3 || valor2 == valor3) {
-            numero = 5;
+            switch (valor1) {
+                case 1:
+                    numero = 4;
+                    break;
+                case 2:
+                    numero = 4.2;
+                    break;
+                case 3:
+                    numero = 4.4;
+                    break;
+                case 4:
+                    numero = 4.6;
+                    break;
+                case 5:
+                    numero = 4.8;
+                    break;
+                case 6:
+                    numero = 5;
+                    break;
+                case 7:
+                    numero = 10;
+                    break;
+
+            }
+
+        } else if (valor1 == valor2 || valor1 == valor3) {
+
+            switch (valor1) {
+                case 1:
+                    numero = 1.5;
+                    break;
+                case 2:
+                    numero = 1.7;
+                    break;
+                case 3:
+                    numero = 2;
+                    break;
+                case 4:
+                    numero = 2.5;
+                    break;
+                case 5:
+                    numero = 2.7;
+                    break;
+                case 6:
+                    numero = 3;
+                    break;
+                case 7:
+                    numero = 5;
+                    break;
+
+            }
+
+        } else if (valor2 == valor3) {
+
+            switch (valor2) {
+                case 1:
+                    numero = 1.5;
+                    break;
+                case 2:
+                    numero = 1.7;
+                    break;
+                case 3:
+                    numero = 2;
+                    break;
+                case 4:
+                    numero = 2.5;
+                    break;
+                case 5:
+                    numero = 2.7;
+                    break;
+                case 6:
+                    numero = 3;
+                    break;
+                case 7:
+                    numero = 5;
+                    break;
+
+            }
+
         }
 
         return numero;
     }
-
 }
