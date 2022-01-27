@@ -107,96 +107,103 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("1000");
+        puntosTotales.set("10");
 
     }
 
     @FXML
     void apuesta1(ActionEvent event) {
 
-        Image imagenNew;
-
-        cambio = imagen1.randomImagen();
-
-        imagenNew = new Image(cambio.getRuta());
-        imagen1Property.set(imagenNew);
-        valor1 = cambio.getValor();
-
-        cambio = imagen2.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen2Property.set(imagenNew);
-        valor2 = cambio.getValor();
-
-        cambio = imagen3.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen3Property.set(imagenNew);
-        valor3 = cambio.getValor();
-
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) * 1 - 1;
-        System.out.println(sumaPuntos);
 
-        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+        if (sumaPuntos >= 1) {
+            Image imagenNew;
+
+            cambio = imagen1.randomImagen();
+
+            imagenNew = new Image(cambio.getRuta());
+            imagen1Property.set(imagenNew);
+            valor1 = cambio.getValor();
+
+            cambio = imagen2.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen2Property.set(imagenNew);
+            valor2 = cambio.getValor();
+
+            cambio = imagen3.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen3Property.set(imagenNew);
+            valor3 = cambio.getValor();
+
+            sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 1;
+            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+        } else {
+            App.alertaPuntos();
+        }
 
     }
 
     @FXML
     void apuesta2(ActionEvent event) {
 
-        Image imagenNew;
-
-        cambio = imagen1.randomImagen();
-
-        imagenNew = new Image(cambio.getRuta());
-        imagen1Property.set(imagenNew);
-        valor1 = cambio.getValor();
-
-        cambio = imagen2.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen2Property.set(imagenNew);
-        valor2 = cambio.getValor();
-
-        cambio = imagen3.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen3Property.set(imagenNew);
-        valor3 = cambio.getValor();
-
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) * 2 - 2;
 
-        System.out.println(sumaPuntos);
+        if (sumaPuntos >= 2) {
+            Image imagenNew;
 
-        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+            cambio = imagen1.randomImagen();
+
+            imagenNew = new Image(cambio.getRuta());
+            imagen1Property.set(imagenNew);
+            valor1 = cambio.getValor();
+
+            cambio = imagen2.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen2Property.set(imagenNew);
+            valor2 = cambio.getValor();
+
+            cambio = imagen3.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen3Property.set(imagenNew);
+            valor3 = cambio.getValor();
+
+            sumaPuntos += recompensas(valor1, valor2, valor3) * 2 - 2;
+            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+        } else {
+            App.alertaPuntos();
+        }
 
     }
 
     @FXML
     void apuesta5(ActionEvent event) {
 
-        Image imagenNew;
-
-        cambio = imagen1.randomImagen();
-
-        imagenNew = new Image(cambio.getRuta());
-        imagen1Property.set(imagenNew);
-        valor1 = cambio.getValor();
-
-        cambio = imagen2.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen2Property.set(imagenNew);
-        valor2 = cambio.getValor();
-
-        cambio = imagen3.randomImagen();
-        imagenNew = new Image(cambio.getRuta());
-        imagen3Property.set(imagenNew);
-        valor3 = cambio.getValor();
-
         sumaPuntos = Integer.parseInt(puntosTotales.get());
-        sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 5;
 
-        System.out.println(sumaPuntos);
+        if (sumaPuntos >= 5) {
+            Image imagenNew;
 
-        puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+            cambio = imagen1.randomImagen();
+
+            imagenNew = new Image(cambio.getRuta());
+            imagen1Property.set(imagenNew);
+            valor1 = cambio.getValor();
+
+            cambio = imagen2.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen2Property.set(imagenNew);
+            valor2 = cambio.getValor();
+
+            cambio = imagen3.randomImagen();
+            imagenNew = new Image(cambio.getRuta());
+            imagen3Property.set(imagenNew);
+            valor3 = cambio.getValor();
+
+            sumaPuntos += recompensas(valor1, valor2, valor3) * 5 - 5;
+            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+        } else {
+            App.alertaPuntos();
+        }
 
     }
 
