@@ -1,9 +1,8 @@
 .root{
     -fx-background-image: url("/images/Menu/fondo.jpg");
-}
-
-.fondo{
-    -fx-background-image: url("/images/Menu/fondo.jpg");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
 }
 
 

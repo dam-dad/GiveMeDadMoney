@@ -14,13 +14,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
         <children>
-            <HBox alignment="CENTER" spacing="10.0" styleClass="frame">
+            <HBox alignment="CENTER" spacing="10.0">
               <children>
                   <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="145.0" prefWidth="435.0" styleClass="fondito">
                     <columnConstraints>
@@ -59,6 +60,15 @@
                               </ImageView>
                           </children>
                         </StackPane>
+                        <StackPane prefHeight="174.0" prefWidth="482.0">
+                           <children>
+                              <ImageView fitHeight="174.0" fitWidth="478.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../../images/TragaPerras/frame.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
                     </children>
                   </GridPane>
               </children>
@@ -70,13 +80,16 @@
               <children>
                   <HBox>
                      <children>
-                        <Label text="Puntos: " />
-                        <Text fx:id="puntosText" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+                        <Label text="Puntos: " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Text fx:id="puntosText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
                      </children>
                   </HBox>
                   <HBox fx:id="resultTextContainer">
                      <children>
-                        <Text fx:id="resultText" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" />
+                        <Text fx:id="resultText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" />
                      </children>
                   </HBox>
               </children>
@@ -108,18 +121,21 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Total Puntos: ">
+            <Label text="Total Puntos: " textFill="WHITE">
                <HBox.margin>
                   <Insets left="4.0" top="4.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
-            <Text fx:id="highScoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+            <Text fx:id="highScoreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                <HBox.margin>
                   <Insets top="4.0" />
                </HBox.margin>
             </Text>
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#MostrarPagos" text="Pagos" />
+            <Button mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
          </children>
          <padding>
             <Insets left="10.0" right="10.0" top="10.0" />
