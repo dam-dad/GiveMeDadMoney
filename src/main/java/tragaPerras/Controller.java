@@ -117,7 +117,7 @@ public class Controller implements Initializable {
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
 
-        if (sumaPuntos >= 1) {
+        if (sumaPuntos >= 10) {
             Image imagenNew;
 
             cambio = imagen1.randomImagen();
@@ -139,7 +139,8 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 10;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
+            GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
+                    "Necesitas mas puntos para poder jugar.");
 
         }
 
@@ -150,7 +151,7 @@ public class Controller implements Initializable {
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
 
-        if (sumaPuntos >= 2) {
+        if (sumaPuntos >= 20) {
             Image imagenNew;
 
             cambio = imagen1.randomImagen();
@@ -172,7 +173,8 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 20;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
+            GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
+                    "Necesitas mas puntos para poder jugar.");
         }
 
     }
@@ -182,7 +184,7 @@ public class Controller implements Initializable {
 
         sumaPuntos = Integer.parseInt(puntosTotales.get());
 
-        if (sumaPuntos >= 5) {
+        if (sumaPuntos >= 50) {
             Image imagenNew;
 
             cambio = imagen1.randomImagen();
@@ -204,7 +206,8 @@ public class Controller implements Initializable {
             sumaPuntos += recompensas(valor1, valor2, valor3) - 50;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
-            GiveMeDADMoney.error("Información de Puntos","Puntos Insuficientes.", "Necesitas mas puntos para poder jugar.");
+            GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
+                    "Necesitas mas puntos para poder jugar.");
         }
 
     }
