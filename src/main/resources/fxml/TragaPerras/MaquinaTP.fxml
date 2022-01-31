@@ -100,7 +100,7 @@
             </FlowPane>
             <HBox fx:id="buttonsContainer" alignment="CENTER" spacing="20.0">
               <children>
-                  <TextField fx:id="apuestaText" prefHeight="26.0" prefWidth="135.0" promptText="Introduce la cantidad..." />
+                  <TextField fx:id="apuestaText" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="135.0" promptText="Introduce la cantidad..." />
                   <Button fx:id="apuestaButton" mnemonicParsing="false" onAction="#apuesta" prefHeight="34.0" prefWidth="90.0" text="Apuesta" />
               </children>
               <padding>
@@ -113,8 +113,8 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="volverButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volver" prefHeight="26.0" prefWidth="58.0" text="Volver" />
-            <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="volverButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volver" prefHeight="26.0" text="Volver" />
+            <Region maxHeight="1.7976931348623157E308" prefHeight="26.0" HBox.hgrow="ALWAYS" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
          </children>
          <padding>
