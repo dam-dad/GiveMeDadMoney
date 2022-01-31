@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.GiveMeDADMoney;
+import menuController.BaseController;
 import score.Score;
 
 import java.io.IOException;
@@ -43,16 +45,7 @@ public class Controller implements Initializable {
     TranslateTransition transition3 = new TranslateTransition();
 
     @FXML
-    private Button apuesta1Button;
-
-    @FXML
-    private Button apuesta2Button;
-
-    @FXML
-    private Button apuesta5Button;
-
-    @FXML
-    private Button volverButton;
+    private Button apuestaButton, volverButton;
 
     @FXML
     private HBox buttonsContainer;
@@ -61,22 +54,10 @@ public class Controller implements Initializable {
     private Text highScoreText;
 
     @FXML
-    private ImageView imageBlock1;
+    private ImageView imageBlock1, imageBlock2, imageBlock3;
 
     @FXML
-    private ImageView imageBlock2;
-
-    @FXML
-    private ImageView imageBlock3;
-
-    @FXML
-    private Button playAgainButton;
-
-    @FXML
-    private HBox playAgainContainer;
-
-    @FXML
-    private Text puntosText;
+    private Text puntosText, apuestaText;
 
     @FXML
     private Text resultText;
@@ -143,32 +124,21 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void apuesta1(ActionEvent event) {
+    void apuesta(ActionEvent event) {
+        if(isNumeric(apuestaText.textProperty().getValue()) == true){
+            juego(Integer.parseInt(apuestaText.textProperty().getValue()));
+            saveScore();
+        } else {
+            GiveMeDADMoney.error("Error de formato.", "Carácter inválido.",
+                    "El valor introducido no es un número.");
+        }
 
-        juego(10);
-        saveScore();
-
-    }
-
-    @FXML
-    void apuesta2(ActionEvent event) {
-
-        juego(20);
-        saveScore();
-
-    }
-
-    @FXML
-    void apuesta5(ActionEvent event) {
-
-        juego(50);
-        saveScore();
 
     }
 
     @FXML
     void volver(ActionEvent event) {
-
+        BaseController.getInstance().showMenu();
     }
 
     public BorderPane getView() {
@@ -253,7 +223,7 @@ public class Controller implements Initializable {
                     numero = (int) (valor1 * 0.75);
                     break;
                 case 35:
-                    numero = valor1 * 1;
+                    numero = valor1;
                     break;
                 case 50:
                     numero = (int) (valor1 * 1.25);
@@ -282,7 +252,7 @@ public class Controller implements Initializable {
                     numero = (int) (valor2 * 0.75);
                     break;
                 case 35:
-                    numero = valor2 * 1;
+                    numero = valor2;
                     break;
                 case 50:
                     numero = (int) (valor2 * 1.5);
@@ -303,5 +273,19 @@ public class Controller implements Initializable {
         }
 
         return numero;
+    }
+
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException exception) {
+            resultado = false;
+        }
+
+        return resultado;
     }
 }

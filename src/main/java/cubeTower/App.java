@@ -1,4 +1,4 @@
-package pruebas.volumen;
+package cubeTower;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,11 +6,11 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 	
-	private Controller controller;
+	private pruebas.volumen.Controller controller;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		controller=new Controller();
+		controller=new pruebas.volumen.Controller();
 		
 		Scene escena= new Scene(controller.getView());
 		
