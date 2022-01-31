@@ -7,21 +7,18 @@ import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import menuController.BaseController;
-
 
 public class GiveMeDADMoney extends Application {
 
-	private static Stage primaryStage; 
+	private static Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		GiveMeDADMoney.primaryStage = primaryStage;
 
 		Scene scene = new Scene(BaseController.getInstance().getView());
-		//primaryStage.getIcons().add(new Image("/images/icono.png"));
-
+		// primaryStage.getIcons().add(new Image("/images/icono.png"));
 
 		primaryStage.setTitle("GiveMeDADMoney");
 		primaryStage.setScene(scene);
@@ -37,7 +34,7 @@ public class GiveMeDADMoney extends Application {
 		error.setContentText(content);
 		error.showAndWait();
 	}
-	
+
 	public static boolean confirm(String title, String header, String content) {
 		Alert confirm = new Alert(AlertType.CONFIRMATION);
 		confirm.initOwner(getPrimaryStage());
@@ -46,7 +43,7 @@ public class GiveMeDADMoney extends Application {
 		confirm.setContentText(content);
 		return confirm.showAndWait().get().equals(ButtonType.OK);
 	}
-	
+
 	public static void info(String header, String content) {
 		Alert info = new Alert(AlertType.INFORMATION);
 		info.initOwner(getPrimaryStage());
@@ -55,9 +52,10 @@ public class GiveMeDADMoney extends Application {
 		info.setContentText(content);
 		info.showAndWait();
 	}
+
 	@Override
 	public void stop() throws Exception {
-	
+
 		BaseController.getScore().save();
 		super.stop();
 	}
@@ -69,7 +67,5 @@ public class GiveMeDADMoney extends Application {
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
-	
-
 
 }

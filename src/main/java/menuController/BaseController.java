@@ -57,7 +57,7 @@ public class BaseController implements Initializable {
 		try {
 			musica = new Sounds("sound/sound2.wav");
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		
 		musica.play();

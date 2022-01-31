@@ -114,7 +114,7 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("100");
+        puntosTotales.set("1000");
 
         transition1.setNode(imageBlock1);
         transition1.setFromY(-250);
@@ -133,7 +133,6 @@ public class Controller implements Initializable {
         transition3.setToY(0);
         transition3.setCycleCount(13);
         transition3.setDuration(Duration.seconds(0.10));
-
     }
 
     @FXML
@@ -169,6 +168,7 @@ public class Controller implements Initializable {
             transition1.play();
             transition2.play();
             transition3.play();
+
             Image imagenNew;
 
             cambio = imagen1.randomImagen();
@@ -187,8 +187,8 @@ public class Controller implements Initializable {
             imagen3Property.set(imagenNew);
             valor3 = cambio.getValor();
 
-            sumaPuntos += recompensas(valor1, valor2, valor3) - numeroApuesta;
-            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
+            sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
+            puntosTotales.set("" + Math.round(sumaPuntos));
         } else {
             GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
                     "Necesitas mas puntos para poder jugar.");
@@ -196,7 +196,7 @@ public class Controller implements Initializable {
 
     }
 
-    public double recompensas(int valor1, int valor2, int valor3) {
+    public double recompensas(int valor1, int valor2, int valor3, int numeroApuesta) {
 
         double numero = 0;
 
@@ -226,6 +226,7 @@ public class Controller implements Initializable {
                     break;
 
             }
+            numero += numeroApuesta;
 
         } else if (valor1 == valor2) {
 
@@ -253,6 +254,7 @@ public class Controller implements Initializable {
                     break;
 
             }
+            numero += numeroApuesta;
 
         }
         if (valor2 == valor3) {
@@ -281,6 +283,7 @@ public class Controller implements Initializable {
                     break;
 
             }
+            numero += numeroApuesta;
 
         }
 
