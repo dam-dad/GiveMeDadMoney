@@ -1,7 +1,9 @@
 package tragaPerras;
 
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -17,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.GiveMeDADMoney;
+import score.Score;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +30,7 @@ public class Controller implements Initializable {
     private ObjectProperty<Image> imagen1Property = new SimpleObjectProperty<>();
     private ObjectProperty<Image> imagen2Property = new SimpleObjectProperty<>();
     private ObjectProperty<Image> imagen3Property = new SimpleObjectProperty<>();
-    private StringProperty puntosTotales = new SimpleStringProperty();
+    private IntegerProperty puntosTotales = new SimpleIntegerProperty();
 
     private Imagen imagen1 = new Imagen();
     private Imagen imagen2 = new Imagen();
@@ -108,13 +111,13 @@ public class Controller implements Initializable {
         imageBlock2.imageProperty().bind(imagen2Property);
         imageBlock3.imageProperty().bind(imagen3Property);
 
-        puntosText.textProperty().bind(puntosTotales);
+       
 
         imagen1Property.set(sieteImagen);
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("1000");
+        puntosTotales.set(Score.getInstance().getTotalScore());
 
         transition1.setNode(imageBlock1);
         transition1.setFromY(-250);
@@ -134,11 +137,16 @@ public class Controller implements Initializable {
         transition3.setCycleCount(13);
         transition3.setDuration(Duration.seconds(0.10));
     }
+    
+    private void saveScore() {
+        Score.getInstance().setTotalScore(puntosTotales.intValue());
+	}
 
     @FXML
     void apuesta1(ActionEvent event) {
 
         juego(10);
+        saveScore();
 
     }
 
@@ -146,6 +154,7 @@ public class Controller implements Initializable {
     void apuesta2(ActionEvent event) {
 
         juego(20);
+        saveScore();
 
     }
 
@@ -153,6 +162,7 @@ public class Controller implements Initializable {
     void apuesta5(ActionEvent event) {
 
         juego(50);
+        saveScore();
 
     }
 
@@ -162,7 +172,7 @@ public class Controller implements Initializable {
 
     public void juego(int numeroApuesta) {
 
-        sumaPuntos = Integer.parseInt(puntosTotales.get());
+        sumaPuntos = puntosTotales.get();
 
         if (sumaPuntos >= numeroApuesta) {
             transition1.play();

@@ -92,6 +92,7 @@ public class Score {
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	public static Score getInstance() {
 		if (instance == null) {
 			try {
