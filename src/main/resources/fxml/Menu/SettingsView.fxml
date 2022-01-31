@@ -2,41 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="settingsView" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <HBox alignment="CENTER" spacing="5.0" styleClass="fondo" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="downloadScoreButton" mnemonicParsing="false" onAction="#onDownloadScoreAction" styleClass="downloadButton" text="Descargar">
-               <graphic>
-                  <ImageView fitHeight="300.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/Menu/flecha-hacia-abajo.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="importScoreButton" mnemonicParsing="false" onAction="#onImportScoreAction" styleClass="uploadButton" text="Importar">
-               <graphic>
-                  <ImageView fitHeight="300.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/Menu/upload.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
-   </bottom>
    <top>
       <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,16 +21,6 @@
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" spacing="5.0">
-               <children>
-                  <Label text="Nombre:" />
-                  <TextField fx:id="userNameText" />
-                  <Button fx:id="changeUserNameButton" mnemonicParsing="false" onAction="#onChangeUserNameAction" text="Cambiar" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
             <HBox alignment="CENTER" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
