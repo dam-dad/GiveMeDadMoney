@@ -5,8 +5,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +36,7 @@ public class Controller implements Initializable {
     private Imagen cambio = new Imagen();
 
     private int valor1, valor2, valor3;
-    private double sumaPuntos;
+    private int sumaPuntos;
 
     TranslateTransition transition1 = new TranslateTransition();
     TranslateTransition transition2 = new TranslateTransition();
@@ -111,13 +109,12 @@ public class Controller implements Initializable {
         imageBlock2.imageProperty().bind(imagen2Property);
         imageBlock3.imageProperty().bind(imagen3Property);
 
-       
-
         imagen1Property.set(sieteImagen);
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
         puntosTotales.set(Score.getInstance().getTotalScore());
+
 
         transition1.setNode(imageBlock1);
         transition1.setFromY(-250);
@@ -137,10 +134,10 @@ public class Controller implements Initializable {
         transition3.setCycleCount(13);
         transition3.setDuration(Duration.seconds(0.10));
     }
-    
+
     private void saveScore() {
         Score.getInstance().setTotalScore(puntosTotales.intValue());
-	}
+    }
 
     @FXML
     void apuesta1(ActionEvent event) {
@@ -198,7 +195,7 @@ public class Controller implements Initializable {
             valor3 = cambio.getValor();
 
             sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
-            puntosTotales.set("" + Math.round(sumaPuntos));
+            puntosTotales.set(sumaPuntos);
         } else {
             GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
                     "Necesitas mas puntos para poder jugar.");
@@ -206,9 +203,9 @@ public class Controller implements Initializable {
 
     }
 
-    public double recompensas(int valor1, int valor2, int valor3, int numeroApuesta) {
+    public int recompensas(int valor1, int valor2, int valor3, int numeroApuesta) {
 
-        double numero = 0;
+        int numero = 0;
 
         if (valor1 == valor2 && valor1 == valor3) {
 
@@ -242,22 +239,22 @@ public class Controller implements Initializable {
 
             switch (valor1) {
                 case 10:
-                    numero = valor1 * 0.5;
+                    numero = (int) (valor1 * 0.5);
                     break;
                 case 25:
-                    numero = valor1 * 0.75;
+                    numero = (int) (valor1 * 0.75);
                     break;
                 case 35:
                     numero = valor1 * 1;
                     break;
                 case 50:
-                    numero = valor1 * 1.25;
+                    numero = (int) (valor1 * 1.25);
                     break;
                 case 65:
-                    numero = valor1 * 1.5;
+                    numero = (int) (valor1 * 1.5);
                     break;
                 case 75:
-                    numero = valor1 * 2.5;
+                    numero = (int) (valor1 * 2.5);
                     break;
                 case 120:
                     numero = valor1 * 3;
@@ -271,22 +268,22 @@ public class Controller implements Initializable {
 
             switch (valor2) {
                 case 10:
-                    numero = valor2 * 0.5;
+                    numero = (int) (valor2 * 0.5);
                     break;
                 case 25:
-                    numero = valor2 * 0.75;
+                    numero = (int) (valor2 * 0.75);
                     break;
                 case 35:
                     numero = valor2 * 1;
                     break;
                 case 50:
-                    numero = valor2 * 1.5;
+                    numero = (int) (valor2 * 1.5);
                     break;
                 case 65:
                     numero = valor2 * 2;
                     break;
                 case 75:
-                    numero = valor2 * 2.5;
+                    numero = (int) (valor2 * 2.5);
                     break;
                 case 120:
                     numero = valor2 * 3;
