@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import menuController.BaseController;
@@ -20,7 +21,7 @@ public class GiveMeDADMoney extends Application {
 		GiveMeDADMoney.primaryStage = primaryStage;
 
 		Scene scene = new Scene(BaseController.getInstance().getView());
-		// primaryStage.getIcons().add(new Image("/images/icono.png"));
+		primaryStage.getIcons().add(new Image("/images/Menu/icono.png"));
 
 		primaryStage.setTitle("GiveMeDADMoney");
 		primaryStage.setScene(scene);
