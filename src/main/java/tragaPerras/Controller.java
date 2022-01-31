@@ -125,15 +125,13 @@ public class Controller implements Initializable {
 
     @FXML
     void apuesta(ActionEvent event) {
-        if(isNumeric(apuestaText.textProperty().getValue()) == true){
+        if (isNumeric(apuestaText.textProperty().getValue())) {
             juego(Integer.parseInt(apuestaText.textProperty().getValue()));
             saveScore();
         } else {
             GiveMeDADMoney.error("Error de formato.", "Carácter inválido.",
                     "El valor introducido no es un número.");
         }
-
-
     }
 
     @FXML
