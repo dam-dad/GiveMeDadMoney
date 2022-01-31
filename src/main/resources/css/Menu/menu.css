@@ -22,5 +22,5 @@
 }
 .label{
     -fx-font-weight: bold;
-    -fx-text-fill: black;
+    -fx-text-fill: rgb(255, 255, 255);
 }

@@ -1,5 +1,6 @@
 package tragaPerras;
 
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import main.GiveMeDADMoney;
 
 import java.io.IOException;
@@ -34,6 +36,10 @@ public class Controller implements Initializable {
 
     private int valor1, valor2, valor3;
     private double sumaPuntos;
+
+    TranslateTransition transition1 = new TranslateTransition();
+    TranslateTransition transition2 = new TranslateTransition();
+    TranslateTransition transition3 = new TranslateTransition();
 
     @FXML
     private Button apuesta1Button;
@@ -108,83 +114,61 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
-        puntosTotales.set("1000");
+        puntosTotales.set("100");
+
+        transition1.setNode(imageBlock1);
+        transition1.setFromY(-250);
+        transition1.setToY(0);
+        transition1.setCycleCount(7);
+        transition1.setDuration(Duration.seconds(0.10));
+
+        transition2.setNode(imageBlock2);
+        transition2.setFromY(-250);
+        transition2.setToY(0);
+        transition2.setCycleCount(10);
+        transition2.setDuration(Duration.seconds(0.10));
+
+        transition3.setNode(imageBlock3);
+        transition3.setFromY(-250);
+        transition3.setToY(0);
+        transition3.setCycleCount(13);
+        transition3.setDuration(Duration.seconds(0.10));
 
     }
 
     @FXML
     void apuesta1(ActionEvent event) {
 
-        sumaPuntos = Integer.parseInt(puntosTotales.get());
-
-        if (sumaPuntos >= 10) {
-            Image imagenNew;
-
-            cambio = imagen1.randomImagen();
-
-            imagenNew = new Image(cambio.getRuta());
-            imagen1Property.set(imagenNew);
-            valor1 = cambio.getValor();
-
-            cambio = imagen2.randomImagen();
-            imagenNew = new Image(cambio.getRuta());
-            imagen2Property.set(imagenNew);
-            valor2 = cambio.getValor();
-
-            cambio = imagen3.randomImagen();
-            imagenNew = new Image(cambio.getRuta());
-            imagen3Property.set(imagenNew);
-            valor3 = cambio.getValor();
-
-            sumaPuntos += recompensas(valor1, valor2, valor3) - 10;
-            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
-        } else {
-            GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
-                    "Necesitas mas puntos para poder jugar.");
-
-        }
+        juego(10);
 
     }
 
     @FXML
     void apuesta2(ActionEvent event) {
 
-        sumaPuntos = Integer.parseInt(puntosTotales.get());
-
-        if (sumaPuntos >= 20) {
-            Image imagenNew;
-
-            cambio = imagen1.randomImagen();
-
-            imagenNew = new Image(cambio.getRuta());
-            imagen1Property.set(imagenNew);
-            valor1 = cambio.getValor();
-
-            cambio = imagen2.randomImagen();
-            imagenNew = new Image(cambio.getRuta());
-            imagen2Property.set(imagenNew);
-            valor2 = cambio.getValor();
-
-            cambio = imagen3.randomImagen();
-            imagenNew = new Image(cambio.getRuta());
-            imagen3Property.set(imagenNew);
-            valor3 = cambio.getValor();
-
-            sumaPuntos += recompensas(valor1, valor2, valor3) - 20;
-            puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
-        } else {
-            GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
-                    "Necesitas mas puntos para poder jugar.");
-        }
+        juego(20);
 
     }
 
     @FXML
     void apuesta5(ActionEvent event) {
 
+        juego(50);
+
+    }
+
+    public BorderPane getView() {
+        return view;
+    }
+
+    public void juego(int numeroApuesta) {
+
         sumaPuntos = Integer.parseInt(puntosTotales.get());
 
-        if (sumaPuntos >= 50) {
+        if (sumaPuntos >= numeroApuesta) {
+            transition1.play();
+            transition2.play();
+            transition3.play();
             Image imagenNew;
 
             cambio = imagen1.randomImagen();
@@ -203,17 +187,13 @@ public class Controller implements Initializable {
             imagen3Property.set(imagenNew);
             valor3 = cambio.getValor();
 
-            sumaPuntos += recompensas(valor1, valor2, valor3) - 50;
+            sumaPuntos += recompensas(valor1, valor2, valor3) - numeroApuesta;
             puntosTotales.set(String.valueOf(Math.round(sumaPuntos)));
         } else {
             GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
                     "Necesitas mas puntos para poder jugar.");
         }
 
-    }
-
-    public BorderPane getView() {
-        return view;
     }
 
     public double recompensas(int valor1, int valor2, int valor3) {

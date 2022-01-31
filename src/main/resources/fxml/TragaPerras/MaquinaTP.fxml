@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
         <children>
@@ -101,7 +101,7 @@
               <children>
                   <Button fx:id="apuesta1Button" mnemonicParsing="false" onAction="#apuesta1" prefHeight="34.0" prefWidth="90.0" text="Apuesta 10 P" />
                   <Button fx:id="apuesta2Button" mnemonicParsing="false" onAction="#apuesta2" prefHeight="34.0" prefWidth="90.0" text="Apuesta 20 P" />
-                  <Button fx:id="apuesta5Button" mnemonicParsing="false" onAction="#apuesta5" prefHeight="34.0" prefWidth="89.0" text="Apuesta 50 P" />
+                  <Button fx:id="apuesta5Button" mnemonicParsing="false" onAction="#apuesta5" prefHeight="34.0" prefWidth="90.0" text="Apuesta 50 P" />
               </children>
               <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -135,7 +135,7 @@
                </HBox.margin>
             </Text>
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
          </children>
          <padding>
             <Insets left="10.0" right="10.0" top="10.0" />
