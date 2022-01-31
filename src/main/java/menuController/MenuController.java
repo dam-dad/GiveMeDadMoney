@@ -34,6 +34,9 @@ public class MenuController implements Initializable {
 	
 	@FXML
     private Button tragaperrasButton;
+	
+	@FXML
+    private Button mayorOmenorButton;
 
 	
 	// MODEL
@@ -73,6 +76,11 @@ public class MenuController implements Initializable {
 		BaseController.getInstance().showSetting();
 
 	}
+	
+	@FXML
+    void onMayorOMenorAction(ActionEvent event) {
+		BaseController.getInstance().showMayorOMenor();
+    }
 
 	@FXML
 	void onStartAction(ActionEvent event) {

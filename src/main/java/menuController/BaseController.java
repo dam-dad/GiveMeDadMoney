@@ -1,24 +1,16 @@
 package menuController;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.print.attribute.standard.Media;
-
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import main.Sounds;
-import score.Score;
+import mayorOMenor.MayorOMenorController;
 import tragaPerras.Controller;
-import javafx.application.Application;
-import javafx.scene.Group;
-
 
 
 public class BaseController implements Initializable {
@@ -36,6 +28,7 @@ public class BaseController implements Initializable {
 	
 	//CONTROLLER JUEGO
 	private Controller tragaPerrasController = new Controller();
+	private MayorOMenorController mayorOMenor = new MayorOMenorController();
 	
 	public Sounds musica;
 
@@ -69,6 +62,10 @@ public class BaseController implements Initializable {
 	public void showTragaPerras() {
 		root.setCenter(tragaPerrasController.getView());
 		
+	}
+	public void showMayorOMenor() {
+		root.setCenter(mayorOMenor.getView());
+
 	}
 
 	public void showMenu() {

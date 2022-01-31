@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+   <bottom>
+      <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="biggerButton" mnemonicParsing="false" onAction="#onBiggerAction" text="Mayor" />
+            <Button fx:id="lessButton" mnemonicParsing="false" onAction="#onLessButton" text="Menor" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <right>
+      <Label fx:id="homeNumLabel" text="Label" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </right>
+   <left>
+      <Label fx:id="myNumLabel" text="Label" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </left>
+</BorderPane>

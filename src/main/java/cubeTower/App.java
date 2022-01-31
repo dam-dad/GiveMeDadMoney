@@ -6,11 +6,11 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 	
-	private Controller controller;
+	private MayorOMenorController controller;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		controller=new Controller();
+		controller=new MayorOMenorController();
 		
 		Scene escena= new Scene(controller.getView());
 		

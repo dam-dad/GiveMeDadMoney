@@ -22,6 +22,7 @@
          <children>
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartAction" text="Entrar" />
             <Button fx:id="tragaperrasButton" mnemonicParsing="false" onAction="#onTragaperrasAction" text="Tragaperras" />
+            <Button fx:id="mayorOmenorButton" mnemonicParsing="false" onAction="#onMayorOMenorAction" text="Mayor o Menor" />
          </children>
       </VBox>
    </center>
