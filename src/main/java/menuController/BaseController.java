@@ -32,9 +32,7 @@ public class BaseController implements Initializable {
 
 	private static BaseController instance;
 
-	//MODEL
-	public static ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
-	
+
 	
 	//CONTROLLER JUEGO
 	private Controller tragaPerrasController = new Controller();
@@ -51,7 +49,6 @@ public class BaseController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		getView().getStylesheets().add("/css/Menu/menu.css");
 		showMenu();
-		score_file.bind(menuController.score_fileProperty());
 		
 		
 		try {
@@ -64,10 +61,9 @@ public class BaseController implements Initializable {
 		musica.volumen(-25.0F);
 	}
 
-	public void showSetting(Score file) {
+	public void showSetting() {
 		root.setCenter(settingController.getView());
-		settingController.setScore_file(getScore());
-		settingController.load();
+
 	}
 	
 	public void showTragaPerras() {
@@ -94,8 +90,6 @@ public class BaseController implements Initializable {
 		return instance;
 	}
 
-	public static Score getScore() {
-		return score_file.get();
-	}
+
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import menuController.BaseController;
+import score.Score;
 
 
 public class GiveMeDADMoney extends Application {
@@ -57,8 +58,7 @@ public class GiveMeDADMoney extends Application {
 	}
 	@Override
 	public void stop() throws Exception {
-	
-		BaseController.getScore().save();
+		Score.getInstance().save();
 		super.stop();
 	}
 
