@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -101,6 +100,7 @@ public class Controller implements Initializable {
         imagen2Property.set(sieteImagen);
         imagen3Property.set(sieteImagen);
 
+        puntosText.textProperty().bind(puntosTotales.asString());
         puntosTotales.set(Score.getInstance().getTotalScore());
 
 
