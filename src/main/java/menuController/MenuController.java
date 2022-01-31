@@ -38,7 +38,7 @@ public class MenuController implements Initializable {
 	
 	// MODEL
 	private IntegerProperty total_score = new SimpleIntegerProperty();
-	private ObjectProperty<Score> score_file = new SimpleObjectProperty<>();
+	
 	
 	
 	
@@ -55,12 +55,12 @@ public class MenuController implements Initializable {
 		scoreLabel.textProperty().bind(total_score.asString());
 		getView().getStylesheets().add("/css/Menu/menu.css");
 
-		score_file.addListener((o, ov, nv) -> {
-			System.out.println("score");
-			total_score.set(nv.getTotalScore());
-		});
-
 		load_score();
+		
+	}
+	private void load_score() {
+		Score.getInstance().load_total_score();
+		total_score.set(Score.getInstance().getTotalScore());
 	}
 	
 	@FXML
@@ -68,33 +68,10 @@ public class MenuController implements Initializable {
 		BaseController.getInstance().showTragaPerras();
     }
 		
-
-	private void load_score() {
-		Score score = new Score();
-		try {
-			score_file.set(score.read());
-			total_score.set(score_file.getValue().getTotalScore());
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	private void load_total_score() {
-		int suma_score = 0 ;
-		for (int i = 1; i < score_file.getValue().getGame().size(); i++) {
-			suma_score += score_file.getValue().getGame().get(i).getGameScore();
-		}
-		total_score.set(suma_score);
-	}
-
-
 	@FXML
 	void onSettingsAction(ActionEvent event) throws IOException {
-		BaseController.getInstance().showSetting(score_file.get());
+		BaseController.getInstance().showSetting();
 
-		//settingsController.setScore_file(getScore_file());
-		//settingsController.showOnStage(GiveMeDADMoney.getPrimaryStage());
-		//setScore_file(settingsController.getScore_file());
 	}
 
 	@FXML
@@ -106,15 +83,4 @@ public class MenuController implements Initializable {
 		return menuRootView;
 	}
 
-	public final ObjectProperty<Score> score_fileProperty() {
-		return this.score_file;
-	}
-
-	public final Score getScore_file() {
-		return this.score_fileProperty().get();
-	}
-
-	public final void setScore_file(final Score score_file) {
-		this.score_fileProperty().set(score_file);
-	}
 }

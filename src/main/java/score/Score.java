@@ -11,8 +11,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -20,33 +18,28 @@ import javafx.collections.ObservableList;
 @XmlRootElement
 public class Score {
 	
+	private static Score instance;
 	
-	private StringProperty userName;
-	private IntegerProperty totalScore;
-	private ListProperty<Game> game;
+	private static IntegerProperty totalScore;
+	private static ListProperty<Game> game;
+	
+	
 
 	
-
 	public Score() {
-		userName = new SimpleStringProperty(this, "userName");
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
 		game = new SimpleListProperty<>(this, "game", FXCollections.observableArrayList());
-
 	}
 	
-	public void save(File file) throws Exception {
+	public static void save(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Score.class);
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		marshaller.marshal(this, file);
+		marshaller.marshal(instance, file);
 	}
 	
-	public void save() throws Exception {
-		
-		JAXBContext context = JAXBContext.newInstance(Score.class);
-		Marshaller marshaller = context.createMarshaller();
-		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		marshaller.marshal(this, new File("score.xml"));
+	public static void save() throws Exception {
+		save(new File("score.xml"));
 	}
 
 	public static Score read(File file) throws Exception {
@@ -56,28 +49,21 @@ public class Score {
 	}
 	
 	public static Score read() throws Exception {
-		JAXBContext context = JAXBContext.newInstance(Score.class);
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		return (Score) unmarshaller.unmarshal(new File("score.xml"));
-	}
-
-	public final StringProperty userNameProperty() {
-		return this.userName;
+		return read(new File("score.xml"));
 	}
 	
-	@XmlElement
-	public final String getUserName() {
-		return this.userNameProperty().get();
+	public static void load_total_score() {
+		int suma_score = 0 ;
+		for (int i = 0; i < game.size(); i++) {
+			suma_score += game.get(i).getGameScore();
+		}
+		totalScore.set(suma_score);
+		
 	}
-	
 
-	public final void setUserName(final String userName) {
-		this.userNameProperty().set(userName);
-	}
 
-	
 	public final IntegerProperty totalScoreProperty() {
-		return this.totalScore;
+		return totalScore;
 	}
 	
 	
@@ -92,7 +78,7 @@ public class Score {
 	}
 	
 	public final ListProperty<Game> gamesProperty() {
-		return this.game;
+		return game;
 	}
 	
 	@XmlElement
@@ -105,10 +91,15 @@ public class Score {
 		this.gamesProperty().set(game);
 	}
 	
-	@Override
-	public String toString() {
-		return (getUserName() + " " + getTotalScore());
+	
+	public static Score getInstance() {
+		if (instance == null) {
+			try {
+				instance = new Score().read();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return instance;
 	}
-
-
 }
