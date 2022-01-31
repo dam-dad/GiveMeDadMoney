@@ -1,4 +1,6 @@
-package pruebas.volumen;
+package cubeTower;
+
+import cubeTower.App;
 
 public class Main {
 
