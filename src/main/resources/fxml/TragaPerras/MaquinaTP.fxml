@@ -121,8 +121,8 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Volver" />
-            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="volverButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volver" prefHeight="26.0" prefWidth="58.0" text="Volver" />
+            <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" HBox.hgrow="ALWAYS" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
          </children>
          <padding>

@@ -54,6 +54,9 @@ public class Controller implements Initializable {
     private Button apuesta5Button;
 
     @FXML
+    private Button volverButton;
+
+    @FXML
     private HBox buttonsContainer;
 
     @FXML
@@ -166,6 +169,11 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
+    void volver(ActionEvent event) {
+
+    }
+
     public BorderPane getView() {
         return view;
     }
@@ -198,7 +206,7 @@ public class Controller implements Initializable {
             valor3 = cambio.getValor();
 
             sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
-            puntosTotales.set("" + Math.round(sumaPuntos));
+            puntosTotales.set(Integer.parseInt("" + Math.round(sumaPuntos)));
         } else {
             GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
                     "Necesitas mas puntos para poder jugar.");
