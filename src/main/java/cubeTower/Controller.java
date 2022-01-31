@@ -1,4 +1,4 @@
-package pruebas.volumen;
+package cubeTower;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +38,7 @@ public class Controller implements Initializable {
 	}
 
 	public Controller() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/cubeToweFxml.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/cubeToweFxml.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
