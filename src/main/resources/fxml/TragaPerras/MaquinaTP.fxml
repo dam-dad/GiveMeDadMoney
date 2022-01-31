@@ -121,19 +121,7 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Total Puntos: " textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="4.0" top="4.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Text fx:id="highScoreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
-               <HBox.margin>
-                  <Insets top="4.0" />
-               </HBox.margin>
-            </Text>
+            <Button mnemonicParsing="false" text="Volver" />
             <Region HBox.hgrow="ALWAYS" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" text="Ver Pagos" />
          </children>
