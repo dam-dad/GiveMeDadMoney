@@ -52,6 +52,9 @@ public class Controller implements Initializable {
     private Button apuesta5Button;
 
     @FXML
+    private Button volverButton;
+
+    @FXML
     private HBox buttonsContainer;
 
     @FXML
@@ -160,6 +163,11 @@ public class Controller implements Initializable {
 
         juego(50);
         saveScore();
+
+    }
+
+    @FXML
+    void volver(ActionEvent event) {
 
     }
 
