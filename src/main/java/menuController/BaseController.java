@@ -63,6 +63,7 @@ public class BaseController implements Initializable {
 	
 	public void showTragaPerras() {
 		root.setCenter(tragaPerrasController.getView());
+		tragaPerrasController.load_score();
 		
 	}
 	public void showMayorOMenor() {
@@ -72,6 +73,7 @@ public class BaseController implements Initializable {
 
 	public void showMenu() {
 		root.setCenter(menuController.getView());
+		menuController.load_score();
 	}
 
 	public BorderPane getView() {
