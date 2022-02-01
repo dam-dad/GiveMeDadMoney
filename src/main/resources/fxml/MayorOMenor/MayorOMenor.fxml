@@ -79,7 +79,6 @@
             <HBox alignment="CENTER" spacing="5.0">
                <children>
                   <TextField fx:id="apuestaText" />
-                  <Button fx:id="apuestaButton" mnemonicParsing="false" onAction="#onApuestaAction" text="Apuesta" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

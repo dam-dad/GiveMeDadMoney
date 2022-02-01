@@ -21,8 +21,6 @@ import score.Score;
 
 public class MayorOMenorController implements Initializable {
 
-	@FXML
-	private Button apuestaButton;
 
 	@FXML
 	private TextField apuestaText;
@@ -72,13 +70,16 @@ public class MayorOMenorController implements Initializable {
 		myNumLabel.textProperty().bind(myNum.asString());
 		apuestaText.textProperty().bindBidirectional(apuesta);
 
-		load();
 		
-		score.addListener((o, ov, nv) -> score.set(Score.getInstance().getTotalScore()));
-		score.set(1);
+		load_score();
+		load();
 		
 		root.getStylesheets().add("css/MayorOMenor/MayorOMenor.css");
 	}
+	
+	public void load_score() {
+    	score.set(Score.getInstance().getTotalScore());
+    }
 
 	private void load() {
 		int x = (int) (Math.random() * 10) + 1;
@@ -86,21 +87,17 @@ public class MayorOMenorController implements Initializable {
 
 		myNum.set(x);
 		homeNum.set(y);
+		
+		Score.getInstance().setTotalScore(score.intValue());
 	}
 
-	@FXML
-	void onApuestaAction(ActionEvent event) {
-
-	}
 
 	@FXML
 	void onBiggerAction(ActionEvent event) {
 		if (myNum.get() >= homeNum.get()) {
-			System.out.println("Bien");
+			you_win();
 		} else {
-			score.set(score.get() - Integer.parseInt(apuesta.get()));
-			System.out.println(score.get());
-
+			you_loose();		
 		}
 		load();
 	}
@@ -108,13 +105,9 @@ public class MayorOMenorController implements Initializable {
 	@FXML
 	void onLessButton(ActionEvent event) {
 		if (myNum.get() <= homeNum.get()) {
-			System.out.println("Bien");
+			you_win();
 		} else {
-			int score1 = score.get();
-			score1 -= Integer.parseInt(apuesta.get());
-			score.set(score1);
-			System.out.println(score.get());
-			System.out.println(apuesta.get());
+			you_loose();
 		}
 		load();
 	}
@@ -122,12 +115,19 @@ public class MayorOMenorController implements Initializable {
 	@FXML
     void onEqualButton(ActionEvent event) {
 		if (myNum.get() == homeNum.get()) {
-			System.out.println("Bien");
+			you_win();
 		} else {
-			System.out.println("mal");
+			you_loose();
 		}
 		load();
     }
+	
+	private void you_loose() {
+		score.set(score.get() - Integer.parseInt(apuesta.get()));
+	}
+	private void you_win() {
+		score.set(score.get() + Integer.parseInt(apuesta.get()));
+	}
 
 	@FXML
 	void onBackAction(ActionEvent event) {
