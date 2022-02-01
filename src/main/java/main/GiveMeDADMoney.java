@@ -21,7 +21,7 @@ public class GiveMeDADMoney extends Application {
 		Scene scene = new Scene(BaseController.getInstance().getView());
 		primaryStage.getIcons().add(new Image("/images/Menu/icono.png"));
 
-		primaryStage.setTitle("GiveMeDADMoney");
+		primaryStage.setTitle("GiveMeDADMoney"); 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
