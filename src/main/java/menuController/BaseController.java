@@ -61,6 +61,7 @@ public class BaseController implements Initializable {
 	
 	public void showTragaPerras() {
 		root.setCenter(tragaPerrasController.getView());
+		tragaPerrasController.load_score();
 		
 	}
 	public void showMayorOMenor() {
