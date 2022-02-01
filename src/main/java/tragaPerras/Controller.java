@@ -190,27 +190,27 @@ public class Controller implements Initializable {
 		if (valor1 == valor2 && valor1 == valor3) {
 
 			switch (valor1) {
-			case 10:
-				numero = valor1 * 2;
-				break;
-			case 25:
-				numero = valor1 * 3;
-				break;
-			case 35:
-				numero = valor1 * 4;
-				break;
-			case 50:
-				numero = valor1 * 5;
-				break;
-			case 65:
-				numero = valor1 * 6;
-				break;
-			case 75:
-				numero = valor1 * 7;
-				break;
-			case 120:
-				numero = valor1 * 8;
-				break;
+				case 10:
+					numero = valor1 * 2;
+					break;
+				case 25:
+					numero = valor1 * 3;
+					break;
+				case 35:
+					numero = valor1 * 4;
+					break;
+				case 50:
+					numero = valor1 * 5;
+					break;
+				case 65:
+					numero = valor1 * 6;
+					break;
+				case 75:
+					numero = valor1 * 7;
+					break;
+				case 120:
+					numero = valor1 * 8;
+					break;
 
 			}
 			numero += numeroApuesta;
@@ -218,27 +218,27 @@ public class Controller implements Initializable {
 		} else if (valor1 == valor2) {
 
 			switch (valor1) {
-			case 10:
-				numero = (int) (valor1 * 0.5);
-				break;
-			case 25:
-				numero = (int) (valor1 * 0.75);
-				break;
-			case 35:
-				numero = valor1;
-				break;
-			case 50:
-				numero = (int) (valor1 * 1.25);
-				break;
-			case 65:
-				numero = (int) (valor1 * 1.5);
-				break;
-			case 75:
-				numero = (int) (valor1 * 2.5);
-				break;
-			case 120:
-				numero = valor1 * 3;
-				break;
+				case 10:
+					numero = (int) (valor1 * 0.5);
+					break;
+				case 25:
+					numero = (int) (valor1 * 0.75);
+					break;
+				case 35:
+					numero = valor1;
+					break;
+				case 50:
+					numero = (int) (valor1 * 1.25);
+					break;
+				case 65:
+					numero = (int) (valor1 * 1.5);
+					break;
+				case 75:
+					numero = (int) (valor1 * 2.5);
+					break;
+				case 120:
+					numero = valor1 * 3;
+					break;
 
 			}
 			numero += numeroApuesta;
@@ -247,27 +247,27 @@ public class Controller implements Initializable {
 		if (valor2 == valor3) {
 
 			switch (valor2) {
-			case 10:
-				numero = (int) (valor2 * 0.5);
-				break;
-			case 25:
-				numero = (int) (valor2 * 0.75);
-				break;
-			case 35:
-				numero = valor2;
-				break;
-			case 50:
-				numero = (int) (valor2 * 1.5);
-				break;
-			case 65:
-				numero = valor2 * 2;
-				break;
-			case 75:
-				numero = (int) (valor2 * 2.5);
-				break;
-			case 120:
-				numero = valor2 * 3;
-				break;
+				case 10:
+					numero = (int) (valor2 * 0.5);
+					break;
+				case 25:
+					numero = (int) (valor2 * 0.75);
+					break;
+				case 35:
+					numero = valor2;
+					break;
+				case 50:
+					numero = (int) (valor2 * 1.5);
+					break;
+				case 65:
+					numero = valor2 * 2;
+					break;
+				case 75:
+					numero = (int) (valor2 * 2.5);
+					break;
+				case 120:
+					numero = valor2 * 3;
+					break;
 
 			}
 			numero += numeroApuesta;
