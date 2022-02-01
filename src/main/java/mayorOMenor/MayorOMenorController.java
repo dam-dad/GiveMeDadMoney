@@ -55,6 +55,10 @@ public class MayorOMenorController implements Initializable {
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty apuesta = new SimpleStringProperty();
 	
+	
+	
+
+	
  
 
 	public MayorOMenorController() throws IOException {
@@ -69,6 +73,15 @@ public class MayorOMenorController implements Initializable {
 		homeNumLabel.textProperty().bind(homeNum.asString());
 		myNumLabel.textProperty().bind(myNum.asString());
 		apuestaText.textProperty().bindBidirectional(apuesta);
+		
+		
+		homeNumLabel.setVisible(false);
+		
+		//TODO NO LETRAS
+		//Bloquear botones si no hay apuestas
+		biggerButton.disableProperty().bind(apuesta.isEmpty());
+		equalButton.disableProperty().bind(apuesta.isEmpty());
+		lessButton.disableProperty().bind(apuesta.isEmpty());
 
 		
 		load_score();
