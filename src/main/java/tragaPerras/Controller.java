@@ -125,9 +125,7 @@ public class Controller implements Initializable {
         transition3.setDuration(Duration.seconds(0.10));
     }
 
-    private void saveScore() {
-        
-    }
+    
 
     @FXML
     void apuesta(ActionEvent event) {
