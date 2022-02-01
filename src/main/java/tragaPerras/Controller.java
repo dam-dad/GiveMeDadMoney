@@ -103,7 +103,6 @@ public class Controller implements Initializable {
         puntosText.textProperty().bind(puntosTotales.asString());
         puntosTotales.set(Score.getInstance().getTotalScore());
 
-
         transition1.setNode(imageBlock1);
         transition1.setFromY(-250);
         transition1.setToY(0);
@@ -151,7 +150,7 @@ public class Controller implements Initializable {
 
         sumaPuntos = puntosTotales.get();
 
-        if (sumaPuntos >= numeroApuesta) {
+        if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
             transition1.play();
             transition2.play();
             transition3.play();
