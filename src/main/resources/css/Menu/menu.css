@@ -6,6 +6,16 @@
 }
 .button{
     -fx-font-weight: bold;
+    -fx-background-image: url("/images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+
+    -fx-background-radius: 2em;
+    -fx-text-fill: white;
+}
+.button:hover{
+	-fx-opacity:0.5;
 }
 
 .downloadButton{

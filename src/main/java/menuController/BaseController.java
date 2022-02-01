@@ -52,6 +52,8 @@ public class BaseController implements Initializable {
 		
 		musica.play();
 		musica.volumen(-25.0F);
+		
+		root.getStylesheets().add("");
 	}
 
 	public void showSetting() {

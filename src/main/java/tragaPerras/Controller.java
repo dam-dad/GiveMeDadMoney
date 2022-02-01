@@ -92,6 +92,8 @@ public class Controller implements Initializable {
 
         Image sieteImagen = new Image(imagen1.siete().getRuta());
 
+        view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
+        
         imageBlock1.imageProperty().bind(imagen1Property);
         imageBlock2.imageProperty().bind(imagen2Property);
         imageBlock3.imageProperty().bind(imagen3Property);

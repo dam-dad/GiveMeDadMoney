@@ -73,10 +73,11 @@ public class MayorOMenorController implements Initializable {
 		apuestaText.textProperty().bindBidirectional(apuesta);
 
 		load();
-
 		
 		score.addListener((o, ov, nv) -> score.set(Score.getInstance().getTotalScore()));
 		score.set(1);
+		
+		root.getStylesheets().add("css/MayorOMenor/MayorOMenor.css");
 	}
 
 	private void load() {

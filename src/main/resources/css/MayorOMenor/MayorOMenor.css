@@ -1,1 +1,9 @@
-s
+.button{
+    -fx-background-image: url("/images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
