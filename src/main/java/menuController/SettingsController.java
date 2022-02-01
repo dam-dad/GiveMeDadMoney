@@ -27,8 +27,6 @@ public class SettingsController implements Initializable {
     @FXML
     private Button stopMusicButton;
 
-
-
     @FXML
     private Slider volumenSlider;
 
@@ -43,7 +41,11 @@ public class SettingsController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-
+		volumenSlider.setValue(10.0);
+		
+		volumenSlider.valueProperty().addListener((o,ov,nv) -> {
+            BaseController.getInstance().musica.volumen(nv.doubleValue());
+        });
 	}
 
 	

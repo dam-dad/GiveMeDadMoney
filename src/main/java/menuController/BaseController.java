@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import main.GiveMeDADMoney;
-import main.Sounds;
+import main.Music;
 import mayorOMenor.MayorOMenorController;
 import tragaPerras.Controller;
 
@@ -30,7 +34,7 @@ public class BaseController implements Initializable {
 	private Controller tragaPerrasController = new Controller();
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
 
-	// public Sounds musica;
+	public Music musica;
 
 	private BaseController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/BaseView.fxml"));
@@ -43,24 +47,14 @@ public class BaseController implements Initializable {
 		getView().getStylesheets().add("/css/Menu/menu.css");
 		showMenu();
 
-		backgroundMusic();
-		root.getStylesheets().add("");
-	}
-
-	Media musica;
-	MediaPlayer reproductor;
-
-	public void backgroundMusic() {
-		// Musica de fondo
 		try {
-			musica = new Media(GiveMeDADMoney.class.getResource("/media/sound2.mp3").toURI().toString());
-			reproductor = new MediaPlayer(musica);
-			reproductor.setAutoPlay(true);
-			reproductor.setCycleCount(MediaPlayer.INDEFINITE);
-
-		} catch (URISyntaxException e) {
+			musica = new Music("/media/sound2.mp3");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		root.getStylesheets().add("");
 	}
 
 	public void showSetting() {
