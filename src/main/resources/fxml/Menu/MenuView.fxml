@@ -57,7 +57,7 @@
                      <graphic>
                         <ImageView depthTest="ENABLE" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" pickOnBounds="true" smooth="false">
                            <image>
-                              <Image url="@../../images/Menu/ajustes.png" />
+                              <Image url="@../../images/Menu/ajustes2.png" />
                            </image>
                         </ImageView>
                      </graphic>
