@@ -3,6 +3,7 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+    -fx-font-family:elephant;
 }
 .button{
     -fx-font-weight: bold;
@@ -10,6 +11,7 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+    -fx-background-color:transparent;
 
     -fx-background-radius: 2em;
     -fx-text-fill: white;

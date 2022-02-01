@@ -3,6 +3,7 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+    
 }
 
 .fondito {
@@ -14,7 +15,17 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+    -fx-background-color:transparent;
 
     -fx-background-radius: 1em;
     -fx-text-fill: white;
+}
+
+.text-field{
+	 -fx-text-fill: white;
+	-fx-background-color: black;
+	-fx-background-radius: 2em;
+	-fx-border-color:#E5A65E;
+	-fx-border-radius: 1em;
+	-fx-border-width:2, 2;
 }
