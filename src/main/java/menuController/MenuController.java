@@ -28,7 +28,7 @@ public class MenuController implements Initializable {
 	private Button settingsButton;
 
 	@FXML
-	private Button startButton;
+	private Button cubeTowerButton;
 	
 	@FXML
     private Button tragaperrasButton;
@@ -80,8 +80,8 @@ public class MenuController implements Initializable {
     }
 
 	@FXML
-	void onStartAction(ActionEvent event) {
-
+	void onCubeTowerAction	(ActionEvent event) {
+		BaseController.getInstance().showCubeTower();
 	}
 
 	public BorderPane getView() {

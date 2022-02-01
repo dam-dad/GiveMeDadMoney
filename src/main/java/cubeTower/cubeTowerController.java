@@ -3,29 +3,16 @@ package cubeTower;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
-public class Controller extends AnimationTimer implements Initializable {
+public class cubeTowerController extends AnimationTimer implements Initializable {
 
 	private long last;
 
@@ -39,7 +26,7 @@ public class Controller extends AnimationTimer implements Initializable {
 	@FXML
 	private BorderPane view;
 
-	public Controller() throws IOException {
+	public cubeTowerController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/cubeToweFxml.fxml"));
 		loader.setController(this);
 		loader.load();

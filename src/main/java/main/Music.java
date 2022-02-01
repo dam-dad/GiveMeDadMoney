@@ -15,17 +15,24 @@ public class Music {
 
 	
 	public Music(String path){ 
-		
 		try {
 			musica = new Media(GiveMeDADMoney.class.getResource(path).toURI().toString());
 			reproductor = new MediaPlayer(musica);
-			reproductor.setAutoPlay(true);
-			
+			reproductor.setAutoPlay(true);			
 			volumen(0.1);
-			System.out.println(reproductor.getVolume() + "vol");
-			
-			
-			
+			reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+	} 
+	
+	public void sound(String path){ 
+		try {
+			musica = new Media(GiveMeDADMoney.class.getResource(path).toURI().toString());
+			reproductor = new MediaPlayer(musica);
+			reproductor.setAutoPlay(true);			
+			volumen(0.1);
 			reproductor.setCycleCount(MediaPlayer.INDEFINITE);
 
 		} catch (URISyntaxException e) {
@@ -50,8 +57,5 @@ public class Music {
 	public void volumen(Double vol) {
 		reproductor.setVolume(vol);
 	}
-
-
-	
 
 } 
