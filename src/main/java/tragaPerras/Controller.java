@@ -101,7 +101,8 @@ public class Controller implements Initializable {
         imagen3Property.set(sieteImagen);
 
         puntosText.textProperty().bind(puntosTotales.asString());
-        puntosTotales.set(Score.getInstance().getTotalScore());
+        load_score();
+        
 
         transition1.setNode(imageBlock1);
         transition1.setFromY(-250);
@@ -274,6 +275,9 @@ public class Controller implements Initializable {
         }
 
         return numero;
+    }
+    public void load_score() {
+    	puntosTotales.set(Score.getInstance().getTotalScore());
     }
 
     public static boolean isNumeric(String cadena) {
