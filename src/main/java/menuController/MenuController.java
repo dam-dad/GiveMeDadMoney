@@ -61,8 +61,7 @@ public class MenuController implements Initializable {
 		load_score();
 		
 	}
-	private void load_score() {
-		Score.getInstance().load_total_score();
+	public void load_score() {
 		total_score.set(Score.getInstance().getTotalScore());
 	}
 	

@@ -70,6 +70,7 @@ public class BaseController implements Initializable {
 
 	public void showMenu() {
 		root.setCenter(menuController.getView());
+		menuController.load_score();
 	}
 
 	public BorderPane getView() {
