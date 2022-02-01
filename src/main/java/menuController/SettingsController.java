@@ -41,10 +41,9 @@ public class SettingsController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		volumenSlider.setValue(10.0);
-		
+
 		volumenSlider.valueProperty().addListener((o,ov,nv) -> {
-            BaseController.getInstance().musica.volumen(nv.doubleValue());
+            BaseController.getInstance().musica.reproductor.volumeProperty().bind(volumenSlider.valueProperty());
         });
 	}
 

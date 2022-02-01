@@ -28,7 +28,7 @@
 					<children>
 						<Button fx:id="stopMusicButton" mnemonicParsing="false" onAction="#onMusicStopAcction" prefWidth="60.0" text="Parar" />
 						<Button fx:id="playMusicButton" mnemonicParsing="false" onAction="#onMusicPlayAcction" prefWidth="60.0" text="Iniciar" />
-						<Slider fx:id="volumenSlider" onDragDetected="#onVolumenChange" showTickMarks="true" />
+						<Slider fx:id="volumenSlider" max="1.0" onDragDetected="#onVolumenChange" showTickMarks="true" value="0.1" />
 					</children>
 				</HBox>
 			</children>

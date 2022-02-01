@@ -45,7 +45,7 @@ public class BaseController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		getView().getStylesheets().add("/css/Menu/menu.css");
-		showMenu();
+		
 
 		try {
 			musica = new Music("/media/sound2.mp3");
@@ -54,7 +54,8 @@ public class BaseController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		root.getStylesheets().add("");
+		
+		showMenu();
 	}
 
 	public void showSetting() {
