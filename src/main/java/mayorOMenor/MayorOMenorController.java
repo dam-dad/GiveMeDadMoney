@@ -44,6 +44,9 @@ public class MayorOMenorController implements Initializable {
 
 	@FXML
 	private Label puntosLabel;
+	
+	@FXML
+    private Button equalButton;
 
 	@FXML
 	private BorderPane root;
@@ -114,6 +117,16 @@ public class MayorOMenorController implements Initializable {
 		}
 		load();
 	}
+	
+	@FXML
+    void onEqualButton(ActionEvent event) {
+		if (myNum.get() == homeNum.get()) {
+			System.out.println("Bien");
+		} else {
+			System.out.println("mal");
+		}
+		load();
+    }
 
 	@FXML
 	void onBackAction(ActionEvent event) {
