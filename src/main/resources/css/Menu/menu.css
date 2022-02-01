@@ -3,8 +3,14 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
-    -fx-font-family:elephant;
+    -fx-font-family:Elephant;
 }
+
+@font-face{
+	font-family:Elephant;
+	src:url("../../fonts/ELEPHNTI.TTF");
+}
+
 .button{
     -fx-font-weight: bold;
     -fx-background-image: url("/images/TragaPerras/button.png");

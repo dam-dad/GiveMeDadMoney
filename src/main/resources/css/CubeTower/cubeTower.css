@@ -1,0 +1,22 @@
+.button{
+    -fx-font-weight: bold;
+    -fx-background-image: url("/images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-color:transparent;
+
+    -fx-background-radius: 2em;
+    -fx-text-fill: white;
+}
+
+.button:hover{
+	-fx-opacity:0.5;
+}
+
+.root{
+	-fx-background-image: url("/images/CubeTower/fondo.jpg");
+}
+.juego{
+	-fx-background-color:#6A6A6A;
+}
