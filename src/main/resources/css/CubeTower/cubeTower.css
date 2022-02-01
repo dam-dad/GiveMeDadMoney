@@ -18,5 +18,11 @@
 	-fx-background-image: url("/images/CubeTower/fondo.jpg");
 }
 .juego{
-	-fx-background-color:#6A6A6A;
+	-fx-border-color:black;
+	-fx-border-radius: 1em;
+	-fx-border-width:2, 2;
+}
+pane{
+	-fx-background-color: #2F302F;
+	-fx-border-radius: 1em;
 }

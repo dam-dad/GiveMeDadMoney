@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import menuController.BaseController;
 
 public class cubeTowerController extends AnimationTimer implements Initializable {
 
@@ -52,6 +53,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 			rectangulo.setMaxWidth(Double.MAX_VALUE);
 			rectangulo.setMaxHeight(Double.MAX_VALUE);
 			rectangulo.setStyle("-fx-background-color: #2F302F");
+			rectangulo.setStyle("-fx-border-radius: 1em");
 			pixeles.add(rectangulo, i, 4);
 			rectangulos[i][4] = rectangulo;
 		}
@@ -64,7 +66,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	}
 
 	public void setColorNull(int x, int y) {
-		rectangulos[x][y].setStyle("-fx-background-color:#" + "6A6A6A" + ";");
+		rectangulos[x][y]=null;
 	}
 
 	public void setColor(int x, int y) {
@@ -99,6 +101,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 			rectangulo.setMaxWidth(Double.MAX_VALUE);
 			rectangulo.setMaxHeight(Double.MAX_VALUE);
 			rectangulo.setStyle("-fx-background-color: #2F302F");
+			rectangulo.setStyle("-fx-border-radius: 1em");
 			pixeles.add(rectangulo, pos_cubo_añadir1, pixeles.getColumnCount()-1);
 			rectangulos[pos_cubo_añadir1][4] = rectangulo;
 			pos_cubos++;
@@ -113,6 +116,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 			rectangulo.setMaxWidth(Double.MAX_VALUE);
 			rectangulo.setMaxHeight(Double.MAX_VALUE);
 			rectangulo.setStyle("-fx-background-color: #2F302F");
+			rectangulo.setStyle("-fx-border-radius: 1em");
 			pixeles.add(rectangulo, pos_cubo_añadir2, pixeles.getColumnCount()-1);
 			rectangulos[pos_cubo_añadir2][4] = rectangulo;
 			pos_cubos2--;
@@ -129,8 +133,8 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	}
 
 	@FXML
-	void onStartAction(ActionEvent event) {
-		start();
-	}
+    void onAtrasButton(ActionEvent event) {
+		BaseController.getInstance().showMenu();
+    }
 
 }
