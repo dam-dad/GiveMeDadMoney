@@ -65,10 +65,20 @@ public class SettingsController implements Initializable {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	@FXML
+    void onMusicRepeatAction(ActionEvent event) {
+		try {
+			BaseController.getInstance().musica.stop();
+			BaseController.getInstance().musica.play();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+    }
 
 	@FXML
 	void onVolumenChange(MouseEvent event) {
-		System.out.println(volumenSlider.getValue());
+		//System.out.println(volumenSlider.getValue());
 	}
 
 	@FXML

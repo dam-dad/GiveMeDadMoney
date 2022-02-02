@@ -25,7 +25,7 @@ public class BaseController implements Initializable {
 	@FXML
 	private BorderPane root;
 
-	// CONTROLLER
+	// CONTROLLER MENU
 	private SettingsController settingController = new SettingsController();
 	private MenuController menuController = new MenuController();
 
@@ -68,10 +68,10 @@ public class BaseController implements Initializable {
 		root.setCenter(tragaPerrasController.getView());
 		tragaPerrasController.load_score();
 	}
+	
 	public void showCubeTower() {
 		root.setCenter(cubeTower.getView());
 	}
-	
 
 	public void showMayorOMenor() {
 		root.setCenter(mayorOMenor.getView());
