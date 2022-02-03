@@ -11,6 +11,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,8 @@ import menuController.BaseController;
 
 public class cubeTowerController extends AnimationTimer implements Initializable {
 
-	private int pos;
+	private long time = 0L, last;
+	private int posX = 0, posY = 0;
 
 	private Pane[][] rectangulos;
 
@@ -42,70 +44,125 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		pixeles.setGridLinesVisible(true);
-		rectangulos = new Pane[pixeles.getColumnCount() + 1][pixeles.getRowCount() + 1];
-		double width = 0;
+		rectangulos = new Pane[pixeles.getColumnCount()][pixeles.getRowCount()];
 		view.getStylesheets().add("css/CubeTower/cubeTower.css");
-		for (int i = 0; i < 3; i++) {
-
-			Pane rectangulo = new Pane();
-			rectangulo.setMaxWidth(Double.MAX_VALUE);
-			rectangulo.setMaxHeight(Double.MAX_VALUE);
-			rectangulo.setStyle("-fx-background-color: #2F302F");
-			pixeles.add(rectangulo, i, 4);
-			rectangulos[i][4] = rectangulo;
+		for (int i = 0; i < pixeles.getColumnCount(); i++) {
+			for (int j = 0; j < pixeles.getRowCount(); j++) {
+				Pane rectangulo = new Pane();
+				rectangulo.setMaxWidth(Double.MAX_VALUE);
+				rectangulo.setMaxHeight(Double.MAX_VALUE);
+				rectangulo.setStyle("-fx-background-color: transparent");
+				pixeles.add(rectangulo, i, j);
+				rectangulos[i][j] = rectangulo;
+			}
 		}
-		pos=3;
-
 	}
 
 	public BorderPane getView() {
 		return view;
 	}
 
-	public void setColorNull(int x, int y) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setTransparent(int x, int y) {
 		rectangulos[x][y].setStyle("-fx-background-color:transparent");
-		System.out.println("Eliminado");
 	}
 
 	public void setColor(int x, int y) {
-		Pane rectangulo = new Pane();
-		rectangulo.setMaxHeight(Double.MAX_VALUE);
-		rectangulo.setMaxWidth(Double.MAX_VALUE);
-		rectangulo.setStyle("-fx-background-color: #2F302F");
-		try {
-			TimeUnit.MILLISECONDS.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		pixeles.add(rectangulo, x, y);
-		rectangulos[x][y] = rectangulo;
-		System.out.println("Añadido");
+		rectangulos[x][y].setStyle("-fx-background-color:red");
 	}
 
 	@Override
 	public void handle(long now) {
-		if (pos < pixeles.getColumnCount()) {
-			setColorNull(0, 4);
-			setColor(3, 4);
-			pos=4;
-			setColorNull(1, 4);
-			setColor(4, 4);
-			pos=5;
-		}else {
-			setColorNull(4, 4);
-			setColor(1, 4);
-			setColorNull(3, 4);
-			setColor(0, 4);
-			pos=1;
+		
+		long diff = now - last;
+		time += diff;
+		last = now;
+
+		//
+		setTransparent(posX, posY);
+		
+		// update
+		if (time > 0.5 * 1e9) {
+			posX++;
+			if (posX >= 5) {
+				posX = 0;
+				posY++;
+			}
+			if (posY >= 5) {
+				posY = 0;
+			}
+			time -= 0.5 * 1e9;
 		}
+
+		// render
+		setColor(posX, posY);
+		// cambioFilas();
+//		try {
+//			TimeUnit.MILLISECONDS.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		// quita();
+		// stop();
+	}
+
+	private void cambioFilas() {
+		int rectanguloColor = 3;
+//		if (pos < pixeles.getColumnCount()) {
+//			for (int i = 0; i < rectangulos.length - rectanguloColor; i++) {
+//				setColorNull(i, 4);
+//				setColor(i + rectanguloColor, 4);
+//			}
+//			pos = 5;
+//		} else {
+//			for (int i = rectangulos.length-1; i > 0; i--) {
+//				setColorNull(i, 4);
+//				setColor(i - rectanguloColor, 4);
+//			}
+//			pos = 1;
+//		}
+		Task<Void> task = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				for (int i = 0; i <= rectangulos.length - rectanguloColor - 1; i++) {
+					System.out.println("i  " + i);
+					System.out.println("lrn  " + rectangulos.length);
+					//setColorNull(i, 4);
+					setColor(i + rectanguloColor, 4);
+				}
+				return null;
+			}
+		};
+
+		new Thread(task);
 		stop();
+
+	}
+
+	private void quita() {
+//		for (int i = 4; i >= 3; i--) {
+//			System.out.println("dERECAHA");
+//			System.out.println("i  " + i);
+//			System.out.println("length  " + rectangulos.length);
+//			setColorNull(i, 4);
+//			setColor(i - 3, 4);
+//		}
+		Task<Void> task = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				//setColorNull(4, 4);
+				System.out.println("Mueve");
+				setColor(1, 4);
+				System.out.println("Mueve");
+				//setColorNull(3, 4);
+				System.out.println("Mueve");
+				setColor(0, 4);
+				return null;
+			}
+		};
+		new Thread(task);
 	}
 
 	@FXML
@@ -116,10 +173,30 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onStopAction(ActionEvent event) {
 		stop();
+//		pos=0;
+//		setColor(0, 3);
+//		setColor(1, 3);
+//		if(pos<pixeles.getColumnCount()) {
+//			setColorNull(0, 3);
+//			setColor(2, 3);
+//			setColorNull(1, 3);
+//			setColor(3, 3);
+//			setColorNull(2, 3);
+//			setColor(4, 3);
+//		}
 	}
 
 	@FXML
 	void onPlayAction(ActionEvent event) {
+//		cambioFilas();
+//		try {
+//			TimeUnit.MILLISECONDS.sleep(1250);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		quita();
+		last = System.nanoTime();
 		start();
 	}
 

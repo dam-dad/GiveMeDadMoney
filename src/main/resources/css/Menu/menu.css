@@ -22,6 +22,7 @@
     -fx-background-radius: 2em;
     -fx-text-fill: white;
 }
+
 .button:hover{
 	-fx-opacity:0.5;
 }
@@ -30,15 +31,22 @@
     -fx-background-color: rgb(251, 73, 73);
     -fx-padding: 0.8em ;
 }
+
 .uploadButton{
     -fx-background-color: rgb(69, 110, 245);
     -fx-padding: 0.8em ;
 
 }
+
 .backButton{
     -fx-font-weight: bold;
 }
+
 .label{
     -fx-font-weight: bold;
     -fx-text-fill: rgb(255, 255, 255);
+}
+
+.sliderVolumen{
+	-fx-control-inner-background: #E5A65E; 
 }
