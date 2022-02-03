@@ -68,7 +68,7 @@ public class Imagen {
     public Imagen randomImagen() {
 
         Imagen[] imagenes = new Imagen[7];
-        Imagen imagen = new Imagen();
+        Imagen imagen;
 
         imagenes[0] = bar();
         imagenes[1] = cherry();

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -51,9 +52,6 @@ public class Controller implements Initializable {
 	private HBox buttonsContainer;
 
 	@FXML
-	private Text highScoreText;
-
-	@FXML
 	private ImageView imageBlock1, imageBlock2, imageBlock3;
 
 	@FXML
@@ -63,9 +61,6 @@ public class Controller implements Initializable {
 	private TextField apuestaText;
 
 	@FXML
-	private Text resultText;
-
-	@FXML
 	private HBox resultTextContainer;
 
 	@FXML
@@ -73,11 +68,6 @@ public class Controller implements Initializable {
 
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-
-	}
-
-	@FXML
-	void juegaDeNuevo(ActionEvent event) {
 
 	}
 
@@ -93,6 +83,19 @@ public class Controller implements Initializable {
 		Image sieteImagen = new Image(imagen1.siete().getRuta());
 
 		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
+
+		///////////////////////////////////////////
+
+		// Pruebas de David No borrar de momento
+
+		/*imageBlock1.setImage(sieteImagen);
+		imageBlock1.setPreserveRatio(true);
+		imageBlock1.setSmooth(true);
+
+		Rectangle2D rectangle2D = new Rectangle2D(0, 0,271,271);
+		imageBlock1.setViewport(rectangle2D);*/
+
+		////////////////////////////////////////
 
 		imageBlock1.imageProperty().bind(imagen1Property);
 		imageBlock2.imageProperty().bind(imagen2Property);
