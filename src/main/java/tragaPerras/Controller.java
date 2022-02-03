@@ -51,9 +51,6 @@ public class Controller implements Initializable {
 	private HBox buttonsContainer;
 
 	@FXML
-	private Text highScoreText;
-
-	@FXML
 	private ImageView imageBlock1, imageBlock2, imageBlock3;
 
 	@FXML
@@ -63,9 +60,6 @@ public class Controller implements Initializable {
 	private TextField apuestaText;
 
 	@FXML
-	private Text resultText;
-
-	@FXML
 	private HBox resultTextContainer;
 
 	@FXML
@@ -73,11 +67,6 @@ public class Controller implements Initializable {
 
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-
-	}
-
-	@FXML
-	void juegaDeNuevo(ActionEvent event) {
 
 	}
 
