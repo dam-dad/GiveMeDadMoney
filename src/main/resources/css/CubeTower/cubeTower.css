@@ -1,6 +1,6 @@
 .button{
     -fx-font-weight: bold;
-    -fx-background-image: url("/images/TragaPerras/button.png");
+    -fx-background-image: url("../../images/TragaPerras/button.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
@@ -15,7 +15,7 @@
 }
 
 .root{
-	-fx-background-image: url("/images/CubeTower/fondo.jpg");
+	-fx-background-image: url("../../images/CubeTower/fondo.jpg");
 }
 .juego{
 	-fx-border-color:black;
