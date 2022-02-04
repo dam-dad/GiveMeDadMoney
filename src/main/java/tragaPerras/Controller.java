@@ -109,10 +109,17 @@ public class Controller implements Initializable {
 		load_score();
 
 		transition1.setNode(imageBlock1);
+		transition1.setFromY(-29);
+		transition1.setToY(15);
+		transition1.setCycleCount(40);
+		transition1.setDuration(Duration.seconds(0.02));
+		transition1.setToY(0);
+
+		/*transition1.setNode(imageBlock1);
 		transition1.setFromY(-250);
 		transition1.setToY(0);
 		transition1.setCycleCount(7);
-		transition1.setDuration(Duration.seconds(0.10));
+		transition1.setDuration(Duration.seconds(0.10));*/
 
 		transition2.setNode(imageBlock2);
 		transition2.setFromY(-250);

@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import score.Score;
 
 
@@ -55,6 +56,8 @@ public class MenuController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		scoreLabel.textProperty().bind(total_score.asString());
 		getView().getStylesheets().add("/css/Menu/menu.css");
+
+		Font.loadFont(getClass().getResourceAsStream("/fonts/ELEPHANT.TFF"), 14);
 
 		load_score();
 		
