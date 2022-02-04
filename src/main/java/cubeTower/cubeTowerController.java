@@ -25,8 +25,8 @@ import menuController.BaseController;
 public class cubeTowerController extends AnimationTimer implements Initializable {
 
 	private long time = 0L, last;
-	private int posX = 0, posY = 0;
-	private boolean algo = false;
+	private int posX = 0, posY = 4;
+	private boolean choque = false;
 
 	private Pane[][] rectangulos;
 
@@ -74,103 +74,61 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@Override
 	public void handle(long now) {
 
+		// render
 		long diff = now - last;
 		time += diff;
 		last = now;
 
 		//
 		setTransparent(posX, posY);
+		setTransparent(posX + 1, posY);
+		setTransparent(posX + 2, posY);
 
 		// update
 		if (time > 0.5 * 1e9) {
-			if (posX < 5 && algo == false) {
-				posX++;
-				if (posX == 5) {
-					algo = true;
-					posX--;
-				}
-
-			}
-			if (posX >= 0 && algo == true) {
-				posX--;
-				if (posX == 0) {
-					algo = false;
-				}
-			}
-
+//			if (posX < 5 && choque == false) {
+//				posX++;
+//				if (posX == 3) {
+//					choque = true;
+//					posX--;
+//				}
+//				System.out.println(posX);
+//			}
+//			if (posX >= 0 && choque == true) {
+//				posX--;
+//				if (posX == 0) {
+//					choque = false;
+//				}
+//			}
+			bloqueDe3();
 			time -= 0.5 * 1e9;
 		}
 
-		// render
 		setColor(posX, posY);
-		// cambioFilas();
-		// try {
-		// TimeUnit.MILLISECONDS.sleep(2000);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// quita();
-		// stop();
-	}
-
-	private void cambioFilas() {
-		int rectanguloColor = 3;
-		// if (pos < pixeles.getColumnCount()) {
-		// for (int i = 0; i < rectangulos.length - rectanguloColor; i++) {
-		// setColorNull(i, 4);
-		// setColor(i + rectanguloColor, 4);
-		// }
-		// pos = 5;
-		// } else {
-		// for (int i = rectangulos.length-1; i > 0; i--) {
-		// setColorNull(i, 4);
-		// setColor(i - rectanguloColor, 4);
-		// }
-		// pos = 1;
-		// }
-		Task<Void> task = new Task<Void>() {
-
-			@Override
-			protected Void call() throws Exception {
-				for (int i = 0; i <= rectangulos.length - rectanguloColor - 1; i++) {
-					System.out.println("i  " + i);
-					System.out.println("lrn  " + rectangulos.length);
-					// setColorNull(i, 4);
-					setColor(i + rectanguloColor, 4);
-				}
-				return null;
-			}
-		};
-
-		new Thread(task);
-		stop();
+		setColor(posX + 1, posY);
+		setColor(posX + 2, posY);
 
 	}
 
-	private void quita() {
-		// for (int i = 4; i >= 3; i--) {
-		// System.out.println("dERECAHA");
-		// System.out.println("i " + i);
-		// System.out.println("length " + rectangulos.length);
-		// setColorNull(i, 4);
-		// setColor(i - 3, 4);
-		// }
-		Task<Void> task = new Task<Void>() {
-
-			@Override
-			protected Void call() throws Exception {
-				// setColorNull(4, 4);
-				System.out.println("Mueve");
-				setColor(1, 4);
-				System.out.println("Mueve");
-				// setColorNull(3, 4);
-				System.out.println("Mueve");
-				setColor(0, 4);
-				return null;
+	private void bloqueDe3() {
+		if (posX < 5 && choque == false) {
+			posX++;
+			if (posX == 3) {
+				choque = true;
+				posX--;
 			}
-		};
-		new Thread(task);
+		}
+		if (posX >= 0 && choque == true) {
+			posX--;
+			if (posX == 0) {
+				choque = false;
+			}
+		}
+
+	}
+
+	private void parar() {
+
 	}
 
 	@FXML
@@ -181,17 +139,15 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onStopAction(ActionEvent event) {
 		stop();
-		// pos=0;
-		// setColor(0, 3);
-		// setColor(1, 3);
-		// if(pos<pixeles.getColumnCount()) {
-		// setColorNull(0, 3);
-		// setColor(2, 3);
-		// setColorNull(1, 3);
-		// setColor(3, 3);
-		// setColorNull(2, 3);
-		// setColor(4, 3);
-		// }
+		posX = 0;
+		System.out.println(posY);
+		posY--;
+		if (posY < 0) {
+			stop();
+			System.out.println("Tope");
+		} else {
+			start();
+		}
 	}
 
 	@FXML
