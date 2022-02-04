@@ -83,6 +83,8 @@ public class Controller implements Initializable {
 		Image sieteImagen = new Image(imagen1.siete().getRuta());
 
 		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
+		
+		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
 		///////////////////////////////////////////
 

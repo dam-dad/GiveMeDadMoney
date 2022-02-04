@@ -61,6 +61,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 		setColor(posX, posY);
 		setColor(posX + 1, posY);
 		setColor(posX + 2, posY);
+		
 	}
 
 	public BorderPane getView() {
@@ -89,15 +90,11 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 			setTransparent(posX + 1, posY);
 			setTransparent(posX + 2, posY);
 		}
-		
-		
 		// update
 		if (time > 0.5 * 1e9) {
 			bloqueDeMovimiento3();
 			time -= 0.5 * 1e9;
 		}
-		
-	
 		
 		setColor(posX, posY);
 		setColor(posX + 1, posY);
