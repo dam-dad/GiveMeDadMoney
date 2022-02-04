@@ -1,5 +1,5 @@
 .root{
-    -fx-background-image: url("/images/Menu/fondo.jpg");
+    -fx-background-image: url("../../images/Menu/fondo.jpg");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
@@ -8,12 +8,11 @@
 
 @font-face{
 	font-family:Elephant;
-	src:url("../../fonts/ELEPHNTI.TTF");
 }
 
 .button{
     -fx-font-weight: bold;
-    -fx-background-image: url("/images/TragaPerras/button.png");
+    -fx-background-image: url("../../images/TragaPerras/button.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
