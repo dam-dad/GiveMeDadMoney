@@ -27,6 +27,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	private long time = 0L, last;
 	private int posX = 0, posY = 4;
 	private boolean choque = false;
+	private boolean inicio=true;
 
 	private Pane[][] rectangulos;
 
@@ -57,6 +58,9 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 				rectangulos[i][j] = rectangulo;
 			}
 		}
+		setColor(posX, posY);
+		setColor(posX + 1, posY);
+		setColor(posX + 2, posY);
 	}
 
 	public BorderPane getView() {
@@ -80,37 +84,30 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 		last = now;
 
 		//
-		setTransparent(posX, posY);
-		setTransparent(posX + 1, posY);
-		setTransparent(posX + 2, posY);
-
+		if(inicio==false) {
+			setTransparent(posX, posY);
+			setTransparent(posX + 1, posY);
+			setTransparent(posX + 2, posY);
+		}
+		
+		
 		// update
 		if (time > 0.5 * 1e9) {
-//			if (posX < 5 && choque == false) {
-//				posX++;
-//				if (posX == 3) {
-//					choque = true;
-//					posX--;
-//				}
-//				System.out.println(posX);
-//			}
-//			if (posX >= 0 && choque == true) {
-//				posX--;
-//				if (posX == 0) {
-//					choque = false;
-//				}
-//			}
-			bloqueDe3();
+			bloqueDeMovimiento3();
 			time -= 0.5 * 1e9;
 		}
-
+		
+	
+		
 		setColor(posX, posY);
 		setColor(posX + 1, posY);
 		setColor(posX + 2, posY);
+		inicio=false;
+		
 
 	}
 
-	private void bloqueDe3() {
+	private void bloqueDeMovimiento3() {
 		if (posX < 5 && choque == false) {
 			posX++;
 			if (posX == 3) {
@@ -124,13 +121,9 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 				choque = false;
 			}
 		}
-
+		
 	}
-
-	private void parar() {
-
-	}
-
+	
 	@FXML
 	void onAtrasButton(ActionEvent event) {
 		BaseController.getInstance().showMenu();
@@ -139,9 +132,10 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onStopAction(ActionEvent event) {
 		stop();
-		posX = 0;
-		System.out.println(posY);
+		posX = 1;
+		System.out.println("Antes" + posY);
 		posY--;
+		System.out.println("Despues" + posY);
 		if (posY < 0) {
 			stop();
 			System.out.println("Tope");
@@ -152,14 +146,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 
 	@FXML
 	void onPlayAction(ActionEvent event) {
-		// cambioFilas();
-		// try {
-		// TimeUnit.MILLISECONDS.sleep(1250);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// quita();
+		
 		last = System.nanoTime();
 		start();
 	}
