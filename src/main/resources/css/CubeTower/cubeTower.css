@@ -14,9 +14,9 @@
 	-fx-opacity:0.5;
 }
 
-.root{
+/* .root{
 	-fx-background-image: url("../../images/CubeTower/fondo.jpg");
-}
+}*/
 .juego{
 	-fx-border-color:black;
 	-fx-border-radius: 0.3em;

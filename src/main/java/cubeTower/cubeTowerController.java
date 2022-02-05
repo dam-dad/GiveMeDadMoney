@@ -16,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -27,7 +29,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	private long time = 0L, last;
 	private int posX = 0, posY = 4;
 	private boolean choque = false;
-	private boolean inicio=true;
+	private boolean inicio = true, termino = false;
 
 	private Pane[][] rectangulos;
 
@@ -60,8 +62,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 		}
 		setColor(posX, posY);
 		setColor(posX + 1, posY);
-		setColor(posX + 2, posY);
-		
+
 	}
 
 	public BorderPane getView() {
@@ -85,29 +86,25 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 		last = now;
 
 		//
-		if(inicio==false) {
+		if (inicio == false) {
 			setTransparent(posX, posY);
 			setTransparent(posX + 1, posY);
-			setTransparent(posX + 2, posY);
 		}
 		// update
-		if (time > 0.5 * 1e9) {
-			bloqueDeMovimiento3();
+		if (time > 0.5 * 1e9 && termino == false) {
+			bloqueDeMovimiento2();
 			time -= 0.5 * 1e9;
+		} else {
+			setColor(posX, posY);
+			setColor(posX + 1, posY);
+			inicio = false;
 		}
-		
-		setColor(posX, posY);
-		setColor(posX + 1, posY);
-		setColor(posX + 2, posY);
-		inicio=false;
-		
-
 	}
 
-	private void bloqueDeMovimiento3() {
+	private void bloqueDeMovimiento2() {
 		if (posX < 5 && choque == false) {
 			posX++;
-			if (posX == 3) {
+			if (posX == pixeles.getColumnCount() - 1) {
 				choque = true;
 				posX--;
 			}
@@ -118,9 +115,8 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 				choque = false;
 			}
 		}
-		
 	}
-	
+
 	@FXML
 	void onAtrasButton(ActionEvent event) {
 		BaseController.getInstance().showMenu();
@@ -129,13 +125,68 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onStopAction(ActionEvent event) {
 		stop();
-		posX = 1;
-		System.out.println("Antes" + posY);
-		posY--;
-		System.out.println("Despues" + posY);
+
+		if (posY != pixeles.getRowCount() - 1) {
+			System.out.println("hola");
+			if (rectangulos[posX][posY].getStyle() != rectangulos[posX][posY + 1].getStyle()
+					&& rectangulos[posX + 1][posY].getStyle() != rectangulos[posX + 1][posY + 1].getStyle()) {
+				stop();
+				setTransparent(posX, posY);
+				setTransparent(posX+1, posY);
+				Alert alertaTope = new Alert(AlertType.INFORMATION);
+				alertaTope.setHeaderText("Has perdido");
+				alertaTope.setContentText("¿Reiniciar?");
+				alertaTope.showAndWait();
+				termino=true;
+			} else {
+				if (rectangulos[posX][posY].getStyle() != rectangulos[posX][posY + 1].getStyle() && choque == false) {
+					System.out.println("pasa derecha");
+					rectangulos[posX][posY].setStyle("-fx-background-color:transparent");
+				}
+				if (rectangulos[posX + 1][posY].getStyle() != rectangulos[posX + 1][posY + 1].getStyle()
+						&& choque == false) {
+					System.out.println("pasa derecha 2");
+					rectangulos[posX + 1][posY].setStyle("-fx-background-color:transparent");
+				}
+				System.out.println(posX + " " + posY);
+				if (rectangulos[posX][posY].getStyle() != rectangulos[posX][posY + 1].getStyle() && choque == true) {
+					System.out.println("pasa derecha");
+					rectangulos[posX][posY].setStyle("-fx-background-color:transparent");
+				}
+				if (rectangulos[posX + 1][posY].getStyle() != rectangulos[posX + 1][posY + 1].getStyle()
+						&& choque == true) {
+					System.out.println("pasa derecha 2");
+					rectangulos[posX + 1][posY].setStyle("-fx-background-color:transparent");
+				}
+//				if (rectangulos[posX+1][posY].getStyle() != rectangulos[posX][posY + 1].getStyle()
+//						&& choque == true) {
+//					rectangulos[posX-1][posY].setStyle("-fx-background-color:transparent");
+//					System.out.println("pasa 2 izquierda");
+//				}
+//				if (rectangulos[posX][posY].getStyle() != rectangulos[posX][posY + 1].getStyle()
+//						&& choque == false) {
+//					System.out.println("pasa dercha");
+//					rectangulos[posX][posY].setStyle("-fx-background-color:transparent");
+//				}
+//				if (rectangulos[posX + 1][posY].getStyle() != rectangulos[posX + 1][posY + 1].getStyle()
+//						&& choque == false) {
+//					rectangulos[posX+1][posY].setStyle("-fx-background-color:transparent");
+//					System.out.println("pasa2 derecha");
+//				}
+			}
+//			rectangulos[posX][posY].setStyle("-fx-background-color:transparent");
+//			rectangulos[posX+1][posY].setStyle("-fx-background-color:transparent");
+			posX = 1;
+			posY--;
+		} else {
+			posY--;
+		}
 		if (posY < 0) {
 			stop();
-			System.out.println("Tope");
+			Alert alertaTope = new Alert(AlertType.INFORMATION);
+			alertaTope.setHeaderText("Completado");
+			alertaTope.setContentText("Has completado el nivel");
+			alertaTope.showAndWait();
 		} else {
 			start();
 		}
@@ -143,7 +194,7 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 
 	@FXML
 	void onPlayAction(ActionEvent event) {
-		
+
 		last = System.nanoTime();
 		start();
 	}
