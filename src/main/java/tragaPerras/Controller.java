@@ -85,19 +85,7 @@ public class Controller implements Initializable {
 		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
 		
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
-
-		///////////////////////////////////////////
-
-		// Pruebas de David No borrar de momento
-
-		/*imageBlock1.setImage(sieteImagen);
-		imageBlock1.setPreserveRatio(true);
-		imageBlock1.setSmooth(true);
-
-		Rectangle2D rectangle2D = new Rectangle2D(0, 0,271,271);
-		imageBlock1.setViewport(rectangle2D);*/
-
-		////////////////////////////////////////
+		
 
 		imageBlock1.imageProperty().bind(imagen1Property);
 		imageBlock2.imageProperty().bind(imagen2Property);
@@ -111,17 +99,10 @@ public class Controller implements Initializable {
 		load_score();
 
 		transition1.setNode(imageBlock1);
-		transition1.setFromY(-29);
-		transition1.setToY(15);
-		transition1.setCycleCount(40);
-		transition1.setDuration(Duration.seconds(0.02));
-		transition1.setToY(0);
-
-		/*transition1.setNode(imageBlock1);
 		transition1.setFromY(-250);
 		transition1.setToY(0);
 		transition1.setCycleCount(7);
-		transition1.setDuration(Duration.seconds(0.10));*/
+		transition1.setDuration(Duration.seconds(0.10));
 
 		transition2.setNode(imageBlock2);
 		transition2.setFromY(-250);
