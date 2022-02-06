@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 import menuController.BaseController;
@@ -25,31 +27,42 @@ import score.Score;
 public class MayorOMenorController implements Initializable {
 
 	@FXML
-	private TextField apuestaText;
+    private TextField apuestaText;
 
-	@FXML
-	private Button backButton;
+    @FXML
+    private Button backButton;
 
-	@FXML
-	private Button biggerButton;
+    @FXML
+    private Button biggerButton;
 
-	@FXML
-	private Label homeNumLabel;
+    @FXML
+    private Button equalButton;
 
-	@FXML
-	private Button lessButton;
+    @FXML
+    private ImageView homeCard;
 
-	@FXML
-	private Label myNumLabel;
+    @FXML
+    private Label homeNumLabel;
 
-	@FXML
-	private Label puntosLabel;
+    @FXML
+    private Button lessButton;
 
-	@FXML
-	private Button equalButton;
+    @FXML
+    private ImageView myCard;
 
-	@FXML
-	private BorderPane root;
+    @FXML
+    private Label myNumLabel;
+
+    @FXML
+    private Label puntosLabel;
+
+    @FXML
+    private BorderPane root;
+
+    @FXML
+    private Button shuffleButton;
+
+
 
 	private IntegerProperty myNum = new SimpleIntegerProperty();
 	private IntegerProperty homeNum = new SimpleIntegerProperty();
@@ -75,7 +88,7 @@ public class MayorOMenorController implements Initializable {
 		myNumLabel.textProperty().bind(myNum.asString());
 		apuestaText.textProperty().bindBidirectional(apuesta);
 
-		homeNumLabel.setVisible(false);
+		
 
 		// TODO NO LETRAS
 		// Bloquear botones si no hay apuestas
@@ -84,7 +97,8 @@ public class MayorOMenorController implements Initializable {
 		lessButton.disableProperty().bind(apuesta.isEmpty());
 
 		load_score();
-		load();
+		load_MyCard();
+		load_HomeCard();
 
 		root.getStylesheets().add("css/MayorOMenor/MayorOMenor.css");
 	}
@@ -93,37 +107,50 @@ public class MayorOMenorController implements Initializable {
 		score.set(Score.getInstance().getTotalScore());
 	}
 
-	private void load() {
-		int x = (int) (Math.random() * 10) + 1;
-		int y = (int) (Math.random() * 10) + 1;
-
-		myNum.set(x);
-		homeNum.set(y);
-
-		Score.getInstance().setTotalScore(score.intValue());
+	private void load_MyCard() {
+		int myCard_num = (int) (Math.random() * 10) + 1;
+		myNum.set(myCard_num);
+		
+		String url = "/images/MayorOMenor/"+myCard_num+".png";
+		myCard.setImage(new Image(url));
+	}
+	private void load_HomeCard() {
+		int homeCard_num = (int) (Math.random() * 10) + 1;
+		homeNum.set(homeCard_num);
+	}
+	
+	private void reveal_homeCard() {
+		String url = "/images/MayorOMenor/"+homeNum.get()+".png";
+		homeCard.setImage(new Image(url));
 	}
 
 	private void cargar_carta() {
 		homeNumLabel.setVisible(true);
-		carta_casa.setNode(homeNumLabel);
+		carta_casa.setNode(homeCard);
 		carta_casa.setFromY(-250);
 		carta_casa.setToY(0);
 		carta_casa.setDuration(Duration.seconds(0.50));
 		carta_casa.playFromStart();
 	
-		carta_propia.setNode(myNumLabel);
-		carta_propia.setFromY(250);
-		carta_propia.setToY(0);
-		carta_propia.setDuration(Duration.seconds(0.50));
-		carta_propia.playFromStart();
-		
-	
-		
-		//load();
-	
-		//homeNumLabel.setVisible(false);
+//		carta_propia.setNode(myCard);
+//		carta_propia.setFromY(250);
+//		carta_propia.setToY(0);
+//		carta_propia.setDuration(Duration.seconds(0.50));
+//		carta_propia.playFromStart();
 
 	}
+	
+	private void shuffle() {
+		String url = "/images/MayorOMenor/backCarta.png";
+		homeCard.setImage(new Image(url));
+		load_HomeCard();
+		load_MyCard();
+
+	}
+    @FXML
+    void onShuffleAction(ActionEvent event) {
+    	shuffle();
+    }
 
 	@FXML
 	void onBiggerAction(ActionEvent event) {
@@ -133,6 +160,7 @@ public class MayorOMenorController implements Initializable {
 		} else {
 			you_loose();
 		}
+		reveal_homeCard();
 	}
 
 	@FXML
@@ -142,7 +170,8 @@ public class MayorOMenorController implements Initializable {
 			you_win();
 		} else {
 			you_loose();
-		}
+		}	
+		reveal_homeCard();
 	}
 
 	@FXML
@@ -153,6 +182,7 @@ public class MayorOMenorController implements Initializable {
 		} else {
 			you_loose();
 		}
+		reveal_homeCard();
 	}
 
 	private void you_loose() {
