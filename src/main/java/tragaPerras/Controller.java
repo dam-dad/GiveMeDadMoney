@@ -1,5 +1,9 @@
 package tragaPerras;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -9,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -22,21 +25,12 @@ import main.GiveMeDADMoney;
 import menuController.BaseController;
 import score.Score;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class Controller implements Initializable {
 
 	private ObjectProperty<Image> imagen1Property = new SimpleObjectProperty<>();
 	private ObjectProperty<Image> imagen2Property = new SimpleObjectProperty<>();
 	private ObjectProperty<Image> imagen3Property = new SimpleObjectProperty<>();
 	private IntegerProperty puntosTotales = new SimpleIntegerProperty();
-
-	private Imagen imagen1 = new Imagen();
-	private Imagen imagen2 = new Imagen();
-	private Imagen imagen3 = new Imagen();
-	private Imagen cambio = new Imagen();
 
 	private int valor1, valor2, valor3;
 	private int sumaPuntos;
@@ -80,8 +74,6 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-		Image sieteImagen = new Image(imagen1.siete().getRuta());
-
 		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
 		
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
@@ -91,9 +83,9 @@ public class Controller implements Initializable {
 		imageBlock2.imageProperty().bind(imagen2Property);
 		imageBlock3.imageProperty().bind(imagen3Property);
 
-		imagen1Property.set(sieteImagen);
-		imagen2Property.set(sieteImagen);
-		imagen3Property.set(sieteImagen);
+		imagen1Property.set(Imagen.SEVEN.getImagen());
+		imagen2Property.set(Imagen.SEVEN.getImagen());
+		imagen3Property.set(Imagen.SEVEN.getImagen());
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
@@ -145,30 +137,26 @@ public class Controller implements Initializable {
 		sumaPuntos = puntosTotales.get();
 
 		if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
+
 			transition1.play();
 			transition2.play();
 			transition3.play();
 
-			Image imagenNew;
+			Imagen i1 = Imagen.randomImagen();
+			imagen1Property.set(i1.getImagen());
+			valor1 = i1.getValor();
 
-			cambio = imagen1.randomImagen();
+			Imagen i2 = Imagen.randomImagen();
+			imagen2Property.set(i2.getImagen());
+			valor2 = i2.getValor();
 
-			imagenNew = new Image(cambio.getRuta());
-			imagen1Property.set(imagenNew);
-			valor1 = cambio.getValor();
-
-			cambio = imagen2.randomImagen();
-			imagenNew = new Image(cambio.getRuta());
-			imagen2Property.set(imagenNew);
-			valor2 = cambio.getValor();
-
-			cambio = imagen3.randomImagen();
-			imagenNew = new Image(cambio.getRuta());
-			imagen3Property.set(imagenNew);
-			valor3 = cambio.getValor();
+			Imagen i3 = Imagen.randomImagen();
+			imagen3Property.set(i3.getImagen());
+			valor3 = i3.getValor();
 
 			sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
+			
 		} else {
 			GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
 					"Necesitas mas puntos para poder jugar.");
