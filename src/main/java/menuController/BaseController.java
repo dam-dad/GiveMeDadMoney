@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import cubeTower.cubeTowerController;
+import cubeTower.CubeTowerController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,7 +34,7 @@ public class BaseController implements Initializable {
 	// CONTROLLER JUEGO
 	private Controller tragaPerrasController = new Controller();
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
-	private cubeTowerController cubeTower = new cubeTowerController();
+	private CubeTowerController cubeTower = new CubeTowerController();
 
 	public Music musica;
 

@@ -17,14 +17,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import menuController.BaseController;
 
-public class cubeTowerController extends AnimationTimer implements Initializable {
+public class CubeTowerController extends AnimationTimer implements Initializable {
 
-	private long time = 0L, last;
-	private int posX = 0, posY = 4, tamanoConColor = 0;
-	private boolean choque = false;
+	private long last;
+	private Cube cube;
+	private Tower tower;
 	private boolean inicio = true, termino;
-
-	private Pane[][] rectangulos;
 
 	@FXML
 	private GridPane pixeles;
@@ -32,30 +30,26 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	private BorderPane view;
 
-	public cubeTowerController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/cubeToweFxml.fxml"));
+	public CubeTowerController() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/View.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		pixeles.setGridLinesVisible(true);
-		rectangulos = new Pane[pixeles.getColumnCount()][pixeles.getRowCount()];
-		view.getStylesheets().add("css/CubeTower/cubeTower.css");
-		for (int i = 0; i < pixeles.getColumnCount(); i++) {
-			for (int j = 0; j < pixeles.getRowCount(); j++) {
-				Pane rectangulo = new Pane();
-				rectangulo.setMaxWidth(Double.MAX_VALUE);
-				rectangulo.setMaxHeight(Double.MAX_VALUE);
-				rectangulo.setStyle("-fx-background-color: transparent");
-				pixeles.add(rectangulo, i, j);
-				rectangulos[i][j] = rectangulo;
+
+		tower = new Tower(pixeles.getColumnCount(), pixeles.getRowCount());
+		for (int i = 0; i < tower.getCols(); i++) {
+			for (int j = 0; j < tower.getRows(); j++) {
+				pixeles.add(tower.getRectangle(i, j), i, j);
 			}
 		}
-		setColor(posX, posY);
-		setColor(posX + 1, posY);
-		tamanoConColor = 2;
+		
+		cube = new Cube(0, tower.getRows() - 1, 3);
+		
 		inicio = true;
 	}
 
@@ -63,65 +57,27 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 		return view;
 	}
 
-	public void setTransparent(int x, int y) {
-		rectangulos[x][y].setStyle("-fx-background-color:transparent");
-	}
-
-	public void setColor(int x, int y) {
-		rectangulos[x][y].setStyle("-fx-background-color:red");
-	}
-
 	@Override
 	public void handle(long now) {
-
-		// render
 		long diff = now - last;
-		time += diff;
 		last = now;
-
-		//
-		if (inicio == false) {
-			for (int i = 0; i < 2; i++) {
-				setTransparent(posX + i, posY);
-			}
-		}
-		if (inicio == true) {
-			for (int i = 0; i < tamanoConColor; i++) {
-				setTransparent(posX + i, posY);
-			}
-		}
-		// update
-		if (time > 0.5 * 1e9 && termino == false) {
-			bloqueDeMovimiento2();
-			time -= 0.5 * 1e9;
-		}
-		if (inicio == false) {
-			for (int i = 0; i < 2; i++) {
-				setColor(posX + i, posY);
-			}
-		}
-		if (inicio == true) {
-			for (int i = 0; i < tamanoConColor; i++) {
-				setColor(posX + i, posY);
-			}
-		}
-
+		loop(diff / 1e9); // pasamos el tiempo transacurrido a segundos
 	}
-
-	private void bloqueDeMovimiento2() {
-		if (posX < 5 && choque == false) {
-			posX++;
-			if (posX == pixeles.getColumnCount() - 1) {
-				choque = true;
-				posX--;
-			}
-		}
-		if (posX >= 0 && choque == true) {
-			posX--;
-			if (posX == 0) {
-				choque = false;
-			}
-		}
+	
+	private void loop(double time) {
+		//
+		
+		// clear cube from tower
+		cube.setColor("transparent");
+		cube.render(tower);
+		
+		// move cube 
+		cube.update(time, tower);
+		
+		// draw cube in tower
+		cube.setColor("red");
+		cube.render(tower);
+		
 	}
 
 	@FXML
@@ -131,31 +87,49 @@ public class cubeTowerController extends AnimationTimer implements Initializable
 
 	@FXML
 	void onStopAction(ActionEvent event) {
-		tamanoConColor = 0;
-		stop();
-		if (posY != pixeles.getRowCount() - 1) {
-			for (int i = 0; i < pixeles.getColumnCount(); i++) {
-				if (rectangulos[i][posY].getStyle() != "-fx-background-color:transparent") {
-					if (rectangulos[i][posY].getStyle() != rectangulos[i][posY + 1].getStyle()) {
-						rectangulos[i][posY].setStyle("-fx-background-color:transparent");
-					} else {
-						tamanoConColor++;
-					}
-				}
-			}
-		}
-		if (posY == 0) {
-			stop();
+
+		System.out.println("move up");
+		
+		if (!inicio) {
+
+			System.out.println("reduciendo cubo. no inicio");
+			cube.reduce(tower);
+	
 		} else {
-			System.out.println(tamanoConColor);
-			System.out.println(posX + " " + posY);
-			posY--;
-			posX = 0;
-			start();
-		}
-		if (tamanoConColor == 0) {
+			
+			// la primera vez sólo subimos el cubo un nivel
+			System.out.println("inicio");
 			inicio = false;
+			
 		}
+
+		cube.moveUp();
+
+//		tamanoConColor = 0;
+//		stop();
+//		if (posY != pixeles.getRowCount() - 1) {
+//			for (int i = 0; i < pixeles.getColumnCount(); i++) {
+//				if (rectangulos[i][posY].getStyle() != "-fx-background-color:transparent") {
+//					if (rectangulos[i][posY].getStyle() != rectangulos[i][posY + 1].getStyle()) {
+//						rectangulos[i][posY].setStyle("-fx-background-color:transparent");
+//					} else {
+//						tamanoConColor++;
+//					}
+//				}
+//			}
+//		}
+//		if (posY == 0) {
+//			stop();
+//		} else {
+//			System.out.println(tamanoConColor);
+//			System.out.println(posX + " " + posY);
+//			posY--;
+//			posX = 0;
+//			start();
+//		}
+//		if (tamanoConColor == 0) {
+//			inicio = false;
+//		}
 
 //		if (posY != pixeles.getRowCount() - 1) {
 //			System.out.println("hola");
