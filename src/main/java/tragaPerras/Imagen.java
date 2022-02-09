@@ -1,94 +1,32 @@
 package tragaPerras;
 
-public class Imagen {
+import java.util.Arrays;
+import java.util.List;
 
-    private String ruta;
+import javafx.scene.image.Image;
+
+public class Imagen  {
+	
+	public static final Imagen LEMON = new Imagen("/images/TragaPerras/leamon.png", 10);
+	public static final Imagen CHERRY = new Imagen("/images/TragaPerras/cherry.png", 25);
+	public static final Imagen WATERMELON = new Imagen("/images/TragaPerras/sandia.png", 35);
+	public static final Imagen GRAPE = new Imagen("/images/TragaPerras/uva.png", 50);
+	public static final Imagen DIAMOND = new Imagen("/images/TragaPerras/diamond.png", 65);
+	public static final Imagen BAR = new Imagen("/images/TragaPerras/bar.png", 75);
+	public static final Imagen SEVEN = new Imagen("/images/TragaPerras/seven.png", 120);
+	
+	private static final List<Imagen> IMAGENES = Arrays.asList(LEMON, CHERRY, WATERMELON, GRAPE, DIAMOND, BAR, SEVEN);
+
+    private Image imagen;
     private int valor;
 
-    public Imagen(String ruta, int valor) {
-
-        this.ruta = ruta;
+    public Imagen(String imagen, int valor) {
+        this.imagen = new Image(imagen);
         this.valor = valor;
-
     }
 
-    public Imagen() {
-
-    }
-
-    public Imagen limon() {
-
-        Imagen limon = new Imagen("/images/TragaPerras/leamon.png", 10);
-
-        return limon;
-    }
-
-    public Imagen cherry() {
-
-        Imagen cherry = new Imagen("/images/TragaPerras/cherry.png", 25);
-
-        return cherry;
-    }
-
-    public Imagen sandia() {
-
-        Imagen sandia = new Imagen("/images/TragaPerras/sandia.png", 35);
-
-        return sandia;
-    }
-
-    public Imagen uva() {
-
-        Imagen uva = new Imagen("/images/TragaPerras/uva.png", 50);
-
-        return uva;
-    }
-
-    public Imagen diamante() {
-
-        Imagen diamante = new Imagen("/images/TragaPerras/diamond.png", 65);
-
-        return diamante;
-    }
-
-    public Imagen bar() {
-
-        Imagen bar = new Imagen("/images/TragaPerras/bar.png", 75);
-
-        return bar;
-    }
-
-    public Imagen siete() {
-
-        Imagen siete = new Imagen("/images/TragaPerras/seven.png", 120);
-
-        return siete;
-    }
-
-    public Imagen randomImagen() {
-
-        Imagen[] imagenes = new Imagen[7];
-        Imagen imagen;
-
-        imagenes[0] = bar();
-        imagenes[1] = cherry();
-        imagenes[2] = diamante();
-        imagenes[3] = limon();
-        imagenes[4] = sandia();
-        imagenes[5] = siete();
-        imagenes[6] = uva();
-
-        imagen = imagenes[(int) (Math.random() * 7)];
-
-        return imagen;
-    }
-
-    public String getRuta() {
-        return ruta;
-    }
-
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
+    public static Imagen randomImagen() {
+        return IMAGENES.get((int) (Math.random() * 7));
     }
 
     public int getValor() {
@@ -98,5 +36,13 @@ public class Imagen {
     public void setValor(int valor) {
         this.valor = valor;
     }
+    
+    public Image getImagen() {
+		return imagen;
+	}
+    
+    public void setImagen(Image imagen) {
+		this.imagen = imagen;
+	}
 
 }

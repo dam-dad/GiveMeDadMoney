@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root fx:id="view" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="120.0" prefWidth="120.0" styleClass="root" type="ScrollPane" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+	<content>
+		<VBox fx:id="pane" alignment="CENTER" spacing="10.0" translateY="-105.0">
+			<children>
+				<ImageView fx:id="topImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../../images/TragaPerras/seven.png" />
+					</image>
+				</ImageView>
+				<ImageView fx:id="bottomImage" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../../images/TragaPerras/cherry.png" />
+					</image>
+				</ImageView>
+			</children>
+		</VBox>
+	</content>
+</fx:root>
