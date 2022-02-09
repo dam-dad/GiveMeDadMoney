@@ -12,6 +12,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,6 +75,7 @@ public class MayorOMenorController implements Initializable {
 	private StringProperty apuesta = new SimpleStringProperty();
 	
 	private BooleanProperty activa = new SimpleBooleanProperty();
+	private BooleanProperty apostable = new SimpleBooleanProperty();
 
 	// pruebas
 	TranslateTransition carta_casa = new TranslateTransition();
@@ -92,9 +95,18 @@ public class MayorOMenorController implements Initializable {
 		myNumLabel.textProperty().bind(myNum.asString());
 		apuestaText.textProperty().bindBidirectional(apuesta);
 
+		//Fuerza que sea numerico
+		apuestaText.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
+		        String newValue) {
+		        if (!newValue.matches("\\d*")) {
+		        	apuestaText.setText(newValue.replaceAll("[^\\d]", ""));
+		        }
+		    }
+		});
 		
 
-		// TODO NO LETRAS
 		// Bloquear botones si no hay apuestas
 		biggerButton.disableProperty().bind(apuesta.isEmpty());
 		equalButton.disableProperty().bind(apuesta.isEmpty());
@@ -105,8 +117,7 @@ public class MayorOMenorController implements Initializable {
 		
 
 		load_score();
-		load_MyCard();
-		load_HomeCard();
+		shuffle();
 
 		root.getStylesheets().add("css/MayorOMenor/MayorOMenor.css");
 	}
@@ -121,6 +132,12 @@ public class MayorOMenorController implements Initializable {
 		
 		String url = "/images/MayorOMenor/"+myCard_num+".png";
 		myCard.setImage(new Image(url));
+		
+		carta_propia.setNode(myCard);
+		carta_propia.setFromY(250);
+		carta_propia.setToY(0);
+		carta_propia.setDuration(Duration.seconds(0.70));
+		carta_propia.playFromStart();
 	}
 	private void load_HomeCard() {
 		int homeCard_num = (int) (Math.random() * 10) + 1;
@@ -131,6 +148,14 @@ public class MayorOMenorController implements Initializable {
 		String url = "/images/MayorOMenor/"+homeNum.get()+".png";
 		homeCard.setImage(new Image(url));
 		activa.set(false);
+		
+		//Bloquea botones de apuesta
+		
+//		biggerButton.disableProperty().set(true);
+//		equalButton.disableProperty().set(true);
+//		lessButton.disableProperty().set(true);
+		
+
 	}
 
 	private void cargar_carta() {
@@ -141,11 +166,7 @@ public class MayorOMenorController implements Initializable {
 		carta_casa.setDuration(Duration.seconds(0.50));
 		carta_casa.playFromStart();
 	
-//		carta_propia.setNode(myCard);
-//		carta_propia.setFromY(250);
-//		carta_propia.setToY(0);
-//		carta_propia.setDuration(Duration.seconds(0.50));
-//		carta_propia.playFromStart();
+
 
 	}
 	
@@ -155,6 +176,13 @@ public class MayorOMenorController implements Initializable {
 		load_HomeCard();
 		load_MyCard();
 		activa.set(true);
+		
+
+		
+		
+		//activa los botones
+		
+	
 
 	}
     @FXML
