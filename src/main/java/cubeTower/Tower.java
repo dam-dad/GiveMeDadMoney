@@ -55,5 +55,12 @@ public class Tower {
 		return !getRectangle(x, y).getStyle().contains("transparent");
 	}
 
+	public void clear() {
+		for (int i = 0; i < cols; i++) {
+			for (int j = 0; j < rows; j++) {
+				setTransparent(i, j);
+			}
+		}
+	}
 
 }

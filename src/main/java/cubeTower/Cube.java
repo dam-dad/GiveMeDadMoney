@@ -2,8 +2,6 @@ package cubeTower;
 
 public class Cube {
 	
-	private static final double SPEED = 0.15;
-
 	private double time = 0.0;
 
 	private int size;
@@ -11,6 +9,7 @@ public class Cube {
 	private int y;
 	private String color;
 	private int direction;
+	private double speed;
 
 	public Cube(int x, int y, int size) {
 		super();
@@ -18,32 +17,21 @@ public class Cube {
 		this.x = x;
 		this.y = y;
 		this.direction = 1;
+		this.speed = 0.35;
 	}
 
 	public int getSize() {
 		return size;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
-
 	public int getX() {
 		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
 	}
 
 	public int getY() {
 		return y;
 	}
 
-	public void setY(int y) {
-		this.y = y;
-	}
-	
 	public String getColor() {
 		return color;
 	}
@@ -68,7 +56,7 @@ public class Cube {
 		if (checkCollision(tower)) {
 			direction *= -1;
 		}
-		if (time > SPEED) {
+		if (time > speed) {
 			x += direction;
 			time = 0.0;
 		}
@@ -76,17 +64,20 @@ public class Cube {
 
 	public void moveUp() {
 		y -= 1;
+		speed *= 0.75;
 	}
 	
 	public void reduce(Tower tower) {
 		
-		for (int i = x; i < x + size; i++) { 
+		int total = x + size - 1;
+		for (int i = x; i <= total; i++) { 
 						
 			if (!tower.isCube(i, y + 1)) {
 				if (i == x) {
-					x += 1;				
-				}				
+					x += 1;
+				}
 				size -= 1;
+				tower.draw(i, y, "transparent");
 			}
 			
 		}
