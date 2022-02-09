@@ -16,7 +16,7 @@ public class Music {
 	
 	public Music(String path){ 
 		try {
-			musica = new Media(GiveMeDADMoney.class.getResource(path).toURI().toString());
+			musica = new Media(getClass().getResource(path).toURI().toString());
 			reproductor = new MediaPlayer(musica);
 			reproductor.setAutoPlay(true);			
 			volumen(0.1);

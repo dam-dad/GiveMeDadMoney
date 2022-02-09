@@ -9,12 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import menuController.BaseController;
 
 public class CubeTowerController extends AnimationTimer implements Initializable {
@@ -91,42 +89,42 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onStopAction(ActionEvent event) {
 
-		System.out.println("move up");
-		
 		if (!inicio) {
 
-			System.out.println("reduciendo cubo. no inicio");
 			cube.reduce(tower);
+			
+			if (cube.getSize() == 0) {
+				
+				stop();
+				Alert alertaTope = new Alert(AlertType.INFORMATION);
+				alertaTope.setHeaderText("¡¡¡Has perdido!!!");
+				alertaTope.setContentText("Nivel: " + getNivel());
+				alertaTope.showAndWait();
+				
+			} else {
+				
+				cube.moveUp();
+				
+				if (cube.getY() < 0) {
+					
+					stop();
+					Alert alertaTope = new Alert(AlertType.INFORMATION);
+					alertaTope.setHeaderText("¡¡¡Has ganado!!!");
+					alertaTope.showAndWait();
+					
+				}
+			}
+
 	
 		} else {
 			
 			// la primera vez sólo subimos el cubo un nivel
-			System.out.println("inicio");
+			cube.moveUp();			
 			inicio = false;
+			
 			
 		}
 
-		if (cube.getSize() == 0) {
-			
-			stop();
-			Alert alertaTope = new Alert(AlertType.INFORMATION);
-			alertaTope.setHeaderText("¡¡¡Has perdido!!!");
-			alertaTope.setContentText("Nivel: " + getNivel());
-			alertaTope.showAndWait();
-			
-		} else {
-			
-			cube.moveUp();
-			
-			if (cube.getY() < 0) {
-				
-				stop();
-				Alert alertaTope = new Alert(AlertType.INFORMATION);
-				alertaTope.setHeaderText("¡¡¡Has ganado!!!");
-				alertaTope.showAndWait();
-				
-			}
-		}
 
 	}
 

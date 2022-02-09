@@ -15,7 +15,7 @@ public class Imagen  {
 	public static final Imagen BAR = new Imagen("/images/TragaPerras/bar.png", 75);
 	public static final Imagen SEVEN = new Imagen("/images/TragaPerras/seven.png", 120);
 	
-	private static final List<Imagen> IMAGENES = Arrays.asList(LEMON, CHERRY, WATERMELON, GRAPE, DIAMOND, BAR, SEVEN);
+	public static final List<Imagen> IMAGENES = Arrays.asList(LEMON, CHERRY, WATERMELON, GRAPE, DIAMOND, BAR, SEVEN);
 
     private Image imagen;
     private int valor;
@@ -26,7 +26,7 @@ public class Imagen  {
     }
 
     public static Imagen randomImagen() {
-        return IMAGENES.get((int) (Math.random() * 7));
+        return IMAGENES.get((int) (Math.random() * IMAGENES.size()));
     }
 
     public int getValor() {

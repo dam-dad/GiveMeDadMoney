@@ -7,12 +7,15 @@ import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -24,6 +27,8 @@ public class Figura extends ScrollPane implements Initializable {
 	private TranslateTransition bottomTransition;
 	private ParallelTransition transition; 
 	
+	private IntegerProperty top = new SimpleIntegerProperty();
+	private IntegerProperty bottom = new SimpleIntegerProperty();
 	private ObjectProperty<Imagen> current = new SimpleObjectProperty<>();
 	
 	private int counter;
@@ -51,36 +56,52 @@ public class Figura extends ScrollPane implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+
 
 		topTransition = new TranslateTransition();
 		topTransition.setNode(topImage);
 		topTransition.setFromY(0);
 		topTransition.setToY(bottomImage.getFitHeight());
-		topTransition.setDuration(Duration.seconds(1.0));
+		topTransition.setDuration(Duration.seconds(0.10));
 		topTransition.setInterpolator(Interpolator.LINEAR);
 		
 		bottomTransition = new TranslateTransition();
 		bottomTransition.setNode(bottomImage);
 		bottomTransition.setFromY(0);
 		bottomTransition.setToY(bottomImage.getFitHeight());
-		bottomTransition.setDuration(Duration.seconds(1.0));
+		bottomTransition.setDuration(Duration.seconds(0.10));
 		bottomTransition.setInterpolator(Interpolator.LINEAR);
 	
 		transition = new ParallelTransition(topTransition, bottomTransition);
 		transition.setOnFinished(e -> {
 			counter--;
-			if (counter > 0) {
-				// cambio las imágenes
+			if (counter >= 0) {
 				
+				if (counter == 0) {
+					bottomTransition.setInterpolator(Interpolator.EASE_OUT);
+					topTransition.setInterpolator(Interpolator.EASE_OUT);
+				}
+				
+				bottom.set((bottom.get() + 1) % Imagen.IMAGENES.size());				
 				transition.play();
 			}
 		});
+		
+		bottom.addListener((o, ov, nv) -> {
+			top.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
+			System.out.println("posicion: " + bottom.getValue() + "/" + top.getValue());			
+			bottomImage.setImage(topImage.getImage());
+			topImage.setImage(Imagen.IMAGENES.get(bottom.get()).getImagen());
+		});
+		bottom.set((int) (Math.random() * Imagen.IMAGENES.size()));
 		
 	}
 	
 	public void roll() {
 		
-		counter = 5;
+		counter = 10;
+		bottom.set(((bottom.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom.get()) - 1);
 		transition.play();
 		
 	}
