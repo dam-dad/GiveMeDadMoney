@@ -5,8 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.Property;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -69,6 +71,8 @@ public class MayorOMenorController implements Initializable {
 
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty apuesta = new SimpleStringProperty();
+	
+	private BooleanProperty activa = new SimpleBooleanProperty();
 
 	// pruebas
 	TranslateTransition carta_casa = new TranslateTransition();
@@ -96,6 +100,10 @@ public class MayorOMenorController implements Initializable {
 		equalButton.disableProperty().bind(apuesta.isEmpty());
 		lessButton.disableProperty().bind(apuesta.isEmpty());
 
+		activa.set(false);
+		shuffleButton.disableProperty().bind(activa);
+		
+
 		load_score();
 		load_MyCard();
 		load_HomeCard();
@@ -122,6 +130,7 @@ public class MayorOMenorController implements Initializable {
 	private void reveal_homeCard() {
 		String url = "/images/MayorOMenor/"+homeNum.get()+".png";
 		homeCard.setImage(new Image(url));
+		activa.set(false);
 	}
 
 	private void cargar_carta() {
@@ -145,6 +154,7 @@ public class MayorOMenorController implements Initializable {
 		homeCard.setImage(new Image(url));
 		load_HomeCard();
 		load_MyCard();
+		activa.set(true);
 
 	}
     @FXML
