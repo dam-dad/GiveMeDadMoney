@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import menuController.BaseController;
@@ -20,7 +22,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private long last;
 	private Cube cube;
 	private Tower tower;
-	private boolean inicio;
+	private boolean inicio = true;
+	private boolean play = true;
 
 	@FXML
 	private GridPane pixeles;
@@ -36,7 +39,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		pixeles.setGridLinesVisible(true);
 
 		tower = new Tower(pixeles.getColumnCount(), pixeles.getRowCount());
@@ -45,8 +48,20 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 				pixeles.add(tower.getRectangle(i, j), i, j);
 			}
 		}
-		
-		inicio = true;
+
+		view.requestFocus();
+		view.setFocusTraversable(true);
+		view.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+			if (event.getCode() == KeyCode.SPACE) {
+				if (!play) {
+					stopCubo();
+				}else {
+					playCubo();
+				}
+
+			}
+			event.consume();
+		});
 	}
 
 	public BorderPane getView() {
@@ -59,24 +74,23 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		last = now;
 		loop(diff / 1e9); // pasamos el tiempo transacurrido a segundos
 	}
-	
+
 	private void loop(double time) {
 		//
-		
+
 		// clear cube from tower
 		cube.setColor("transparent");
 		cube.render(tower);
-		
-		// move cube 
+
+		// move cube
 		cube.update(time, tower);
-		
+
 		// draw cube in tower
-		cube.setColor("red");
+		cube.setColor("#FF7B00");
 		cube.render(tower);
 
-		
 	}
-	
+
 	public int getNivel() {
 		return tower.getRows() - cube.getY() - 1;
 	}
@@ -84,57 +98,61 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onAtrasButton(ActionEvent event) {
 		BaseController.getInstance().showMenu();
+		stop();
+		tower.clear();
 	}
 
-	@FXML
-	void onStopAction(ActionEvent event) {
-
+	private void stopCubo() {
 		if (!inicio) {
-
 			cube.reduce(tower);
-			
 			if (cube.getSize() == 0) {
-				
 				stop();
+				play=true;
 				Alert alertaTope = new Alert(AlertType.INFORMATION);
 				alertaTope.setHeaderText("¡¡¡Has perdido!!!");
 				alertaTope.setContentText("Nivel: " + getNivel());
 				alertaTope.showAndWait();
-				
 			} else {
-				
 				cube.moveUp();
-				
 				if (cube.getY() < 0) {
-					
+					play=true;
 					stop();
 					Alert alertaTope = new Alert(AlertType.INFORMATION);
 					alertaTope.setHeaderText("¡¡¡Has ganado!!!");
 					alertaTope.showAndWait();
-					
 				}
 			}
-
-	
 		} else {
-			
 			// la primera vez sólo subimos el cubo un nivel
-			cube.moveUp();			
+			cube.moveUp();
 			inicio = false;
-			
-			
 		}
+	}
 
-
+	@FXML
+	void onStopAction(ActionEvent event) {
+		stopCubo();
 	}
 
 	@FXML
 	void onPlayAction(ActionEvent event) {
-		inicio = true;		
+		playCubo();
+	}
+
+	private void playCubo() {
+		inicio = true;
+		play=false;
 		cube = new Cube(0, tower.getRows() - 1, 3);
 		tower.clear();
 		last = System.nanoTime();
 		start();
+	}
+
+	@FXML
+	void onKeyTyped(KeyEvent event) {
+//		if (event.getCode().equals(KeyCode.SPACE)) {
+//			System.out.println(event.getCode());
+//		}
 	}
 
 }

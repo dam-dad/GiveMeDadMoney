@@ -44,7 +44,7 @@ public class Tower {
 	}
 
 	public void setColor(int x, int y) {
-		draw(x, y, "red");
+		draw(x, y, "#FF7B00");
 	}
 	
 	public void draw(int x, int y, String color) {
