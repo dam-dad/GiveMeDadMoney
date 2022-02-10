@@ -61,15 +61,15 @@ public class Figura extends ScrollPane implements Initializable {
 
 		topTransition = new TranslateTransition();
 		topTransition.setNode(topImage);
-		topTransition.setFromY(0);
-		topTransition.setToY(bottomImage.getFitHeight());
+		topTransition.setFromY(10);
+		topTransition.setToY(bottomImage.getFitHeight() + 14);
 		topTransition.setDuration(Duration.seconds(0.10));
 		topTransition.setInterpolator(Interpolator.LINEAR);
 		
 		bottomTransition = new TranslateTransition();
 		bottomTransition.setNode(bottomImage);
-		bottomTransition.setFromY(0);
-		bottomTransition.setToY(bottomImage.getFitHeight());
+		bottomTransition.setFromY(10);
+		bottomTransition.setToY(bottomImage.getFitHeight() + 14);
 		bottomTransition.setDuration(Duration.seconds(0.10));
 		bottomTransition.setInterpolator(Interpolator.LINEAR);
 	
