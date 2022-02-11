@@ -151,7 +151,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	
 	@FXML
     void onNivelesAction(ActionEvent event) {
-		
+		BaseController.getInstance().showLevelTower();
     }
 
 	public double getSpeed() {
