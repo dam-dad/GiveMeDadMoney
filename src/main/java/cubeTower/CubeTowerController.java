@@ -24,6 +24,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private Tower tower;
 	private boolean inicio = true;
 	private boolean play = true;
+	private double speed;
+	private int size;
 
 	@FXML
 	private GridPane pixeles;
@@ -40,7 +42,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		pixeles.setGridLinesVisible(true);
+		//pixeles.setGridLinesVisible(true);
 
 		tower = new Tower(pixeles.getColumnCount(), pixeles.getRowCount());
 		for (int i = 0; i < tower.getCols(); i++) {
@@ -55,13 +57,14 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			if (event.getCode() == KeyCode.SPACE) {
 				if (!play) {
 					stopCubo();
-				}else {
+				} else {
 					playCubo();
 				}
 
 			}
 			event.consume();
 		});
+		setSpeed(1e9);
 	}
 
 	public BorderPane getView() {
@@ -72,12 +75,10 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	public void handle(long now) {
 		long diff = now - last;
 		last = now;
-		loop(diff / 1e9); // pasamos el tiempo transacurrido a segundos
+		loop(diff / getSpeed()); // pasamos el tiempo transacurrido a segundos, getSpeed();
 	}
 
 	private void loop(double time) {
-		//
-
 		// clear cube from tower
 		cube.setColor("transparent");
 		cube.render(tower);
@@ -107,7 +108,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			cube.reduce(tower);
 			if (cube.getSize() == 0) {
 				stop();
-				play=true;
+				play = true;
 				Alert alertaTope = new Alert(AlertType.INFORMATION);
 				alertaTope.setHeaderText("¡¡¡Has perdido!!!");
 				alertaTope.setContentText("Nivel: " + getNivel());
@@ -115,7 +116,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			} else {
 				cube.moveUp();
 				if (cube.getY() < 0) {
-					play=true;
+					play = true;
 					stop();
 					Alert alertaTope = new Alert(AlertType.INFORMATION);
 					alertaTope.setHeaderText("¡¡¡Has ganado!!!");
@@ -141,18 +142,32 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 
 	private void playCubo() {
 		inicio = true;
-		play=false;
-		cube = new Cube(0, tower.getRows() - 1, 3);
+		play = false;
+		cube = new Cube(0, tower.getRows() - 1, 4);// setsize();
 		tower.clear();
 		last = System.nanoTime();
 		start();
 	}
-
+	
 	@FXML
-	void onKeyTyped(KeyEvent event) {
-//		if (event.getCode().equals(KeyCode.SPACE)) {
-//			System.out.println(event.getCode());
-//		}
+    void onNivelesAction(ActionEvent event) {
+		
+    }
+
+	public double getSpeed() {
+		return speed;
 	}
 
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+	
 }

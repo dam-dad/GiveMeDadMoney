@@ -40,6 +40,14 @@ public class Cube {
 		this.color = color;
 	}
 	
+	public double getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
 	public void render(Tower tower) {
 		for (int i = 0; i < size; i++) {
 			tower.draw(x + i, y, color);
