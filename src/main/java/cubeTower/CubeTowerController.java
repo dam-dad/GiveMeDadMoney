@@ -99,8 +99,9 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onAtrasButton(ActionEvent event) {
 		BaseController.getInstance().showMenu();
-		stop();
 		tower.clear();
+		stop();
+		
 	}
 
 	private void stopCubo() {
@@ -151,6 +152,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	
 	@FXML
     void onNivelesAction(ActionEvent event) {
+		stop();
+		tower.clear();
 		
     }
 

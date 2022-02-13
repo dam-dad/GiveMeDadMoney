@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onPrimerNivelAction" prefHeight="25.0" prefWidth="71.0" text="1ºNivel" VBox.vgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#onSegundoNivelAction" prefHeight="25.0" prefWidth="67.0" text="2ºNivel" VBox.vgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#onTercerNivelAction" prefHeight="25.0" prefWidth="70.0" text="3ºNivel" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onFacilAction" prefHeight="25.0" prefWidth="71.0" text="Fácil" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onMedioAction" prefHeight="25.0" prefWidth="67.0" text="Medio" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onDificilAction" prefHeight="25.0" prefWidth="70.0" text="Dificil" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>

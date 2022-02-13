@@ -52,7 +52,7 @@ public class BaseController implements Initializable {
 		try {
 			musica = new Music("/media/sound2.mp3");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

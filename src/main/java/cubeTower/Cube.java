@@ -1,7 +1,13 @@
 package cubeTower;
 
+import javafx.animation.TranslateTransition;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 public class Cube {
-	
+
 	private double time = 0.0;
 
 	private int size;
@@ -10,6 +16,10 @@ public class Cube {
 	private String color;
 	private int direction;
 	private double speed;
+	
+
+	@FXML
+	private ImageView total;
 
 	public Cube(int x, int y, int size) {
 		super();
@@ -35,11 +45,11 @@ public class Cube {
 	public String getColor() {
 		return color;
 	}
-	
+
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
+
 	public double getSpeed() {
 		return speed;
 	}
@@ -51,14 +61,13 @@ public class Cube {
 	public void render(Tower tower) {
 		for (int i = 0; i < size; i++) {
 			tower.draw(x + i, y, color);
-		}		
+		}
 	}
-	
+
 	private boolean checkCollision(Tower tower) {
-		return 	(x == 0 && direction == -1) ||
-				(x + size == tower.getCols() && direction == 1);
+		return (x == 0 && direction == -1) || (x + size == tower.getCols() && direction == 1);
 	}
-	
+
 	public void update(double diff, Tower tower) {
 		time += diff;
 		if (checkCollision(tower)) {
@@ -74,22 +83,26 @@ public class Cube {
 		y -= 1;
 		speed *= 0.75;
 	}
-	
+
 	public void reduce(Tower tower) {
-		
+		TranslateTransition cuboCaida = new TranslateTransition();
 		int total = x + size - 1;
-		for (int i = x; i <= total; i++) { 
-						
+		for (int i = x; i <= total; i++) {
+
 			if (!tower.isCube(i, y + 1)) {
 				if (i == x) {
 					x += 1;
 				}
 				size -= 1;
-				tower.draw(i, y, "transparent");
+				cuboCaida.setNode(tower.getRectangle(i, y ));
+				cuboCaida.setFromY(0);
+				cuboCaida.setToY(500);
+				cuboCaida.setDuration(Duration.seconds(1));
+				cuboCaida.play();
+				//tower.draw(i, y, "transparent");
 			}
-			
 		}
-		
+
 	}
 
 }

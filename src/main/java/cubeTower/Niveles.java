@@ -14,7 +14,7 @@ public class Niveles implements Initializable {
 	private CubeTowerController cube;
 	
 	public Niveles() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/niveles.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/dificultad.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
@@ -25,21 +25,24 @@ public class Niveles implements Initializable {
 	}
 	
 	@FXML
-    void onPrimerNivelAction(ActionEvent event) {
+    void onFacilAction(ActionEvent event) {
 		cube.setSpeed(1.5*1e9);
 		cube.setSize(4);
+		//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
     }
 
     @FXML
-    void onSegundoNivelAction(ActionEvent event) {
+    void onMedioAction(ActionEvent event) {
     	cube.setSpeed(0.5*1e9);
     	cube.setSize(3);
+    	//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
     }
 
     @FXML
-    void onTercerNivelAction(ActionEvent event) {
+    void onDificilAction(ActionEvent event) {
     	cube.setSpeed(0.3*1e9);
     	cube.setSize(2);
+    	//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
     }
 
 	
