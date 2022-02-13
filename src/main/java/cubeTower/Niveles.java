@@ -8,10 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import menuController.BaseController;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import main.GiveMeDADMoney;
 
 public class Niveles implements Initializable {
+	
+	private Stage stage;
 	
 	private CubeTowerController cube;
 	
@@ -26,7 +31,7 @@ public class Niveles implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		System.out.println("hola");
 	}
 	
 	@FXML
@@ -53,6 +58,15 @@ public class Niveles implements Initializable {
     public BorderPane getView() {
     	return root;
     }
+    
+    public void showOnStage() {
+		stage = new Stage();
+		stage.setTitle("Dificultad");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.initOwner(GiveMeDADMoney.getPrimaryStage());
+		stage.setScene(new Scene(root, 400, 200));
+		stage.showAndWait();
+	}
 
 	
 }

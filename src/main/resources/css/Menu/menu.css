@@ -23,6 +23,10 @@
 }
 
 .button:hover{
+	-fx-background-size:102%;
+}
+
+.button:pressed{
 	-fx-opacity:0.5;
 }
 

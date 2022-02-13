@@ -9,12 +9,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import menuController.BaseController;
 
 public class CubeTowerController extends AnimationTimer implements Initializable {
@@ -26,6 +30,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private boolean play = true;
 	private double speed;
 	private int size;
+	
+	private Niveles niveles;
 
 	@FXML
 	private GridPane pixeles;
@@ -151,10 +157,13 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	}
 	
 	@FXML
-    void onNivelesAction(ActionEvent event) {
-		stop();
-		tower.clear();
-		
+    void onNivelesAction(ActionEvent event) throws IOException {
+		niveles.showOnStage();
+//		Niveles controller= new Niveles();
+//		controller.showOnStage();
+//		stop();
+//		tower.clear();
+//		
     }
 
 	public double getSpeed() {
