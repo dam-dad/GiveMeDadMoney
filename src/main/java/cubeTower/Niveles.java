@@ -8,10 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import menuController.BaseController;
 
 public class Niveles implements Initializable {
 	
 	private CubeTowerController cube;
+	
+    @FXML
+    private BorderPane root;
 	
 	public Niveles() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/dificultad.fxml"));
@@ -43,6 +48,10 @@ public class Niveles implements Initializable {
     	cube.setSpeed(0.3*1e9);
     	cube.setSize(2);
     	//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
+    }
+    
+    public BorderPane getView() {
+    	return root;
     }
 
 	

@@ -9,6 +9,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import cubeTower.CubeTowerController;
+import cubeTower.Niveles;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +36,7 @@ public class BaseController implements Initializable {
 	private Controller tragaPerrasController = new Controller();
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
 	private CubeTowerController cubeTower = new CubeTowerController();
+	private Niveles cubeLevel = new Niveles();
 
 	public Music musica;
 
@@ -72,6 +74,12 @@ public class BaseController implements Initializable {
 	public void showCubeTower() {
 		root.setCenter(cubeTower.getView());
 	}
+	
+	
+	public void showLevelTower() {
+		root.setCenter(cubeLevel.getView());
+	}
+
 
 	public void showMayorOMenor() {
 		root.setCenter(mayorOMenor.getView());
