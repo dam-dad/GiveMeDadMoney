@@ -35,7 +35,7 @@ public class BaseController implements Initializable {
 	// CONTROLLER JUEGO
 	private Controller tragaPerrasController = new Controller();
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
-	private CubeTowerController cubeTower = new CubeTowerController();
+	private CubeTowerController cubeTower = new CubeTowerController();;
 	private Niveles cubeLevel = new Niveles();
 
 	public Music musica;
@@ -74,9 +74,16 @@ public class BaseController implements Initializable {
 	public void showCubeTower() {
 		root.setCenter(cubeTower.getView());
 	}
+	public CubeTowerController getCubeTower() {
+		return cubeTower;
+	}
+	public void setCubeTower(CubeTowerController cube) {
+		this.cubeTower = cube;
+	}
 	
 	
 	public void showLevelTower() {
+		cubeLevel.setCubeController(cubeTower);
 		root.setCenter(cubeLevel.getView());
 	}
 
