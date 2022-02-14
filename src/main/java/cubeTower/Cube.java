@@ -16,7 +16,7 @@ public class Cube {
 	private String color;
 	private int direction;
 	private double speed;
-	
+	public TranslateTransition cuboCaida = new TranslateTransition();
 
 	@FXML
 	private ImageView total;
@@ -85,7 +85,7 @@ public class Cube {
 	}
 
 	public void reduce(Tower tower) {
-		TranslateTransition cuboCaida = new TranslateTransition();
+		int duracion=0;
 		int total = x + size - 1;
 		for (int i = x; i <= total; i++) {
 
@@ -94,15 +94,19 @@ public class Cube {
 					x += 1;
 				}
 				size -= 1;
-				cuboCaida.setNode(tower.getRectangle(i, y ));
+				
+				cuboCaida.setNode(tower.getRectangle(i, y));
 				cuboCaida.setFromY(0);
 				cuboCaida.setToY(500);
 				cuboCaida.setDuration(Duration.seconds(1));
 				cuboCaida.play();
-				//tower.draw(i, y, "transparent");
+				if(cuboCaida.getTotalDuration()==Duration.seconds(duracion)) {
+					tower.draw(i, y, "transparent");
+				}else {
+					duracion++;
+				}
+				
 			}
 		}
-
 	}
-
 }

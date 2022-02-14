@@ -152,6 +152,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		play = false;
 		cube = new Cube(0, tower.getRows() - 1, 4);// setsize();
 		tower.clear();
+		
 		last = System.nanoTime();
 		start();
 	}
