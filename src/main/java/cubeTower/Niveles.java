@@ -19,6 +19,7 @@ import menuController.BaseController;
 public class Niveles implements Initializable {
 
 	private CubeTowerController cube;
+	private Tower tower;
 
 	@FXML
 	private BorderPane view;
@@ -33,11 +34,16 @@ public class Niveles implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("niveles");
 	}
+	
+	public void setCubeController(CubeTowerController cube) {
+		this.cube = cube;
+	}
 
 	@FXML
 	void onFacilAction(ActionEvent event) {
 		cube.setSpeed(1.5 * 1e9);
 		cube.setSize(4);
+		tower.clear();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -46,6 +52,7 @@ public class Niveles implements Initializable {
 	void onMedioAction(ActionEvent event) {
 		cube.setSpeed(0.5 * 1e9);
 		cube.setSize(3);
+		tower.clear();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -54,6 +61,7 @@ public class Niveles implements Initializable {
 	void onDificilAction(ActionEvent event) {
 		cube.setSpeed(0.3 * 1e9);
 		cube.setSize(2);
+		tower.clear();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -62,8 +70,6 @@ public class Niveles implements Initializable {
 		return view;
 	}
 
-	public void setCubeController(CubeTowerController cube) {
-		this.cube = cube;
-	}
+	
 
 }

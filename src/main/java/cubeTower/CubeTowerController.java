@@ -70,6 +70,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			event.consume();
 		});
 		setSpeed(1e9);
+		setSize(4);
 
 	}
 
@@ -150,7 +151,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private void playCubo() {
 		inicio = true;
 		play = false;
-		cube = new Cube(0, tower.getRows() - 1, 4);// setsize();
+		cube = new Cube(0, tower.getRows() - 1, getSize());// setsize();
 		tower.clear();
 		
 		last = System.nanoTime();
@@ -160,7 +161,6 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
     void onNivelesAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showLevelTower();
-	
     }
 
 	public double getSpeed() {

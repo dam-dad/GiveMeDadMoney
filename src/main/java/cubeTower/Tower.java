@@ -52,7 +52,12 @@ public class Tower {
 	}
 	
 	public boolean isCube(int x, int y) {
-		return !getRectangle(x, y).getStyle().contains("transparent");
+		if(!getRectangle(x, y).getStyle().contains("transparent") || getRectangle(x, y).getStyle().contains("rgba(255, 255, 255, .7)")){
+			return true;
+		}else {
+			return false;
+		}
+		//return !getRectangle(x, y).getStyle().contains("transparent") || getRectangle(x, y).getStyle().contains("rgba(255, 255, 255, .9)");
 	}
 
 	public void clear() {
