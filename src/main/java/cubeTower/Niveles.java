@@ -9,20 +9,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.GiveMeDADMoney;
+import menuController.BaseController;
 
 public class Niveles implements Initializable {
-	
-	private Stage stage;
-	
+
 	private CubeTowerController cube;
-	
-    @FXML
-    private BorderPane root;
-	
+
+	@FXML
+	private BorderPane view;
+
 	public Niveles() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/dificultad.fxml"));
 		loader.setController(this);
@@ -31,42 +31,39 @@ public class Niveles implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("hola");
+		System.out.println("niveles");
 	}
-	
+
 	@FXML
-    void onFacilAction(ActionEvent event) {
-		cube.setSpeed(1.5*1e9);
+	void onFacilAction(ActionEvent event) {
+		cube.setSpeed(1.5 * 1e9);
 		cube.setSize(4);
-		//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
-    }
-
-    @FXML
-    void onMedioAction(ActionEvent event) {
-    	cube.setSpeed(0.5*1e9);
-    	cube.setSize(3);
-    	//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
-    }
-
-    @FXML
-    void onDificilAction(ActionEvent event) {
-    	cube.setSpeed(0.3*1e9);
-    	cube.setSize(2);
-    	//TODO PONER ACCION DE DAR PARA ATRAS AL JUEGO
-    }
-    
-    public BorderPane getView() {
-    	return root;
-    }
-    
-    public void showOnStage() {
-		stage = new Stage();
-		stage.setTitle("Dificultad");
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(GiveMeDADMoney.getPrimaryStage());
-		stage.setScene(new Scene(root, 400, 200));
-		stage.showAndWait();
+		BaseController.getInstance().setCubeTower(cube);
+		BaseController.getInstance().showCubeTower();
 	}
 
-	
+	@FXML
+	void onMedioAction(ActionEvent event) {
+		cube.setSpeed(0.5 * 1e9);
+		cube.setSize(3);
+		BaseController.getInstance().setCubeTower(cube);
+		BaseController.getInstance().showCubeTower();
+	}
+
+	@FXML
+	void onDificilAction(ActionEvent event) {
+		cube.setSpeed(0.3 * 1e9);
+		cube.setSize(2);
+		BaseController.getInstance().setCubeTower(cube);
+		BaseController.getInstance().showCubeTower();
+	}
+
+	public BorderPane getView() {
+		return view;
+	}
+
+	public void setCubeController(CubeTowerController cube) {
+		this.cube = cube;
+	}
+
 }

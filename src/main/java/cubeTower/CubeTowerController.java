@@ -31,7 +31,6 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private double speed;
 	private int size;
 	
-	private Niveles niveles;
 
 	@FXML
 	private GridPane pixeles;
@@ -71,6 +70,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			event.consume();
 		});
 		setSpeed(1e9);
+
 	}
 
 	public BorderPane getView() {
@@ -158,12 +158,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	
 	@FXML
     void onNivelesAction(ActionEvent event) throws IOException {
-		niveles.showOnStage();
-//		Niveles controller= new Niveles();
-//		controller.showOnStage();
-//		stop();
-//		tower.clear();
-//		
+		BaseController.getInstance().showLevelTower();
+	
     }
 
 	public double getSpeed() {
