@@ -59,7 +59,7 @@ public class MenuController implements Initializable {
 
 		Font.loadFont(getClass().getResourceAsStream("/fonts/ELEPHANT.TFF"), 14);
 
-		load_score();
+		load_score(); 
 		
 	}
 	public void load_score() {

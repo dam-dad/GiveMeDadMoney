@@ -1,7 +1,5 @@
 package cubeTower;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -10,13 +8,14 @@ import javafx.util.Duration;
 public class Cube {
 
 	private double time = 0.0;
-
+ 
 	private int size;
 	private int x;
 	private int y;
 	private String color;
 	private int direction;
 	private double speed;
+	private TranslateTransition cuboCaida;
 
 	@FXML
 	private ImageView total;
@@ -89,8 +88,8 @@ public class Cube {
 		int total = x + size - 1;
 		
 		for (int i = x; i <= total; i++) {
-			TranslateTransition cuboCaida = new TranslateTransition();
-			if (!tower.isCube(i, y + 1)) {
+			cuboCaida = new TranslateTransition();
+			if (!tower.isCube(i, y + 1) || !tower.isCubeFall(i, y+1)) {
 				if (i == x) {
 					x += 1;
 				}
@@ -101,6 +100,7 @@ public class Cube {
 				cuboCaida.setToY(500);
 				cuboCaida.setDuration(Duration.seconds(1));
 				cuboCaida.play();
+				//cuboCaida.stop();
 				tower.draw(i, y, "rgba(255, 255, 255, .7)");
 			}
 		}

@@ -8,18 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import main.GiveMeDADMoney;
 import menuController.BaseController;
 
 public class Niveles implements Initializable {
 
 	private CubeTowerController cube;
-	private Tower tower;
 
 	@FXML
 	private BorderPane view;
@@ -32,7 +26,7 @@ public class Niveles implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("niveles");
+		//System.out.println("niveles");
 	}
 	
 	public void setCubeController(CubeTowerController cube) {
@@ -43,7 +37,10 @@ public class Niveles implements Initializable {
 	void onFacilAction(ActionEvent event) {
 		cube.setSpeed(1.5 * 1e9);
 		cube.setSize(4);
-		tower.clear();
+		cube.setBonificacion(2);
+		cube.getTower().clear();
+		cube.stop();
+		cube.playCubo();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -52,7 +49,10 @@ public class Niveles implements Initializable {
 	void onMedioAction(ActionEvent event) {
 		cube.setSpeed(0.5 * 1e9);
 		cube.setSize(3);
-		tower.clear();
+		cube.setBonificacion(4);
+		cube.getTower().clear();
+		cube.stop();
+		cube.playCubo();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -61,7 +61,10 @@ public class Niveles implements Initializable {
 	void onDificilAction(ActionEvent event) {
 		cube.setSpeed(0.3 * 1e9);
 		cube.setSize(2);
-		tower.clear();
+		cube.setBonificacion(8);
+		cube.getTower().clear();
+		cube.stop();
+		cube.playCubo();
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -69,7 +72,5 @@ public class Niveles implements Initializable {
 	public BorderPane getView() {
 		return view;
 	}
-
-	
 
 }
