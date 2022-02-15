@@ -19,6 +19,7 @@ import javafx.scene.media.MediaPlayer;
 import main.GiveMeDADMoney;
 import main.Music;
 import mayorOMenor.MayorOMenorController;
+import store.StoreController;
 import tragaPerras.Controller;
 
 public class BaseController implements Initializable {
@@ -37,6 +38,10 @@ public class BaseController implements Initializable {
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
 	private CubeTowerController cubeTower = new CubeTowerController();;
 	private Niveles cubeLevel = new Niveles();
+	
+	
+	//Tienda
+	private StoreController store = new StoreController();
 
 	public Music musica;
 
@@ -96,6 +101,10 @@ public class BaseController implements Initializable {
 	public void showMenu() {
 		root.setCenter(menuController.getView());
 		menuController.load_score();
+	}
+	
+	public void showStore() {
+		root.setCenter(store.getView());
 	}
 
 	public BorderPane getView() {
