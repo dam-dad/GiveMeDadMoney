@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/TragaPerras.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/TragaPerras.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
@@ -24,45 +37,60 @@
                             <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3">
                            <children>
-                                      <ScrollPane prefWidth="190.0">
-                                          <content>
-                                              <StackPane prefHeight="115.0" prefWidth="144.0" translateY="12.0">
-                                                  <children>
-                                                      <ImageView fx:id="imageBlock1" fitHeight="115.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                                                          <image>
-                                                              <Image url="@../../images/TragaPerras/seven.png" />
-                                                          </image>
-                                                      </ImageView>
-                                                  </children>
-                                              </StackPane>
-                                          </content>
-                                      </ScrollPane>
-                                      <ScrollPane prefWidth="200.0">
-                                          <content>
-                                              <StackPane prefHeight="115.0" prefWidth="126.0" translateX="18.0" translateY="12.0" GridPane.columnIndex="1">
-                                                  <children>
-                                                      <ImageView fx:id="imageBlock2" fitHeight="115.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                                                          <image>
-                                                              <Image url="@../../images/TragaPerras/seven.png" />
-                                                          </image>
-                                                      </ImageView>
-                                                  </children>
-                                              </StackPane>
-                                          </content>
-                                      </ScrollPane>
-      								<ScrollPane prefWidth="190.0">
-      									<content>
-      										<StackPane prefHeight="115.0" prefWidth="121.0" translateX="15.0" translateY="12.0" GridPane.columnIndex="2">
-      											<children>
-      												<ImageView fx:id="imageBlock3" fitHeight="115.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-      													<image>
-      														<Image url="@../../images/TragaPerras/seven.png" />
-      													</image>
-      												</ImageView>
-      											</children>
-      										</StackPane>
-      									</content>
-      								</ScrollPane>
+                              <ScrollPane prefWidth="200.0">
+                                 <content>
+                                    <VBox fx:id="pane" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                       <children>
+                                          <ImageView fx:id="topImage1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/seven.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="bottomImage1" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/cherry.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane prefWidth="200.0">
+                                 <content>
+                                    <VBox fx:id="pane1" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                       <children>
+                                          <ImageView fx:id="topImage2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/seven.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="bottomImage2" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/cherry.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane prefWidth="200.0">
+                                 <content>
+                                    <VBox fx:id="pane2" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                       <children>
+                                          <ImageView fx:id="topImage3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/seven.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="bottomImage3" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+                                             <image>
+                                                <Image url="@../../images/TragaPerras/cherry.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </HBox>
                                 <StackPane prefHeight="174.0" prefWidth="482.0">

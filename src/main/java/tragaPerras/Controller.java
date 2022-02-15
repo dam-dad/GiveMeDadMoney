@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.Interpolator;
+import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -31,22 +33,34 @@ public class Controller implements Initializable {
 	private ObjectProperty<Image> imagen2Property = new SimpleObjectProperty<>();
 	private ObjectProperty<Image> imagen3Property = new SimpleObjectProperty<>();
 	private IntegerProperty puntosTotales = new SimpleIntegerProperty();
+	private IntegerProperty top1 = new SimpleIntegerProperty();
+	private IntegerProperty top2 = new SimpleIntegerProperty();
+	private IntegerProperty top3 = new SimpleIntegerProperty();
+	private IntegerProperty bottom1 = new SimpleIntegerProperty();
+	private IntegerProperty bottom2 = new SimpleIntegerProperty();
+	private IntegerProperty bottom3 = new SimpleIntegerProperty();
 
 	private int valor1, valor2, valor3;
 	private int sumaPuntos;
+	private ParallelTransition transition;
 
-	TranslateTransition transition1 = new TranslateTransition();
-	TranslateTransition transition2 = new TranslateTransition();
-	TranslateTransition transition3 = new TranslateTransition();
+	private int counter;
+
+	TranslateTransition topTransition1 = new TranslateTransition();
+	TranslateTransition topTransition2 = new TranslateTransition();
+	TranslateTransition topTransition3 = new TranslateTransition();
+	TranslateTransition bottomTransition1 = new TranslateTransition();
+	TranslateTransition bottomTransition2 = new TranslateTransition();
+	TranslateTransition bottomTransition3 = new TranslateTransition();
 
 	@FXML
 	private Button apuestaButton, volverButton;
 
 	@FXML
-	private HBox buttonsContainer;
+	private ImageView bottomImage1, topImage1, bottomImage2, topImage2, bottomImage3, topImage3;
 
 	@FXML
-	private ImageView imageBlock1, imageBlock2, imageBlock3;
+	private HBox buttonsContainer;
 
 	@FXML
 	private Text puntosText;
@@ -75,13 +89,8 @@ public class Controller implements Initializable {
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
 		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
-		
-		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
-		
 
-		imageBlock1.imageProperty().bind(imagen1Property);
-		imageBlock2.imageProperty().bind(imagen2Property);
-		imageBlock3.imageProperty().bind(imagen3Property);
+		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
 		imagen1Property.set(Imagen.SEVEN.getImagen());
 		imagen2Property.set(Imagen.SEVEN.getImagen());
@@ -90,23 +99,102 @@ public class Controller implements Initializable {
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
 
-		transition1.setNode(imageBlock1);
-		transition1.setFromY(-250);
-		transition1.setToY(0);
-		transition1.setCycleCount(7);
-		transition1.setDuration(Duration.seconds(0.10));
+		topTransition1 = new TranslateTransition();
+		topTransition1.setNode(topImage1);
+		topTransition1.setFromY(10);
+		topTransition1.setToY(bottomImage1.getFitHeight() + 14);
+		topTransition1.setDuration(Duration.seconds(0.10));
+		topTransition1.setInterpolator(Interpolator.LINEAR);
 
-		transition2.setNode(imageBlock2);
-		transition2.setFromY(-250);
-		transition2.setToY(0);
-		transition2.setCycleCount(10);
-		transition2.setDuration(Duration.seconds(0.10));
+		bottomTransition1 = new TranslateTransition();
+		bottomTransition1.setNode(bottomImage1);
+		bottomTransition1.setFromY(10);
+		bottomTransition1.setToY(bottomImage1.getFitHeight() + 14);
+		bottomTransition1.setDuration(Duration.seconds(0.10));
+		bottomTransition1.setInterpolator(Interpolator.LINEAR);
 
-		transition3.setNode(imageBlock3);
-		transition3.setFromY(-250);
-		transition3.setToY(0);
-		transition3.setCycleCount(13);
-		transition3.setDuration(Duration.seconds(0.10));
+		// ----------------------------------------------------------------------------------------------
+
+		topTransition2 = new TranslateTransition();
+		topTransition2.setNode(topImage2);
+		topTransition2.setFromY(10);
+		topTransition2.setToY(bottomImage2.getFitHeight() + 14);
+		topTransition2.setDuration(Duration.seconds(0.10));
+		topTransition2.setInterpolator(Interpolator.LINEAR);
+
+		bottomTransition2 = new TranslateTransition();
+		bottomTransition2.setNode(bottomImage2);
+		bottomTransition2.setFromY(10);
+		bottomTransition2.setToY(bottomImage2.getFitHeight() + 14);
+		bottomTransition2.setDuration(Duration.seconds(0.10));
+		bottomTransition2.setInterpolator(Interpolator.LINEAR);
+
+		// ---------------------------------------------------------------------------------------------------
+
+		topTransition3 = new TranslateTransition();
+		topTransition3.setNode(topImage3);
+		topTransition3.setFromY(10);
+		topTransition3.setToY(bottomImage3.getFitHeight() + 14);
+		topTransition3.setDuration(Duration.seconds(0.10));
+		topTransition3.setInterpolator(Interpolator.LINEAR);
+
+		bottomTransition3 = new TranslateTransition();
+		bottomTransition3.setNode(bottomImage3);
+		bottomTransition3.setFromY(10);
+		bottomTransition3.setToY(bottomImage3.getFitHeight() + 14);
+		bottomTransition3.setDuration(Duration.seconds(0.10));
+		bottomTransition3.setInterpolator(Interpolator.LINEAR);
+
+		transition = new ParallelTransition(topTransition1, bottomTransition1,topTransition2,bottomTransition2,topTransition3,bottomTransition3);
+		transition.setOnFinished(e -> {
+			counter--;
+			if (counter >= 0) {
+
+				if (counter == 0) {
+					bottomTransition1.setInterpolator(Interpolator.EASE_OUT);
+					bottomTransition2.setInterpolator(Interpolator.EASE_OUT);
+					bottomTransition3.setInterpolator(Interpolator.EASE_OUT);
+					topTransition1.setInterpolator(Interpolator.EASE_OUT);
+					topTransition2.setInterpolator(Interpolator.EASE_OUT);
+					topTransition3.setInterpolator(Interpolator.EASE_OUT);
+				}
+
+				bottom1.set((bottom1.get() + 1) % Imagen.IMAGENES.size());
+				bottom2.set((bottom2.get() + 1) % Imagen.IMAGENES.size());
+				bottom3.set((bottom3.get() + 1) % Imagen.IMAGENES.size());
+				transition.play();
+			}
+		});
+
+		bottom1.addListener((o, ov, nv) -> {
+			top1.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
+			System.out.println("posicion1: " + bottom1.getValue() + "/" + top1.getValue());
+			bottomImage1.setImage(topImage1.getImage());
+			topImage1.setImage(Imagen.IMAGENES.get(bottom1.get()).getImagen());
+		});
+
+		// --------------------------------------------------------------------
+
+		bottom2.addListener((o, ov, nv) -> {
+			top2.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
+			System.out.println("posicion2: " + bottom2.getValue() + "/" + top2.getValue());
+			bottomImage2.setImage(topImage2.getImage());
+			topImage2.setImage(Imagen.IMAGENES.get(bottom2.get()).getImagen());
+		});
+
+		// ----------------------------------------------------------------------
+
+		bottom3.addListener((o, ov, nv) -> {
+			top3.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
+			System.out.println("posicion3: " + bottom3.getValue() + "/" + top3.getValue());
+			bottomImage3.setImage(topImage3.getImage());
+			topImage3.setImage(Imagen.IMAGENES.get(bottom3.get()).getImagen());
+		});
+
+		bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));
+		bottom2.set((int) (Math.random() * Imagen.IMAGENES.size()));
+		bottom3.set((int) (Math.random() * Imagen.IMAGENES.size()));
+
 	}
 
 	private void saveScore() {
@@ -116,6 +204,13 @@ public class Controller implements Initializable {
 	@FXML
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
+
+			counter = 10;
+			bottom1.set(((bottom1.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom1.get()) - 1);
+			bottom2.set(((bottom2.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom2.get()) - 1);
+			bottom3.set(((bottom3.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom3.get()) - 1);
+			transition.play();
+
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
 			saveScore();
 		} else {
@@ -138,10 +233,6 @@ public class Controller implements Initializable {
 
 		if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
 
-			transition1.play();
-			transition2.play();
-			transition3.play();
-
 			Imagen i1 = Imagen.randomImagen();
 			imagen1Property.set(i1.getImagen());
 			valor1 = i1.getValor();
@@ -156,7 +247,7 @@ public class Controller implements Initializable {
 
 			sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
-			
+
 		} else {
 			GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
 					"Necesitas mas puntos para poder jugar.");
