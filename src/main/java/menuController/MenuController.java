@@ -36,6 +36,9 @@ public class MenuController implements Initializable {
 	
 	@FXML
     private Button mayorOmenorButton;
+	
+    @FXML
+    private Button storeButton;
 
 	
 	// MODEL
@@ -86,6 +89,11 @@ public class MenuController implements Initializable {
 	void onCubeTowerAction	(ActionEvent event) {
 		BaseController.getInstance().showCubeTower();
 	}
+	
+	@FXML
+    void onStoreAction(ActionEvent event) {
+		BaseController.getInstance().showStore();
+    }
 
 	public BorderPane getView() {
 		return menuRootView;
