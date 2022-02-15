@@ -218,4 +218,12 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	public void setBonificacion(int bonificacion) {
 		this.bonificacion = bonificacion;
 	}
+
+	public GridPane getPixeles() {
+		return pixeles;
+	}
+
+	public void setPixeles(GridPane pixeles) {
+		this.pixeles = pixeles;
+	}
 }

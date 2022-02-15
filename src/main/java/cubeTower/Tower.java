@@ -1,5 +1,6 @@
 package cubeTower;
 
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 public class Tower {
@@ -50,6 +51,11 @@ public class Tower {
 	public void draw(int x, int y, String color) {
 		rectangles[x][y].setStyle("-fx-background-color:" + color);
 	}
+	
+	public void draw(Node node, String color) {
+		node.setStyle("-fx-background-color:" + color);
+	}
+	
 	
 	public boolean isCube(int x, int y) {
 		return !getRectangle(x, y).getStyle().contains("transparent");

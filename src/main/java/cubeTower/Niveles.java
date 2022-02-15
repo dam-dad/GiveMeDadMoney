@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import menuController.BaseController;
 
 public class Niveles implements Initializable {
@@ -38,9 +39,11 @@ public class Niveles implements Initializable {
 		cube.setSpeed(1.5 * 1e9);
 		cube.setSize(4);
 		cube.setBonificacion(2);
+		//TODO añadir mas o menso columnas o filas
 		cube.getTower().clear();
 		cube.stop();
 		cube.playCubo();
+		
 		BaseController.getInstance().setCubeTower(cube);
 		BaseController.getInstance().showCubeTower();
 	}
@@ -50,6 +53,7 @@ public class Niveles implements Initializable {
 		cube.setSpeed(0.5 * 1e9);
 		cube.setSize(3);
 		cube.setBonificacion(4);
+		//TODO añadir mas o menso columnas o filas
 		cube.getTower().clear();
 		cube.stop();
 		cube.playCubo();
@@ -62,7 +66,8 @@ public class Niveles implements Initializable {
 		cube.setSpeed(0.3 * 1e9);
 		cube.setSize(2);
 		cube.setBonificacion(8);
-		cube.getTower().clear();
+		cube.getPixeles().getColumnConstraints();
+		//TODO añadir mas o menso columnas o filas
 		cube.stop();
 		cube.playCubo();
 		BaseController.getInstance().setCubeTower(cube);
