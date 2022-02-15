@@ -98,6 +98,7 @@ public class Controller implements Initializable {
 		topTransition1 = translateTransition(topImage1, bottomImage1);
 		topTransition2 = translateTransition(topImage2, bottomImage2);
 		topTransition3 = translateTransition(topImage3, bottomImage3);
+
 		bottomTransition1 = translateTransition(bottomImage1, bottomImage1);
 		bottomTransition2 = translateTransition(bottomImage2, bottomImage2);
 		bottomTransition3 = translateTransition(bottomImage3, bottomImage3);
@@ -124,30 +125,9 @@ public class Controller implements Initializable {
 			}
 		});
 
-		bottom1.addListener((o, ov, nv) -> {
-			top1.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			System.out.println("posicion1: " + bottom1.getValue() + "/" + top1.getValue());
-			bottomImage1.setImage(topImage1.getImage());
-			topImage1.setImage(Imagen.IMAGENES.get(bottom1.get()).getImagen());
-		});
-
-		// --------------------------------------------------------------------
-
-		bottom2.addListener((o, ov, nv) -> {
-			top2.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			System.out.println("posicion2: " + bottom2.getValue() + "/" + top2.getValue());
-			bottomImage2.setImage(topImage2.getImage());
-			topImage2.setImage(Imagen.IMAGENES.get(bottom2.get()).getImagen());
-		});
-
-		// ----------------------------------------------------------------------
-
-		bottom3.addListener((o, ov, nv) -> {
-			top3.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			System.out.println("posicion3: " + bottom3.getValue() + "/" + top3.getValue());
-			bottomImage3.setImage(topImage3.getImage());
-			topImage3.setImage(Imagen.IMAGENES.get(bottom3.get()).getImagen());
-		});
+		listener(bottom1, top1, topImage1, bottomImage1);
+		listener(bottom2, top2, topImage2, bottomImage2);
+		listener(bottom3, top3, topImage3, bottomImage3);
 
 	}
 
@@ -225,12 +205,23 @@ public class Controller implements Initializable {
 
 	}
 
+	public static void listener(IntegerProperty bottomProperty, IntegerProperty topProperty, ImageView top,
+			ImageView bottom) {
+
+		bottomProperty.addListener((o, ov, nv) -> {
+			topProperty.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
+			bottom.setImage(top.getImage());
+			top.setImage(Imagen.IMAGENES.get(bottomProperty.get()).getImagen());
+		});
+
+	}
+
 	public int recompensas(int valor1, int valor2, int valor3, int numeroApuesta) {
 
 		int numero = 0;
 
 		if (valor1 == valor2 && valor1 == valor3) {
-
+			
 			switch (valor1) {
 				case 10:
 					numero = valor1 * 2;
