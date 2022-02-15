@@ -39,7 +39,7 @@
                            <children>
                               <ScrollPane prefWidth="200.0">
                                  <content>
-                                    <VBox fx:id="pane" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                    <VBox fx:id="pane" alignment="CENTER_RIGHT" spacing="10.0" translateX="20.0" translateY="-95.0">
                                        <children>
                                           <ImageView fx:id="topImage1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -57,7 +57,7 @@
                               </ScrollPane>
                               <ScrollPane prefWidth="200.0">
                                  <content>
-                                    <VBox fx:id="pane1" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                    <VBox fx:id="pane1" alignment="CENTER_RIGHT" spacing="10.0" translateX="15.0" translateY="-95.0">
                                        <children>
                                           <ImageView fx:id="topImage2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
                                              <image>
@@ -75,7 +75,7 @@
                               </ScrollPane>
                               <ScrollPane prefWidth="200.0">
                                  <content>
-                                    <VBox fx:id="pane2" alignment="CENTER_RIGHT" spacing="10.0" translateY="-105.0">
+                                    <VBox fx:id="pane2" alignment="CENTER_RIGHT" spacing="10.0" translateX="15.0" translateY="-95.0">
                                        <children>
                                           <ImageView fx:id="topImage3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
                                              <image>

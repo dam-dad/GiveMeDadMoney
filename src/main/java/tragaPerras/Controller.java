@@ -198,7 +198,7 @@ public class Controller implements Initializable {
 
 		transition.setNode(top);
 		transition.setFromY(10);
-		transition.setToY(bottom.getFitHeight() + 14);
+		transition.setToY(bottom.getFitHeight() + 20);
 		transition.setDuration(Duration.seconds(0.10));
 		transition.setInterpolator(Interpolator.LINEAR);
 		return transition;
