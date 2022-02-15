@@ -26,15 +26,10 @@
         </HBox>
     </bottom>
     <left>
-        <VBox alignment="CENTER" prefWidth="125.0" spacing="5.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="125.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
                 <Label text="Tu carta:" />
-                <Label fx:id="myNumLabel" text="Label">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </Label>
-            <ImageView fx:id="myCard" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myCard" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/MayorOMenor/backCarta.png" />
                </image>
@@ -56,12 +51,7 @@
                         <Insets />
                     </VBox.margin>
                 </Label>
-                <Label fx:id="homeNumLabel" text="Label">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </Label>
-            <ImageView fx:id="homeCard" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="homeCard" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/MayorOMenor/backCarta.png" />
                </image>
