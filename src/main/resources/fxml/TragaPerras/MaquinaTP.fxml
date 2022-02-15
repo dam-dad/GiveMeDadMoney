@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/TragaPerras.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/TragaPerras/TragaPerras.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
@@ -37,9 +24,9 @@
                             <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3">
                            <children>
-                              <ScrollPane prefWidth="200.0">
+                              <ScrollPane hbarPolicy="NEVER" prefWidth="200.0" vbarPolicy="NEVER">
                                  <content>
-                                    <VBox fx:id="pane" alignment="CENTER_RIGHT" spacing="10.0" translateX="20.0" translateY="-95.0">
+                                    <VBox fx:id="pane" alignment="CENTER_RIGHT" spacing="10.0" translateX="22.0" translateY="-95.0">
                                        <children>
                                           <ImageView fx:id="topImage1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -55,7 +42,7 @@
                                     </VBox>
                                  </content>
                               </ScrollPane>
-                              <ScrollPane prefWidth="200.0">
+                              <ScrollPane hbarPolicy="NEVER" prefWidth="200.0" vbarPolicy="NEVER">
                                  <content>
                                     <VBox fx:id="pane1" alignment="CENTER_RIGHT" spacing="10.0" translateX="15.0" translateY="-95.0">
                                        <children>
@@ -73,7 +60,7 @@
                                     </VBox>
                                  </content>
                               </ScrollPane>
-                              <ScrollPane prefWidth="200.0">
+                              <ScrollPane hbarPolicy="NEVER" prefWidth="200.0" vbarPolicy="NEVER">
                                  <content>
                                     <VBox fx:id="pane2" alignment="CENTER_RIGHT" spacing="10.0" translateX="15.0" translateY="-95.0">
                                        <children>
