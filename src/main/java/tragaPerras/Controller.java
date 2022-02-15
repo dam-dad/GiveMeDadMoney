@@ -92,60 +92,18 @@ public class Controller implements Initializable {
 
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
-		imagen1Property.set(Imagen.SEVEN.getImagen());
-		imagen2Property.set(Imagen.SEVEN.getImagen());
-		imagen3Property.set(Imagen.SEVEN.getImagen());
-
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
 
-		topTransition1 = new TranslateTransition();
-		topTransition1.setNode(topImage1);
-		topTransition1.setFromY(10);
-		topTransition1.setToY(bottomImage1.getFitHeight() + 14);
-		topTransition1.setDuration(Duration.seconds(0.10));
-		topTransition1.setInterpolator(Interpolator.LINEAR);
+		topTransition1 = translateTransition(topImage1, bottomImage1);
+		topTransition2 = translateTransition(topImage2, bottomImage2);
+		topTransition3 = translateTransition(topImage3, bottomImage3);
+		bottomTransition1 = translateTransition(bottomImage1, bottomImage1);
+		bottomTransition2 = translateTransition(bottomImage2, bottomImage2);
+		bottomTransition3 = translateTransition(bottomImage3, bottomImage3);
 
-		bottomTransition1 = new TranslateTransition();
-		bottomTransition1.setNode(bottomImage1);
-		bottomTransition1.setFromY(10);
-		bottomTransition1.setToY(bottomImage1.getFitHeight() + 14);
-		bottomTransition1.setDuration(Duration.seconds(0.10));
-		bottomTransition1.setInterpolator(Interpolator.LINEAR);
-
-		// ----------------------------------------------------------------------------------------------
-
-		topTransition2 = new TranslateTransition();
-		topTransition2.setNode(topImage2);
-		topTransition2.setFromY(10);
-		topTransition2.setToY(bottomImage2.getFitHeight() + 14);
-		topTransition2.setDuration(Duration.seconds(0.10));
-		topTransition2.setInterpolator(Interpolator.LINEAR);
-
-		bottomTransition2 = new TranslateTransition();
-		bottomTransition2.setNode(bottomImage2);
-		bottomTransition2.setFromY(10);
-		bottomTransition2.setToY(bottomImage2.getFitHeight() + 14);
-		bottomTransition2.setDuration(Duration.seconds(0.10));
-		bottomTransition2.setInterpolator(Interpolator.LINEAR);
-
-		// ---------------------------------------------------------------------------------------------------
-
-		topTransition3 = new TranslateTransition();
-		topTransition3.setNode(topImage3);
-		topTransition3.setFromY(10);
-		topTransition3.setToY(bottomImage3.getFitHeight() + 14);
-		topTransition3.setDuration(Duration.seconds(0.10));
-		topTransition3.setInterpolator(Interpolator.LINEAR);
-
-		bottomTransition3 = new TranslateTransition();
-		bottomTransition3.setNode(bottomImage3);
-		bottomTransition3.setFromY(10);
-		bottomTransition3.setToY(bottomImage3.getFitHeight() + 14);
-		bottomTransition3.setDuration(Duration.seconds(0.10));
-		bottomTransition3.setInterpolator(Interpolator.LINEAR);
-
-		transition = new ParallelTransition(topTransition1, bottomTransition1,topTransition2,bottomTransition2,topTransition3,bottomTransition3);
+		transition = new ParallelTransition(topTransition1, bottomTransition1, topTransition2, bottomTransition2,
+				topTransition3, bottomTransition3);
 		transition.setOnFinished(e -> {
 			counter--;
 			if (counter >= 0) {
@@ -190,10 +148,6 @@ public class Controller implements Initializable {
 			bottomImage3.setImage(topImage3.getImage());
 			topImage3.setImage(Imagen.IMAGENES.get(bottom3.get()).getImagen());
 		});
-
-		bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));
-		bottom2.set((int) (Math.random() * Imagen.IMAGENES.size()));
-		bottom3.set((int) (Math.random() * Imagen.IMAGENES.size()));
 
 	}
 
@@ -248,10 +202,26 @@ public class Controller implements Initializable {
 			sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
 
+			bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));
+			bottom2.set((int) (Math.random() * Imagen.IMAGENES.size()));
+			bottom3.set((int) (Math.random() * Imagen.IMAGENES.size()));
+
 		} else {
 			GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
 					"Necesitas mas puntos para poder jugar.");
 		}
+
+	}
+
+	public TranslateTransition translateTransition(ImageView top, ImageView bottom) {
+		TranslateTransition transition = new TranslateTransition();
+
+		transition.setNode(top);
+		transition.setFromY(10);
+		transition.setToY(bottom.getFitHeight() + 14);
+		transition.setDuration(Duration.seconds(0.10));
+		transition.setInterpolator(Interpolator.LINEAR);
+		return transition;
 
 	}
 
