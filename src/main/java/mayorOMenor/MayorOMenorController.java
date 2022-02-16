@@ -206,12 +206,15 @@ public class MayorOMenorController implements Initializable {
 	
 	private void you_loose() {
 		score.set(score.get() - Integer.parseInt(apuesta.get()));
+		Score.getInstance().setTotalScore(score.intValue());
 	}
 
 	private void you_win() {
 		score.set(score.get() + Integer.parseInt(apuesta.get()));
+		Score.getInstance().setTotalScore(score.intValue());
 	}
 
+	
 	@FXML
 	void onBackAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();

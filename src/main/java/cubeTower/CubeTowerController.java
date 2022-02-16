@@ -90,6 +90,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 
 	private void you_win(String nivelPuntos) {
 		score.set(score.get() + Integer.parseInt(nivelPuntos));
+		Score.getInstance().setTotalScore(score.intValue());
 	}
 
 	@Override

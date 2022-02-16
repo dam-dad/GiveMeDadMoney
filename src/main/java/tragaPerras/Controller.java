@@ -131,9 +131,7 @@ public class Controller implements Initializable {
 
 	}
 
-	private void saveScore() {
-		Score.getInstance().setTotalScore(puntosTotales.intValue());
-	}
+	
 
 	@FXML
 	void apuesta(ActionEvent event) {
@@ -146,7 +144,9 @@ public class Controller implements Initializable {
 			transition.play();
 
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
-			saveScore();
+			
+			//Guarda puntos
+			Score.getInstance().setTotalScore(puntosTotales.intValue());
 		} else {
 			GiveMeDADMoney.error("Error de formato.", "Carácter inválido.", "El valor introducido no es un número.");
 		}
