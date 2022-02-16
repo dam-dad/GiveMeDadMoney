@@ -32,20 +32,23 @@ public class Music {
 	}
 	
 	
-	public void sound_tragaperras(){
+	public void play_sound(String path){
 		try {
-			sonidos = new Media(getClass().getResource("/media/sound1.mp3").toURI().toString());
+			sonidos = new Media(getClass().getResource(path).toURI().toString());
 			sonidoReproductor = new MediaPlayer(sonidos);
 			sonidoReproductor.setAutoPlay(true);			
 			sonidoReproductor.setVolume(getVolumen());
 		
-
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}
 
 
+	public void sonido_tragaperras() {
+		play_sound("/media/sound1.mp3");
+	}
+	
 	public void play(){ 
 		fondoReproductor.play();
 	} 
@@ -65,4 +68,5 @@ public class Music {
 	public double getVolumen() {
 		return fondoReproductor.getVolume();
 	}
+	
 } 
