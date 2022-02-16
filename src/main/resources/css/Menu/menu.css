@@ -1,13 +1,15 @@
+
+@font-face{
+	font-family: Elephant;
+	src: url("../../fonts/ELEPHNT.TTF");
+}
+
 .root{
     -fx-background-image: url("../../images/Menu/fondo.jpg");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-font-family:Elephant;
-}
-
-@font-face{
-	font-family:Elephant;
 }
 
 .button{
