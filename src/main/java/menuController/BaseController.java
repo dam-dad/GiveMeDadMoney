@@ -57,7 +57,8 @@ public class BaseController implements Initializable {
 		
 
 		try {
-			musica = new Music("/media/sound2.mp3");
+			musica = new Music("/media/Broken_Heart.mp3");
+			
 		} catch (Exception e) {
 			
 			e.printStackTrace();

@@ -9,53 +9,60 @@ import javafx.scene.media.MediaPlayer;
 
 public class Music { 
 
-	public static String Path; 
-	public Media musica;
-	public MediaPlayer reproductor;
-
+	public Media musicaFondo;
+	public MediaPlayer fondoReproductor;
+	
+	public Media sonidos;
+	public MediaPlayer sonidoReproductor;
 	
 	public Music(String path){ 
 		try {
-			musica = new Media(getClass().getResource(path).toURI().toString());
-			reproductor = new MediaPlayer(musica);
-			reproductor.setAutoPlay(true);			
-			volumen(0.1);
-			reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+			musicaFondo = new Media(getClass().getResource(path).toURI().toString());
+			fondoReproductor = new MediaPlayer(musicaFondo);
+			fondoReproductor.setAutoPlay(true);			
+			setVolumen(0.15);
+			fondoReproductor.setCycleCount(MediaPlayer.INDEFINITE);
 
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 	} 
+	public Music() {
+		
+	}
 	
-	public void sound(String path){ 
+	
+	public void sound_tragaperras(){
 		try {
-			musica = new Media(GiveMeDADMoney.class.getResource(path).toURI().toString());
-			reproductor = new MediaPlayer(musica);
-			reproductor.setAutoPlay(true);			
-			volumen(0.1);
-			reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+			sonidos = new Media(getClass().getResource("/media/sound1.mp3").toURI().toString());
+			sonidoReproductor = new MediaPlayer(sonidos);
+			sonidoReproductor.setAutoPlay(true);			
+			sonidoReproductor.setVolume(getVolumen());
+		
 
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-	} 
+	}
 
 
 	public void play(){ 
-		reproductor.play();
+		fondoReproductor.play();
 	} 
 	
 	public void pause() throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
-		reproductor.pause();
+		fondoReproductor.pause();
 	} 
 	
 	public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
-		reproductor.stop();
+		fondoReproductor.stop();
 	} 
 	
-
-	public void volumen(Double vol) {
-		reproductor.setVolume(vol);
+	public void setVolumen(Double vol) {
+		fondoReproductor.setVolume(vol);
 	}
-
+	
+	public double getVolumen() {
+		return fondoReproductor.getVolume();
+	}
 } 

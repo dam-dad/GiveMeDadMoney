@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import main.Music;
 
 public class SettingsController implements Initializable {
 
@@ -43,7 +44,7 @@ public class SettingsController implements Initializable {
 		
 
 		volumenSlider.valueProperty().addListener((o,ov,nv) -> {
-            BaseController.getInstance().musica.reproductor.volumeProperty().bind(volumenSlider.valueProperty());
+            BaseController.getInstance().musica.fondoReproductor.volumeProperty().bind(volumenSlider.valueProperty());
         });
 	}
 
@@ -66,21 +67,6 @@ public class SettingsController implements Initializable {
 		}
 	}
 	
-	@FXML
-    void onMusicRepeatAction(ActionEvent event) {
-		try {
-			BaseController.getInstance().musica.stop();
-			BaseController.getInstance().musica.play();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-    }
-
-	@FXML
-	void onVolumenChange(MouseEvent event) {
-		//System.out.println(volumenSlider.getValue());
-	}
-
 	@FXML
 	void onBackAcction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
