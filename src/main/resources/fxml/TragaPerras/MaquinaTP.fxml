@@ -130,7 +130,7 @@
                 <HBox fx:id="buttonsContainer" alignment="CENTER" spacing="20.0">
                     <children>
                         <TextField fx:id="apuestaText" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="161.0" promptText="Introduce la cantidad..." />
-                        <Button fx:id="apuestaButton" mnemonicParsing="false" onAction="#apuesta" prefHeight="34.0" prefWidth="90.0" text="Apuesta" />
+                        <Button fx:id="apuestaButton" mnemonicParsing="false" onAction="#apuesta" prefHeight="34.0" prefWidth="90.0" styleClass="botonesDefault" text="Apuesta" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -142,9 +142,9 @@
     <top>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="volverButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volver" prefHeight="32.0" prefWidth="85.0" text="Volver" />
+                <Button fx:id="volverButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volver" prefHeight="32.0" prefWidth="85.0" styleClass="botonesDefault" text="Volver" />
                 <Region maxHeight="1.7976931348623157E308" prefHeight="27.0" prefWidth="578.0" HBox.hgrow="ALWAYS" />
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" prefHeight="31.0" prefWidth="85.0" text="Ver Pagos" />
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MostrarPagos" prefHeight="31.0" prefWidth="85.0" styleClass="botonesDefault" text="Ver Pagos" />
             </children>
             <padding>
                 <Insets left="10.0" right="10.0" top="10.0" />

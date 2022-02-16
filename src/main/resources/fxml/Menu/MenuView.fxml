@@ -20,10 +20,10 @@
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 			</padding>
 			<children>
-				<Button fx:id="cubeTowerButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onCubeTowerAction" prefHeight="41.0" prefWidth="110.0" text="Cube Tower" />
-				<Button fx:id="tragaperrasButton" mnemonicParsing="false" onAction="#onTragaperrasAction" prefHeight="41.0" prefWidth="110.0" text="Tragaperras" />
-				<Button fx:id="mayorOmenorButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onMayorOMenorAction" prefHeight="41.0" prefWidth="110.0" text="Mayor o Menor" />
-				<Button fx:id="storeButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onStoreAction" prefHeight="41.0" prefWidth="110.0" text="Tienda" />
+				<Button fx:id="cubeTowerButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onCubeTowerAction" prefHeight="41.0" prefWidth="110.0" styleClass="botonesDefault" text="Cube Tower" />
+				<Button fx:id="tragaperrasButton" mnemonicParsing="false" onAction="#onTragaperrasAction" prefHeight="41.0" prefWidth="110.0" styleClass="botonesDefault" text="Tragaperras" />
+				<Button fx:id="mayorOmenorButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onMayorOMenorAction" prefHeight="41.0" prefWidth="110.0" styleClass="botonesDefault" text="Mayor o Menor" />
+				<Button fx:id="storeButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onStoreAction" prefHeight="41.0" prefWidth="110.0" styleClass="botonesDefault" text="Tienda" />
 			</children>
 		</VBox>
 	</center>
@@ -56,7 +56,7 @@
 				</HBox>
 				<HBox alignment="TOP_RIGHT" spacing="5.0" GridPane.columnIndex="1">
 					<children>
-						<Button fx:id="settingsButton" alignment="CENTER" cache="true" contentDisplay="GRAPHIC_ONLY" maxHeight="10.0" maxWidth="10.0" mnemonicParsing="false" onAction="#onSettingsAction" styleClass="settings">
+						<Button fx:id="settingsButton" alignment="CENTER" cache="true" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onSettingsAction" prefHeight="55.0" prefWidth="66.0" styleClass="botonSettings" HBox.hgrow="ALWAYS">
 							<graphic>
 								<ImageView depthTest="ENABLE" fitHeight="45.0" fitWidth="45.0" layoutX="10.0" pickOnBounds="true" smooth="false" styleClass="botonSettings">
 									<image>
@@ -64,6 +64,12 @@
 									</image>
 								</ImageView>
 							</graphic>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+							<padding>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</padding>
 						</Button>
 					</children>
 					<padding>

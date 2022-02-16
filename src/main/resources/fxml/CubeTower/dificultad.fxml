@@ -8,9 +8,9 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onFacilAction" prefHeight="25.0" prefWidth="71.0" text="Fácil" VBox.vgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#onMedioAction" prefHeight="25.0" prefWidth="67.0" text="Medio" VBox.vgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#onDificilAction" prefHeight="25.0" prefWidth="70.0" text="Dificil" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onFacilAction" prefHeight="25.0" prefWidth="71.0" styleClass="botonesDefault" text="Fácil" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onMedioAction" prefHeight="25.0" prefWidth="67.0" styleClass="botonesDefault" text="Medio" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onDificilAction" prefHeight="25.0" prefWidth="70.0" styleClass="botonesDefault" text="Dificil" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>

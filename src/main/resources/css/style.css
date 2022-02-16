@@ -33,7 +33,7 @@
     -fx-text-fill: rgb(255, 255, 255);
 }
 /*Botones*/
-.button{
+.botonesDefault{
     -fx-background-image: url("../images/TragaPerras/button.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
@@ -43,18 +43,32 @@
     -fx-background-radius: 1em;
     -fx-text-fill: white;
 }
-.button:hover{
+.botonesDefault:hover{
 	-fx-background-size:102%;
 }
-.button:hover{
-	-fx-background-size:102%;
+.botonesDefault:pressed{
+	-fx-opacity:0.5;
 }
-.button:pressed{
+.botonSettings{
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-color:transparent;
+
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
+.botonSettings:hover{
+	-fx-background-color: linear-gradiente(#000000, #0A0A49);
+	-fx-background-size:200%;
+}
+.botonSettings:pressed{
 	-fx-opacity:0.5;
 }
 .backButton{
     -fx-font-weight: bold;
 }
+
 /*CubeTower*/
 .juego{
 	-fx-border-color:black;
