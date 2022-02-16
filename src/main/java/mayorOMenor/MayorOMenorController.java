@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.Property;
@@ -65,8 +66,10 @@ public class MayorOMenorController implements Initializable {
 
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty apuesta = new SimpleStringProperty();
+	
 
-	private BooleanProperty activa = new SimpleBooleanProperty();
+
+	private BooleanProperty activa = new SimpleBooleanProperty();	
 	private BooleanProperty apostable = new SimpleBooleanProperty();
 
 	// pruebas
@@ -93,19 +96,19 @@ public class MayorOMenorController implements Initializable {
 				}
 			}
 		});
+		
 
-		// Bloquear botones si no hay apuestas
-		biggerButton.disableProperty().bind(apuesta.isEmpty());
-		equalButton.disableProperty().bind(apuesta.isEmpty());
-		lessButton.disableProperty().bind(apuesta.isEmpty());
+		apostable.bind(apuesta.isEmpty());
+		biggerButton.disableProperty().bind(apostable);
+		equalButton.disableProperty().bind(apostable);
+		lessButton.disableProperty().bind(apostable);
+		
 
 		activa.set(false);
 		shuffleButton.disableProperty().bind(activa);
 
 		load_score();
 		shuffle();
-
-		root.getStylesheets().add("css/MayorOMenor/MayorOMenor.css");
 	}
 
 	public void load_score() {
@@ -135,14 +138,13 @@ public class MayorOMenorController implements Initializable {
 		String url = "/images/MayorOMenor/" + homeNum.get() + ".png";
 		homeCard.setImage(new Image(url));
 		activa.set(false);
-
-		// Bloquea botones de apuesta
-
-//		biggerButton.disableProperty().set(true);
-//		equalButton.disableProperty().set(true);
-//		lessButton.disableProperty().set(true);
-
+		apuesta.set("");
+		
+		apuestaText.setDisable(true);
+		
 	}
+	
+
 
 	private void cargar_carta() {
 		carta_casa.setNode(homeCard);
@@ -150,7 +152,7 @@ public class MayorOMenorController implements Initializable {
 		carta_casa.setToY(0);
 		carta_casa.setDuration(Duration.seconds(0.50));
 		carta_casa.playFromStart();
-
+		
 	}
 
 	private void shuffle() {
@@ -159,14 +161,14 @@ public class MayorOMenorController implements Initializable {
 		load_HomeCard();
 		load_MyCard();
 		activa.set(true);
-
-		// activa los botones
+		
 
 	}
 
 	@FXML
 	void onShuffleAction(ActionEvent event) {
 		shuffle();
+		apuestaText.setDisable(false);
 	}
 
 	@FXML
@@ -201,7 +203,7 @@ public class MayorOMenorController implements Initializable {
 		}
 		reveal_homeCard();
 	}
-
+	
 	private void you_loose() {
 		score.set(score.get() - Integer.parseInt(apuesta.get()));
 	}
