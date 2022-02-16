@@ -44,10 +44,6 @@ public class MenuController implements Initializable {
 	// MODEL
 	private IntegerProperty total_score = new SimpleIntegerProperty();
 	
-	
-	
-	
-	
 
 	public MenuController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuView.fxml"));
@@ -58,7 +54,7 @@ public class MenuController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		scoreLabel.textProperty().bind(total_score.asString());
-		getView().getStylesheets().add("/css/Menu/menu.css");
+		getView().getStylesheets().add("/css/style.css");
 
 		Font.loadFont(getClass().getResourceAsStream("/fonts/ELEPHANT.TFF"), 14);
 
