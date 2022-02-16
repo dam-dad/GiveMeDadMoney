@@ -1,0 +1,71 @@
+@font-face{
+	font-family: Elephant;
+	src: url("../fonts/ELEPHNT.TTF");
+}
+.root{
+    -fx-background-image: url("../images/Menu/fondo.jpg");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-font-family:Elephant;
+}
+.TragaPerras {
+    -fx-background-image: url("../images/TragaPerras/fondo.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    
+}
+.fondito {
+    -fx-background-color: white;
+}
+/*TextField*/
+.text-field{
+	-fx-text-fill: white;
+	-fx-background-color: black;
+	-fx-background-radius: 2em;
+	-fx-border-color:#E5A65E;
+	-fx-border-radius: 1em;
+	-fx-border-width:2, 2;
+}
+.label{
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+/*Botones*/
+.button{
+    -fx-background-image: url("../images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-color:transparent;
+
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
+.button:hover{
+	-fx-background-size:102%;
+}
+.button:hover{
+	-fx-background-size:102%;
+}
+.button:pressed{
+	-fx-opacity:0.5;
+}
+.backButton{
+    -fx-font-weight: bold;
+}
+/*CubeTower*/
+.juego{
+	-fx-border-color:black;
+	-fx-border-radius: 0.3em;
+	-fx-border-width:2, 2;
+}
+.pane{
+	-fx-background-color: #2F302F;
+	-fx-border-radius: 1em;
+}
+/*Volumen*/
+.sliderVolumen{
+	-fx-control-inner-background: #E5A65E; 
+}

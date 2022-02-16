@@ -53,7 +53,7 @@ public class BaseController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		getView().getStylesheets().add("/css/Menu/menu.css");
+		getView().getStylesheets().add("/css/style.css");
 		
 
 		try {

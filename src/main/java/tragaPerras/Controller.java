@@ -87,9 +87,6 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-
-		view.getStylesheets().add("css/TragaPerras/TragaPerras.css");
-
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
 		puntosText.textProperty().bind(puntosTotales.asString());
