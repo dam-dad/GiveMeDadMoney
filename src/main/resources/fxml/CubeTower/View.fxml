@@ -16,6 +16,9 @@
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
@@ -23,6 +26,9 @@
 				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
 			</columnConstraints>
 			<rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />

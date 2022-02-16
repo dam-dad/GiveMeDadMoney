@@ -23,7 +23,7 @@
 				<Button fx:id="cubeTowerButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onCubeTowerAction" prefHeight="41.0" prefWidth="110.0" text="Cube Tower" />
 				<Button fx:id="tragaperrasButton" mnemonicParsing="false" onAction="#onTragaperrasAction" prefHeight="41.0" prefWidth="110.0" text="Tragaperras" />
 				<Button fx:id="mayorOmenorButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onMayorOMenorAction" prefHeight="41.0" prefWidth="110.0" text="Mayor o Menor" />
-            <Button fx:id="storeButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onStoreAction" prefHeight="41.0" prefWidth="110.0" text="Tienda" />
+				<Button fx:id="storeButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#onStoreAction" prefHeight="41.0" prefWidth="110.0" text="Tienda" />
 			</children>
 		</VBox>
 	</center>
@@ -58,7 +58,7 @@
 					<children>
 						<Button fx:id="settingsButton" alignment="CENTER" cache="true" contentDisplay="GRAPHIC_ONLY" maxHeight="10.0" maxWidth="10.0" mnemonicParsing="false" onAction="#onSettingsAction" styleClass="settings">
 							<graphic>
-								<ImageView depthTest="ENABLE" fitHeight="45.0" fitWidth="45.0" layoutX="10.0" pickOnBounds="true" smooth="false">
+								<ImageView depthTest="ENABLE" fitHeight="45.0" fitWidth="45.0" layoutX="10.0" pickOnBounds="true" smooth="false" styleClass="botonSettings">
 									<image>
 										<Image url="@../../images/Menu/ajustes2.png" />
 									</image>
