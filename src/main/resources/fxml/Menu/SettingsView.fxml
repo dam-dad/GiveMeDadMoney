@@ -39,12 +39,21 @@
 	<bottom>
 		<HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
-				<Label prefHeight="18.0" prefWidth="124.0" text="Autor: @Mr.Edge" textFill="WHITE">
+				<Label prefHeight="18.0" prefWidth="124.0" text=".: Song: @Mr.Edge :." textFill="WHITE">
 					<font>
-						<Font name="Elephant Italic" size="12.0" />
+						<Font name="System Italic" size="12.0" />
 					</font>
+               <HBox.margin>
+                  <Insets left="2.0" />
+               </HBox.margin>
 				</Label>
 			</children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
 		</HBox>
 	</bottom>
 </BorderPane>
