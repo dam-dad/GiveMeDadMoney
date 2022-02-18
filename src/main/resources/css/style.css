@@ -59,7 +59,7 @@
     -fx-text-fill: white;
 }
 .botonSettings:hover{
-	-fx-background-color: linear-gradiente(#090b22, #102e4c);
+	-fx-background-color: linear-gradiente(#090b22, #102e4c); 
 	-fx-background-size:200%;
 }
 .botonSettings:pressed{
@@ -83,3 +83,9 @@
 .sliderVolumen{
 	-fx-control-inner-background: #E5A65E; 
 }
+
+.rewardVbox{
+	-fx-background-color: linear-gradiente(#090b22, #102e4c);
+
+}
+
