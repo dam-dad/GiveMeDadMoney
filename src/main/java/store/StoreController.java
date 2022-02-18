@@ -38,8 +38,7 @@ public class StoreController implements Initializable {
 
 	@FXML
 	void prueba(ActionEvent event) {
-		ima.setImage(new Image("/images/giphy.gif"));
-		
+		ima.setImage(new Image("/images/gifFuncionan/segundo.gif"));
 		
 	}
 
