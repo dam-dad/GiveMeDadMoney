@@ -1,0 +1,10 @@
+@font-face{
+	font-family: Elephant;
+	src: url("../fonts/ELEPHNT.TTF");
+}
+.points {
+    -fx-text-fill: white;
+    -fx-font-family:Elephant;
+    -fx-background-color: transparent;
+}
+

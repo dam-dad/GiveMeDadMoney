@@ -2,6 +2,10 @@
 	font-family: Elephant;
 	src: url("../fonts/ELEPHNT.TTF");
 }
+.points {
+    -fx-background-color: transparent;
+}
+
 .root{
     -fx-background-image: url("../images/Menu/fondo.jpg");
     -fx-background-position: center;
@@ -19,6 +23,9 @@
 .fondito {
     -fx-background-color: white;
 }
+
+
+
 /*TextField*/
 .text-field{
 	-fx-text-fill: white;
