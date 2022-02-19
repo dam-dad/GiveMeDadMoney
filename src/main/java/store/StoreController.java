@@ -13,14 +13,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import menuController.BaseController;
 
 public class StoreController implements Initializable {
 
 	@FXML
-	private ImageView ima;
+	private Button backButton;
 
 	@FXML
-	private Button prueba;
+	private ImageView gifView;
 
 	@FXML
 	private Button reward1Button;
@@ -32,14 +33,17 @@ public class StoreController implements Initializable {
 	private BorderPane root;
 
 	@FXML
-	void onReward1Action(ActionEvent event) {
-		rewardVBox.setVisible(true);
+	private Button menuButton;
+
+	@FXML
+	void onMenuAction(ActionEvent event) {
+		BaseController.getInstance().showMenu();
 	}
 
 	@FXML
-	void prueba(ActionEvent event) {
-		ima.setImage(new Image("/images/gifFuncionan/segundo.gif"));
-		
+	void onReward1Action(ActionEvent event) {
+		rewardVBox.setVisible(true);
+		gifView.setImage(new Image("/images/Store/gifFuncionan/tercero.gif"));
 	}
 
 	public StoreController() throws IOException {
@@ -51,6 +55,11 @@ public class StoreController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+	}
+
+	@FXML
+	void onBackAction(ActionEvent event) {
+		rewardVBox.setVisible(false);
 	}
 
 	public BorderPane getView() {

@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" styleClass="points" stylesheets="@../../css/stylePagos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label styleClass="title" text="Pagos" />
-      <GridPane id="payoutsGrid" alignment="CENTER" hgap="8.0" vgap="16.0">
+      <HBox styleClass="points">
+         <children>
+            <Label styleClass="title" text="Pagos" />
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+      <GridPane id="payoutsGrid" alignment="CENTER" hgap="8.0" styleClass="points" vgap="16.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -16,6 +29,13 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label text="Imagen" GridPane.columnIndex="0">
@@ -33,7 +53,97 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label text="x 0.5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <VBox alignment="CENTER" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/leamon.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="10" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/cherry.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="25" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/sandia.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="35" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/uva.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="50" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/diamond.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="65" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/bar.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="75" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/TragaPerras/seven.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="120" />
+               </children>
+            </VBox>
+            <Label text="x 0.75" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="x 1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="x 1.25" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="x 1.5" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="x 2.5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="x 3" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="x 2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="x 3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="x 4" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="x 5" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="x 6" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label text="x 7" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label text="x 8" GridPane.columnIndex="2" GridPane.rowIndex="7" />
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </GridPane>
    </children>
    <padding>
