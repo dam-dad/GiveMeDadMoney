@@ -21,10 +21,16 @@ public class StoreController implements Initializable {
 	private Button backButton;
 
 	@FXML
+	private Button dineroButton;
+
+	@FXML
+	private Button dineroButton1;
+
+	@FXML
 	private ImageView gifView;
 
 	@FXML
-	private Button reward1Button;
+	private Button menuButton;
 
 	@FXML
 	private VBox rewardVBox;
@@ -33,20 +39,14 @@ public class StoreController implements Initializable {
 	private BorderPane root;
 
 	@FXML
-	private Button menuButton;
+	private Button xokasButton;
 
 	@FXML
 	void onMenuAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
-	@FXML
-	void onReward1Action(ActionEvent event) {
-		rewardVBox.setVisible(true);
-		int random= (int) (Math.random()*3);
-		System.out.println(random);
-		gifView.setImage(new Image("/images/Store/gifOkay/okay" + random + ".gif"));
-	}
+	Premios premios;
 
 	public StoreController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Store/Store.fxml"));
@@ -56,7 +56,25 @@ public class StoreController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		premios = new Premios();
+	}
 
+	@FXML
+	void onDineroAction(ActionEvent event) {
+		rewardVBox.setVisible(true);
+		gifView.setImage(premios.getGifDinero());
+	}
+
+	@FXML
+	void onOkayAction(ActionEvent event) {
+		rewardVBox.setVisible(true);
+		gifView.setImage(premios.getGifOkay());
+	}
+
+	@FXML
+	void onXokasAction(ActionEvent event) {
+		rewardVBox.setVisible(true);
+		gifView.setImage(premios.getGifXokas());
 	}
 
 	@FXML
