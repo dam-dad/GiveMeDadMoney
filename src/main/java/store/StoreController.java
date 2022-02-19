@@ -43,7 +43,9 @@ public class StoreController implements Initializable {
 	@FXML
 	void onReward1Action(ActionEvent event) {
 		rewardVBox.setVisible(true);
-		gifView.setImage(new Image("/images/Store/gifDinero/dinero1.gif"));
+		int random= (int) (Math.random()*3);
+		System.out.println(random);
+		gifView.setImage(new Image("/images/Store/gifOkay/okay" + random + ".gif"));
 	}
 
 	public StoreController() throws IOException {
