@@ -37,7 +37,7 @@
 		</VBox>
 	</center>
 	<bottom>
-		<HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
 				<Label prefHeight="18.0" prefWidth="124.0" text=".: Song: @Mr.Edge :." textFill="WHITE">
 					<font>
