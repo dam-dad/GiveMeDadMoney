@@ -74,7 +74,7 @@
 							<goal>package</goal>
 						</goals>
 						<configuration>
-							<mainClass>main.Main</mainClass>
+							<mainClass>dad.calculadoraFXML.Main</mainClass>
 							<bundleJre>true</bundleJre>
 							<generateInstaller>true</generateInstaller>
 							<customizedJre>false</customizedJre>

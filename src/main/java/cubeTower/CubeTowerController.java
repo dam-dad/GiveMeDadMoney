@@ -7,19 +7,19 @@ import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import main.GiveMeDADMoney;
+import javafx.scene.layout.VBox;
 import menuController.BaseController;
 import score.Score;
 
@@ -36,12 +36,25 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private String nivelPuntos;
 
 	private IntegerProperty score = new SimpleIntegerProperty();
+	private StringProperty info= new SimpleStringProperty();
 
 	@FXML
 	private GridPane pixeles;
 
 	@FXML
 	private Label puntosLabel;
+	
+	@FXML
+    private Label alertaInfo;
+
+    @FXML
+    private VBox alertaVbox;
+
+    @FXML
+    private Button cancelarButton;
+
+    @FXML
+    private Button continuarButton;
 
 	@FXML
 	private BorderPane view;
@@ -55,6 +68,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		puntosLabel.textProperty().bind(score.asString());
+		alertaInfo.textProperty().bind(info);
 
 		tower = new Tower(pixeles.getColumnCount(), pixeles.getRowCount());
 		for (int i = 0; i < tower.getCols(); i++) {
@@ -140,26 +154,16 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 					nivelPuntos = getNivel() * getBonificacion() + "";
 
 				}
-				if(GiveMeDADMoney.confirm("HAS PERDIDO", "NIVEL: " + getNivel() +  "\nPUNTOS GANADOS: " + nivelPuntos, "¿Continuar o salir?")) {
-					playCubo();
-				}else {
-					BaseController.getInstance().showMenu();
-					tower.clear();
-					stop();
-				}
+				alertaVbox.setVisible(true);
+				info.set("HAS PERDIDO\nNIVEL: " + getNivel() + "\nPUNTOS GANADOS: " + nivelPuntos + "\n¿Volver a intentar?");
 				you_win(nivelPuntos);
 			} else {
 				cube.moveUp();
 				if (cube.getY() < 0) {
 					play = true;
 					stop();
-					if(GiveMeDADMoney.confirm("HAS GANADO", "NIVEL: " + getNivel() +  "\nPUNTOS GANADOS: " + getNivel() * getBonificacion(), "¿Continuar o salir?")) {
-						playCubo();
-					}else {
-						BaseController.getInstance().showMenu();
-						tower.clear();
-						stop();
-					}	
+					alertaVbox.setVisible(true);
+					info.set("HAS GANADO\nNIVEL: " + getNivel() + "\nPUNTOS GANADOS: " + getNivel() * getBonificacion() + "\n¿Volver a intentar?");
 					you_win(getNivel() * getBonificacion() + "");
 				}
 			}
@@ -183,6 +187,20 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	void onNivelesAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showLevelTower();
 	}
+	
+	@FXML
+    void onCancelarAction(ActionEvent event) {
+		alertaVbox.setVisible(false);
+		BaseController.getInstance().showMenu();
+		tower.clear();
+		stop();
+    }
+
+    @FXML
+    void onContinuarAction(ActionEvent event) {
+    	alertaVbox.setVisible(false);
+    	playCubo();
+    }
 
 	public double getSpeed() {
 		return speed;
