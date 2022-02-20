@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="root" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 	<bottom>
 		<HBox alignment="CENTER" fillHeight="false" spacing="5.0" BorderPane.alignment="TOP_CENTER">
 			<padding>
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 			</padding>
-         <children>
-            <Label text="Puntos:" />
-            <Label fx:id="puntosLabel" text="Label" />
-         </children>
+			<children>
+				<Label text="Puntos:" />
+				<Label fx:id="puntosLabel" text="Label" />
+			</children>
 		</HBox>
 	</bottom>
 	<padding>
@@ -39,49 +39,49 @@
 			</padding>
 		</BorderPane>
 	</top>
-   <center>
-      <StackPane BorderPane.alignment="CENTER">
-         <children>
-      		<GridPane fx:id="pixeles" hgap="5.0" styleClass="juego" vgap="5.0">
-      			<columnConstraints>
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
-      			</columnConstraints>
-      			<rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-      			</rowConstraints>
-      		</GridPane>
-            <VBox fx:id="alertaVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-                     <children>
-                        <Button fx:id="continuarButton" mnemonicParsing="false" onAction="#onContinuarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Continuar" />
-                        <Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#onCancelarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Cancelar" />
-                     </children>
-                  </HBox>
-                  <Label fx:id="alertaInfo" contentDisplay="CENTER" text="Label" />
-               </children>
-            </VBox>
-         </children>
-      </StackPane>
-   </center>
+	<center>
+		<StackPane BorderPane.alignment="CENTER">
+			<children>
+				<GridPane fx:id="pixeles" hgap="5.0" styleClass="juego" vgap="5.0">
+					<columnConstraints>
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+						<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</GridPane>
+				<VBox fx:id="alertaVbox" alignment="CENTER" prefHeight="275.0" prefWidth="527.0" styleClass="vboxAlerta" visible="false">
+					<children>
+						<Label fx:id="alertaInfo" alignment="CENTER" contentDisplay="CENTER" text="Label" />
+						<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+							<children>
+								<Button fx:id="continuarButton" mnemonicParsing="false" onAction="#onContinuarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Continuar" />
+								<Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#onCancelarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Cancelar" />
+							</children>
+						</HBox>
+					</children>
+				</VBox>
+			</children>
+		</StackPane>
+	</center>
 </BorderPane>

@@ -186,6 +186,7 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	void onNivelesAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showLevelTower();
+		alertaVbox.setVisible(false);
 	}
 	
 	@FXML

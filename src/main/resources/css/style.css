@@ -21,10 +21,13 @@
     
 }
 .fondito {
-    -fx-background-color: white;
+ 
 }
 
-
+.vboxAlerta{
+	-fx-alignment: center ;
+	-fx-background-color: linear-gradiente(#090b22, #102e4c);  	
+}
 
 /*TextField*/
 .text-field{
