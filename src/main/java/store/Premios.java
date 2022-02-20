@@ -3,8 +3,6 @@ package store;
 import javafx.scene.image.Image;
 
 public class Premios {
-	
-	
 
 	public Image getGifXokas() {
 		return new Image("/images/store/gifXokas/xokas" + random(3) + ".gif");

@@ -18,6 +18,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import main.GiveMeDADMoney;
 import menuController.BaseController;
 import score.Score;
 
@@ -138,21 +140,26 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 					nivelPuntos = getNivel() * getBonificacion() + "";
 
 				}
-				Alert alertaTope = new Alert(AlertType.INFORMATION);
-				alertaTope.setHeaderText("¡¡¡Has perdido!!!");
-				alertaTope.setContentText("Nivel: " + getNivel() + "\n" + "Puntos ganados: " + nivelPuntos);
-				alertaTope.showAndWait();
+				if(GiveMeDADMoney.confirm("HAS PERDIDO", "NIVEL: " + getNivel() +  "\nPUNTOS GANADOS: " + nivelPuntos, "¿Continuar o salir?")) {
+					playCubo();
+				}else {
+					BaseController.getInstance().showMenu();
+					tower.clear();
+					stop();
+				}
 				you_win(nivelPuntos);
 			} else {
 				cube.moveUp();
 				if (cube.getY() < 0) {
 					play = true;
 					stop();
-					Alert alertaTope = new Alert(AlertType.INFORMATION);
-					alertaTope.setHeaderText("¡¡¡Has ganado!!!");
-					alertaTope.setContentText(
-							"Nivel: " + getNivel() + "\n" + "Puntos ganados: " + getNivel() * getBonificacion());
-					alertaTope.showAndWait();
+					if(GiveMeDADMoney.confirm("HAS GANADO", "NIVEL: " + getNivel() +  "\nPUNTOS GANADOS: " + getNivel() * getBonificacion(), "¿Continuar o salir?")) {
+						playCubo();
+					}else {
+						BaseController.getInstance().showMenu();
+						tower.clear();
+						stop();
+					}	
 					you_win(getNivel() * getBonificacion() + "");
 				}
 			}
@@ -162,17 +169,6 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			inicio = false;
 		}
 	}
-
-	@FXML
-	void onStopAction(ActionEvent event) {
-		stopCubo();
-	}
-
-	@FXML
-	void onPlayAction(ActionEvent event) {
-		playCubo();
-	}
-
 	public void playCubo() {
 		inicio = true;
 		play = false;

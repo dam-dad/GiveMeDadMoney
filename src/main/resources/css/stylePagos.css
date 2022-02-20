@@ -7,4 +7,17 @@
     -fx-font-family:Elephant;
     -fx-background-color: transparent;
 }
+.button{
+	-fx-background-image: url("../images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-color:transparent;
+
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
+.button:hover{
+	-fx-background-size:102%;
+}
 
