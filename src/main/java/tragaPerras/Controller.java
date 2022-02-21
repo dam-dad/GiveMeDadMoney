@@ -1,5 +1,6 @@
 package tragaPerras;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.GiveMeDADMoney;
@@ -40,6 +42,8 @@ public class Controller implements Initializable {
 	private Figura figura2 = new Figura();
 	private Figura figura3 = new Figura();
 
+	private Pagos tablaPagos = new Pagos();
+
 	TranslateTransition topTransition1 = new TranslateTransition();
 	TranslateTransition topTransition2 = new TranslateTransition();
 	TranslateTransition topTransition3 = new TranslateTransition();
@@ -58,6 +62,9 @@ public class Controller implements Initializable {
 
 	@FXML
     private HBox figuraContainers;
+
+	@FXML
+	private StackPane stackPagos;
 
 	@FXML
 	private TextField apuestaText;
@@ -85,6 +92,8 @@ public class Controller implements Initializable {
 		figuraContainers.getChildren().add(figura2);
 		figuraContainers.getChildren().add(figura3);
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
+
+		stackPagos.getChildren().add(tablaPagos);
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
