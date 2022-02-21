@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,4 +23,7 @@
 			</children>
 		</VBox>
 	</content>
+   <padding>
+      <Insets left="10.0" />
+   </padding>
 </fx:root>

@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,13 +13,10 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
-		Button roll = new Button("Roll");
-		roll.setOnAction(this::onRoll);
 		
 		figura = new Figura();
 
-		VBox root = new VBox(5, figura, roll);
+		VBox root = new VBox(5, figura);
 		root.setAlignment(Pos.CENTER);
 		
 		primaryStage.setTitle("Prueba Tragaperras");

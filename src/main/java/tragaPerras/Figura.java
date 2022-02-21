@@ -15,9 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -101,9 +99,14 @@ public class Figura extends ScrollPane implements Initializable {
 	public void roll() {
 		
 		counter = 10;
+		bottom.set((int) (Math.random() * Imagen.IMAGENES.size()));
 		bottom.set(((bottom.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom.get()) - 1);
 		transition.play();
 		
+	}
+	public int getValueImagen(){
+
+		return Imagen.IMAGENES.get(bottom.get()).getValor();
 	}
 
 }
