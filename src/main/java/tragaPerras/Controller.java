@@ -44,13 +44,6 @@ public class Controller implements Initializable {
 
 	private Pagos tablaPagos = new Pagos();
 
-	TranslateTransition topTransition1 = new TranslateTransition();
-	TranslateTransition topTransition2 = new TranslateTransition();
-	TranslateTransition topTransition3 = new TranslateTransition();
-	TranslateTransition bottomTransition1 = new TranslateTransition();
-	TranslateTransition bottomTransition2 = new TranslateTransition();
-	TranslateTransition bottomTransition3 = new TranslateTransition();
-
 	@FXML
 	private Button apuestaButton, volverButton;
 
@@ -98,41 +91,6 @@ public class Controller implements Initializable {
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
 
-		// topTransition1 = translateTransition(topImage1, bottomImage1);
-		// topTransition2 = translateTransition(topImage2, bottomImage2);
-		// topTransition3 = translateTransition(topImage3, bottomImage3);
-
-		// bottomTransition1 = translateTransition(bottomImage1, bottomImage1);
-		// bottomTransition2 = translateTransition(bottomImage2, bottomImage2);
-		// bottomTransition3 = translateTransition(bottomImage3, bottomImage3);
-
-		// transition = new ParallelTransition(topTransition1, bottomTransition1, topTransition2, bottomTransition2,
-		// 		topTransition3, bottomTransition3);
-		// transition.setOnFinished(e -> {
-		// 	counter--;
-		// 	if (counter >= 0) {
-
-
-		// 		if (counter == 0) {
-		// 			bottomTransition1.setInterpolator(Interpolator.EASE_OUT);
-		// 			bottomTransition2.setInterpolator(Interpolator.EASE_OUT);
-		// 			bottomTransition3.setInterpolator(Interpolator.EASE_OUT);
-		// 			topTransition1.setInterpolator(Interpolator.EASE_OUT);
-		// 			topTransition2.setInterpolator(Interpolator.EASE_OUT);
-		// 			topTransition3.setInterpolator(Interpolator.EASE_OUT);
-		// 		}
-
-		// 		bottom1.set((bottom1.get() + 1) % Imagen.IMAGENES.size());
-		// 		bottom2.set((bottom2.get() + 1) % Imagen.IMAGENES.size());
-		// 		bottom3.set((bottom3.get() + 1) % Imagen.IMAGENES.size());
-		// 		transition.play();
-		// 	}
-		// });
-
-		// listener(bottom1, top1, topImage1, bottomImage1);
-		// listener(bottom2, top2, topImage2, bottomImage2);
-		// listener(bottom3, top3, topImage3, bottomImage3);
-
 	}
 
 	
@@ -140,12 +98,6 @@ public class Controller implements Initializable {
 	@FXML
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
-
-			// counter = 10;
-			// bottom1.set(((bottom1.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom1.get()) - 1);
-			// bottom2.set(((bottom2.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom2.get()) - 1);
-			// bottom3.set(((bottom3.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom3.get()) - 1);
-			// transition.play();
 			figura1.roll();
 			figura2.roll();
 			figura3.roll();
