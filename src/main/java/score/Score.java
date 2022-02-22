@@ -17,29 +17,29 @@ import javafx.collections.ObservableList;
 @XmlType
 @XmlRootElement
 public class Score {
-	
-	private static Score instance;
-	
-	private static IntegerProperty totalScore;
-	//private static ListProperty<Game> game;
-	
-	
 
-	
+	private static Score instance;
+
+	private static IntegerProperty totalScore;
+	// private static ListProperty<Game> game;
+
+	private static String user = System.getProperty("user.home");
+
 	public Score() {
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
-		//game = new SimpleListProperty<>(this, "game", FXCollections.observableArrayList());
+		// game = new SimpleListProperty<>(this, "game",
+		// FXCollections.observableArrayList());
 	}
-	
+
 	public static void save(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Score.class);
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marshaller.marshal(instance, file);
 	}
-	
+
 	public static void save() throws Exception {
-		save(new File("score.xml"));
+		save(new File(user + "/score.xml"));
 	}
 
 	public static Score read(File file) throws Exception {
@@ -47,11 +47,18 @@ public class Score {
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		return (Score) unmarshaller.unmarshal(file);
 	}
-	
+
 	public static Score read() throws Exception {
-		return read(new File("score.xml"));
+		File file = new File(user + "/score1.xml");
+		if (file.exists()) {
+			save(file);
+		} else {
+			file.createNewFile();
+			save(file);
+		}
+		return null;
 	}
-	
+
 //	public static void load_total_score() {
 //		int suma_score = 0 ;
 //		for (int i = 0; i < game.size(); i++) {
@@ -61,22 +68,19 @@ public class Score {
 //		
 //	}
 
-
 	public final IntegerProperty totalScoreProperty() {
 		return totalScore;
 	}
-	
-	
+
 	@XmlElement
 	public final int getTotalScore() {
 		return this.totalScoreProperty().get();
 	}
-	
 
 	public final void setTotalScore(final int totalScore) {
 		this.totalScoreProperty().set(totalScore);
 	}
-	
+
 //	public final ListProperty<Game> gamesProperty() {
 //		return game;
 //	}
@@ -91,7 +95,7 @@ public class Score {
 //		this.gamesProperty().set(game);
 //	}
 //	
-	
+
 	@SuppressWarnings("static-access")
 	public static Score getInstance() {
 		if (instance == null) {
