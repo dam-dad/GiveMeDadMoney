@@ -88,7 +88,7 @@ public class Figura extends ScrollPane implements Initializable {
 		
 		bottom.addListener((o, ov, nv) -> {
 			top.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			System.out.println("posicion: " + bottom.getValue() + "/" + top.getValue());			
+			//System.out.println("posicion: " + bottom.getValue() + "/" + top.getValue());
 			bottomImage.setImage(topImage.getImage());
 			topImage.setImage(Imagen.IMAGENES.get(bottom.get()).getImagen());
 		});
