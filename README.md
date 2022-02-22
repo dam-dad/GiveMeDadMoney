@@ -6,11 +6,16 @@ Casino y salón recreativo virtual
 ## Indice 
 
 - [Instalación](#instalación)
+- [Wiki](#wiki)
 - [Autores](#autores)
 - [Licencia](#licencia)
 
 
 ## Instalación
+
+INFO
+
+## Wiki
 
 INFO
 
