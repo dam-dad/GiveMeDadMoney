@@ -57,13 +57,10 @@ public class Controller implements Initializable {
 	private HBox figuraContainers;
 
 	@FXML
-	private StackPane stackPagos;
-
-	@FXML
 	private TextField apuestaText;
 
 	@FXML
-	private HBox resultTextContainer;
+	private HBox resultTextContainer, cabeceraBox;
 
 	@FXML
 	private BorderPane view;
@@ -97,6 +94,8 @@ public class Controller implements Initializable {
 
 	@FXML
 	void MostrarPagos(ActionEvent event) {
+		cabeceraBox.getChildren().add(tablaPagos);
+		//tablaPagos.setVisible(true);
 
 	}
 
@@ -115,7 +114,7 @@ public class Controller implements Initializable {
 		figuraContainers.getChildren().add(figura3);
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
-		stackPagos.getChildren().add(tablaPagos);
+
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
