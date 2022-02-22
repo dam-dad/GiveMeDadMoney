@@ -5,10 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import menuController.BaseController;
 import score.Score;
@@ -66,15 +65,32 @@ public class MayorOMenorController implements Initializable {
 
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty apuesta = new SimpleStringProperty();
-	
-	private int partidas=1;
 
-	private BooleanProperty activa = new SimpleBooleanProperty();	
+	private int partidas = 1;
+
+	private BooleanProperty activa = new SimpleBooleanProperty();
 	private BooleanProperty apostable = new SimpleBooleanProperty();
 
 	// pruebas
 	TranslateTransition carta_casa = new TranslateTransition();
 	TranslateTransition carta_propia = new TranslateTransition();
+
+	// Alerta
+	@FXML
+	private VBox alertaBox;
+
+	@FXML
+	private Label alertaInfo;
+
+	@FXML
+	private Button continuarButton;
+
+	private StringProperty info = new SimpleStringProperty();
+
+	@FXML
+	void onContinuarAction(ActionEvent event) {
+		alertaBox.setVisible(false);
+	}
 
 	public MayorOMenorController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MayorOMenor/MayorOMenor.fxml"));
@@ -87,6 +103,8 @@ public class MayorOMenorController implements Initializable {
 		puntosLabel.textProperty().bind(score.asString());
 		apuestaText.textProperty().bindBidirectional(apuesta);
 
+		alertaInfo.textProperty().bind(info);
+
 		// Fuerza que sea numerico
 		apuestaText.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -96,13 +114,22 @@ public class MayorOMenorController implements Initializable {
 				}
 			}
 		});
-		
+
+		apuesta.addListener((o, ov, nv) -> {
+			int num = 0;
+			if (!nv.equals("")) {
+				num = Integer.parseInt(nv);
+			}
+			if (num > score.get()) {
+				alertaBox.setVisible(true);
+				info.set("Puntos Insuficientes. \n No tienes tantos puntos para apostar.");
+			}
+		});
 
 		apostable.bind(apuesta.isEmpty());
 		biggerButton.disableProperty().bind(apostable);
 		equalButton.disableProperty().bind(apostable);
 		lessButton.disableProperty().bind(apostable);
-		
 
 		activa.set(false);
 		shuffleButton.disableProperty().bind(activa);
@@ -139,12 +166,10 @@ public class MayorOMenorController implements Initializable {
 		homeCard.setImage(new Image(url));
 		activa.set(false);
 		apuesta.set("");
-		
-		apuestaText.setDisable(true);
-		
-	}
-	
 
+		apuestaText.setDisable(true);
+
+	}
 
 	private void cargar_carta() {
 		carta_casa.setNode(homeCard);
@@ -152,7 +177,7 @@ public class MayorOMenorController implements Initializable {
 		carta_casa.setToY(0);
 		carta_casa.setDuration(Duration.seconds(0.50));
 		carta_casa.playFromStart();
-		
+
 	}
 
 	private void shuffle() {
@@ -161,7 +186,6 @@ public class MayorOMenorController implements Initializable {
 		load_HomeCard();
 		load_MyCard();
 		activa.set(true);
-		
 
 	}
 
@@ -209,22 +233,21 @@ public class MayorOMenorController implements Initializable {
 		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
 		partidas++;
 	}
-	
+
 	private void you_loose() {
 		score.set(score.get() - Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
-		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
-		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos-score.intValue());
+		int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
+		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos - score.intValue());
 	}
 
 	private void you_win() {
 		score.set(score.get() + Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
-		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
-		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos+score.intValue());
+		int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
+		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + score.intValue());
 	}
 
-	
 	@FXML
 	void onBackAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
