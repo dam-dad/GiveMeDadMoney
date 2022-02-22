@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="768.0" styleClass="root" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="768.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 	<bottom>
 		<HBox alignment="CENTER" fillHeight="false" spacing="5.0" BorderPane.alignment="TOP_CENTER">
 			<padding>
@@ -70,17 +70,31 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
 					</rowConstraints>
 				</GridPane>
-				<VBox fx:id="alertaVbox" alignment="CENTER" prefHeight="275.0" prefWidth="527.0" styleClass="vboxAlerta" visible="false">
-					<children>
-						<Label fx:id="alertaInfo" alignment="CENTER" contentDisplay="CENTER" text="Label" />
-						<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-							<children>
-								<Button fx:id="continuarButton" mnemonicParsing="false" onAction="#onContinuarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Continuar" />
-								<Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#onCancelarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Cancelar" />
-							</children>
-						</HBox>
-					</children>
-				</VBox>
+            <VBox fx:id="alertaVbox" alignment="CENTER" fillWidth="false">
+               <children>
+      				<VBox alignment="CENTER" fillWidth="false" styleClass="alertVbox">
+      					<children>
+      						<Label fx:id="alertaInfo" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+      						<HBox alignment="CENTER" fillHeight="false" spacing="5.0">
+      							<children>
+      								<Button fx:id="continuarButton" mnemonicParsing="false" onAction="#onContinuarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Continuar" />
+      								<Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#onCancelarAction" prefHeight="32.0" prefWidth="83.0" styleClass="botonesDefault" text="Cancelar" />
+      							</children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+      						</HBox>
+      					</children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+      				</VBox>
+               </children>
+            </VBox>
 			</children>
 		</StackPane>
 	</center>
