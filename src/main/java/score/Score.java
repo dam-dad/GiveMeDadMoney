@@ -8,11 +8,8 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 
 @XmlType
 @XmlRootElement
@@ -24,22 +21,33 @@ public class Score {
 	// private static ListProperty<Game> game;
 
 	private static String user = System.getProperty("user.home");
+	private static File file = new File(user + "/score.xml");
 
 	public Score() {
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
-		// game = new SimpleListProperty<>(this, "game",
-		// FXCollections.observableArrayList());
+		// game = new SimpleListProperty<>(this,
+		// "game",FXCollections.observableArrayList());
+	}
+	private static void crear() throws Exception {
+			if (file.exists()) {
+				System.out.println(file.toString());
+				save();
+			}else {
+				file.createNewFile();
+				System.out.println(file.toString());
+				save();
+			}
 	}
 
 	public static void save(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Score.class);
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		marshaller.marshal(instance, file);
+		marshaller.marshal(getInstance(), file);
 	}
 
 	public static void save() throws Exception {
-		save(new File(user + "/score.xml"));
+		save(file);
 	}
 
 	public static Score read(File file) throws Exception {
@@ -49,24 +57,9 @@ public class Score {
 	}
 
 	public static Score read() throws Exception {
-		File file = new File(user + "/score1.xml");
-		if (file.exists()) {
-			save(file);
-		} else {
-			file.createNewFile();
-			save(file);
-		}
-		return null;
+		return read(file);
 	}
 
-//	public static void load_total_score() {
-//		int suma_score = 0 ;
-//		for (int i = 0; i < game.size(); i++) {
-//			suma_score += game.get(i).getGameScore();
-//		}
-//		totalScore.set(suma_score);
-//		
-//	}
 
 	public final IntegerProperty totalScoreProperty() {
 		return totalScore;
@@ -81,26 +74,13 @@ public class Score {
 		this.totalScoreProperty().set(totalScore);
 	}
 
-//	public final ListProperty<Game> gamesProperty() {
-//		return game;
-//	}
-//	
-//	@XmlElement
-//	public final ObservableList<Game> getGame() {
-//		return this.gamesProperty().get();
-//	}
-//	
-//
-//	public final void setGames(final ObservableList<Game> game) {
-//		this.gamesProperty().set(game);
-//	}
-//	
 
 	@SuppressWarnings("static-access")
 	public static Score getInstance() {
 		if (instance == null) {
 			try {
-				instance = new Score().read();
+				instance = new Score();
+				crear();	
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
