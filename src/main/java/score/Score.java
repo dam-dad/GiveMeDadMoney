@@ -28,11 +28,9 @@ public class Score {
 	}
 	private static void crear() throws Exception {
 			if (file.exists()) {
-				System.out.println("viejo");
 				read();
 			}else {
 				file.createNewFile();
-				System.out.println("nuevo");
 				save();
 			}
 	}
