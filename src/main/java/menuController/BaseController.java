@@ -1,13 +1,8 @@
 package menuController;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 import cubeTower.CubeTowerController;
 import cubeTower.Niveles;
 import estasdisticas.Estasdisticas;
@@ -15,9 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import main.GiveMeDADMoney;
 import main.Music;
 import mayorOMenor.MayorOMenorController;
 import score.Score;
