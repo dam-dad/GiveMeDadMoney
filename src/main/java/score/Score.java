@@ -18,23 +18,21 @@ public class Score {
 	private static Score instance;
 
 	private static IntegerProperty totalScore;
-	// private static ListProperty<Game> game;
 
 	private static String user = System.getProperty("user.home");
 	private static File file = new File(user + "/score.xml");
 
 	public Score() {
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
-		// game = new SimpleListProperty<>(this,
-		// "game",FXCollections.observableArrayList());
+
 	}
 	private static void crear() throws Exception {
 			if (file.exists()) {
-				System.out.println(file.toString());
-				save();
+				System.out.println("viejo");
+				read();
 			}else {
 				file.createNewFile();
-				System.out.println(file.toString());
+				System.out.println("nuevo");
 				save();
 			}
 	}
