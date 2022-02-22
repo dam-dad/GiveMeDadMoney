@@ -23,12 +23,6 @@
 .fondito {
  
 }
-
-.vboxAlerta{
-	-fx-alignment: center ;
-	-fx-background-color: linear-gradiente(#090b22, #102e4c);  	
-}
-
 /*TextField*/
 .text-field{
 	-fx-text-fill: white;
@@ -97,5 +91,11 @@
 .rewardVbox{
 	-fx-background-color: linear-gradiente(#090b22, #102e4c);
 
+}
+
+.alertVbox{
+    -fx-background-color: linear-gradiente(#090b22, #102e4c);
+    -fx-border-radius: 2em;
+    -fx-border-width:2, 2;
 }
 
