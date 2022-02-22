@@ -70,7 +70,7 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
 					</rowConstraints>
 				</GridPane>
-            <VBox fx:id="alertaVbox" alignment="CENTER" fillWidth="false">
+            <VBox fx:id="alertaVbox" alignment="CENTER" fillWidth="false" visible="false">
                <children>
       				<VBox alignment="CENTER" fillWidth="false" styleClass="alertVbox">
       					<children>
