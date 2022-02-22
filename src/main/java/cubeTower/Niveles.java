@@ -16,7 +16,6 @@ import menuController.BaseController;
 public class Niveles implements Initializable {
 
 	private CubeTowerController cube;
-	private Tower tower;
 
 	@FXML
 	private BorderPane view;
@@ -72,8 +71,14 @@ public class Niveles implements Initializable {
 		BaseController.getInstance().showCubeTower();
 	}
 
+	@FXML
+    void onAtrasAction(ActionEvent event) {
+		BaseController.getInstance().showCubeTower();
+    }
+	
 	public BorderPane getView() {
 		return view;
 	}
+	
 
 }
