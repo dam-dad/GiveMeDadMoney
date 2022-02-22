@@ -6,26 +6,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.Interpolator;
-import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import main.GiveMeDADMoney;
 import menuController.BaseController;
 import score.Score;
 
@@ -70,6 +69,33 @@ public class Controller implements Initializable {
 	private BorderPane view;
 
 	@FXML
+	private Button cancelarButton;
+
+	@FXML
+	private Button continuarButton;
+
+	// alerta
+
+	private StringProperty info = new SimpleStringProperty();
+	@FXML
+	private Label alertaInfo;
+
+	@FXML
+	private VBox alertaVbox;
+
+	@FXML
+	void onCancelarAction(ActionEvent event) {
+		alertaVbox.setVisible(false);
+		BaseController.getInstance().showMenu();
+	}
+
+	@FXML
+	void onContinuarAction(ActionEvent event) {
+		alertaVbox.setVisible(false);
+
+	}
+
+	@FXML
 	void MostrarPagos(ActionEvent event) {
 
 	}
@@ -82,6 +108,8 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		alertaInfo.textProperty().bind(info);
+
 		figuraContainers.getChildren().add(figura1);
 		figuraContainers.getChildren().add(figura2);
 		figuraContainers.getChildren().add(figura3);
@@ -109,7 +137,8 @@ public class Controller implements Initializable {
 			int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
 			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + puntosTotales.intValue());
 		} else {
-			GiveMeDADMoney.error("Error de formato.", "Carácter inválido.", "El valor introducido no es un número.");
+			alertaVbox.setVisible(true);
+			info.set("Carácter inválido. \n El valor introducido no es un número.");
 		}
 	}
 
@@ -137,8 +166,8 @@ public class Controller implements Initializable {
 			bottom3.set((int) (Math.random() * Imagen.IMAGENES.size()));
 
 		} else {
-			GiveMeDADMoney.error("Información de Puntos", "Puntos Insuficientes.",
-					"Necesitas mas puntos para poder jugar.");
+			alertaVbox.setVisible(true);
+			info.set("Puntos Insuficientes. \n Necesitas mas puntos para poder jugar.");
 		}
 
 	}
