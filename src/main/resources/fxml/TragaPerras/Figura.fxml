@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<fx:root fx:id="view" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="120.0" prefWidth="120.0" styleClass="root" type="ScrollPane" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="view" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="145.0" prefWidth="145.0" styleClass="root" type="ScrollPane" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
 	<content>
-		<VBox fx:id="pane" alignment="CENTER" spacing="10.0" translateY="-105.0">
+		<VBox fx:id="pane" alignment="CENTER" spacing="20.0" translateY="-100.0">
 			<children>
 				<ImageView fx:id="topImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
 					<image>

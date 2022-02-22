@@ -1,5 +1,6 @@
 package tragaPerras;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.GiveMeDADMoney;
@@ -29,22 +31,18 @@ import score.Score;
 
 public class Controller implements Initializable {
 
-	private ObjectProperty<Image> imagen1Property = new SimpleObjectProperty<>();
-	private ObjectProperty<Image> imagen2Property = new SimpleObjectProperty<>();
-	private ObjectProperty<Image> imagen3Property = new SimpleObjectProperty<>();
 	private IntegerProperty puntosTotales = new SimpleIntegerProperty();
-	private IntegerProperty top1 = new SimpleIntegerProperty();
-	private IntegerProperty top2 = new SimpleIntegerProperty();
-	private IntegerProperty top3 = new SimpleIntegerProperty();
 	private IntegerProperty bottom1 = new SimpleIntegerProperty();
 	private IntegerProperty bottom2 = new SimpleIntegerProperty();
 	private IntegerProperty bottom3 = new SimpleIntegerProperty();
 
-	private int valor1, valor2, valor3;
 	private int sumaPuntos;
-	private ParallelTransition transition;
 
-	private int counter;
+	private Figura figura1 = new Figura();
+	private Figura figura2 = new Figura();
+	private Figura figura3 = new Figura();
+
+	private Pagos tablaPagos = new Pagos();
 
 	TranslateTransition topTransition1 = new TranslateTransition();
 	TranslateTransition topTransition2 = new TranslateTransition();
@@ -57,13 +55,16 @@ public class Controller implements Initializable {
 	private Button apuestaButton, volverButton;
 
 	@FXML
-	private ImageView bottomImage1, topImage1, bottomImage2, topImage2, bottomImage3, topImage3;
-
-	@FXML
 	private HBox buttonsContainer;
 
 	@FXML
 	private Text puntosText;
+
+	@FXML
+    private HBox figuraContainers;
+
+	@FXML
+	private StackPane stackPagos;
 
 	@FXML
 	private TextField apuestaText;
@@ -84,47 +85,53 @@ public class Controller implements Initializable {
 		loader.setController(this);
 		loader.load();
 	}
-
+	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		figuraContainers.getChildren().add(figura1);
+		figuraContainers.getChildren().add(figura2);
+		figuraContainers.getChildren().add(figura3);
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
+
+		stackPagos.getChildren().add(tablaPagos);
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
 
-		topTransition1 = translateTransition(topImage1, bottomImage1);
-		topTransition2 = translateTransition(topImage2, bottomImage2);
-		topTransition3 = translateTransition(topImage3, bottomImage3);
+		// topTransition1 = translateTransition(topImage1, bottomImage1);
+		// topTransition2 = translateTransition(topImage2, bottomImage2);
+		// topTransition3 = translateTransition(topImage3, bottomImage3);
 
-		bottomTransition1 = translateTransition(bottomImage1, bottomImage1);
-		bottomTransition2 = translateTransition(bottomImage2, bottomImage2);
-		bottomTransition3 = translateTransition(bottomImage3, bottomImage3);
+		// bottomTransition1 = translateTransition(bottomImage1, bottomImage1);
+		// bottomTransition2 = translateTransition(bottomImage2, bottomImage2);
+		// bottomTransition3 = translateTransition(bottomImage3, bottomImage3);
 
-		transition = new ParallelTransition(topTransition1, bottomTransition1, topTransition2, bottomTransition2,
-				topTransition3, bottomTransition3);
-		transition.setOnFinished(e -> {
-			counter--;
-			if (counter >= 0) {
+		// transition = new ParallelTransition(topTransition1, bottomTransition1, topTransition2, bottomTransition2,
+		// 		topTransition3, bottomTransition3);
+		// transition.setOnFinished(e -> {
+		// 	counter--;
+		// 	if (counter >= 0) {
 
-				if (counter == 0) {
-					bottomTransition1.setInterpolator(Interpolator.EASE_OUT);
-					bottomTransition2.setInterpolator(Interpolator.EASE_OUT);
-					bottomTransition3.setInterpolator(Interpolator.EASE_OUT);
-					topTransition1.setInterpolator(Interpolator.EASE_OUT);
-					topTransition2.setInterpolator(Interpolator.EASE_OUT);
-					topTransition3.setInterpolator(Interpolator.EASE_OUT);
-				}
 
-				bottom1.set((bottom1.get() + 1) % Imagen.IMAGENES.size());
-				bottom2.set((bottom2.get() + 1) % Imagen.IMAGENES.size());
-				bottom3.set((bottom3.get() + 1) % Imagen.IMAGENES.size());
-				transition.play();
-			}
-		});
+		// 		if (counter == 0) {
+		// 			bottomTransition1.setInterpolator(Interpolator.EASE_OUT);
+		// 			bottomTransition2.setInterpolator(Interpolator.EASE_OUT);
+		// 			bottomTransition3.setInterpolator(Interpolator.EASE_OUT);
+		// 			topTransition1.setInterpolator(Interpolator.EASE_OUT);
+		// 			topTransition2.setInterpolator(Interpolator.EASE_OUT);
+		// 			topTransition3.setInterpolator(Interpolator.EASE_OUT);
+		// 		}
 
-		listener(bottom1, top1, topImage1, bottomImage1);
-		listener(bottom2, top2, topImage2, bottomImage2);
-		listener(bottom3, top3, topImage3, bottomImage3);
+		// 		bottom1.set((bottom1.get() + 1) % Imagen.IMAGENES.size());
+		// 		bottom2.set((bottom2.get() + 1) % Imagen.IMAGENES.size());
+		// 		bottom3.set((bottom3.get() + 1) % Imagen.IMAGENES.size());
+		// 		transition.play();
+		// 	}
+		// });
+
+		// listener(bottom1, top1, topImage1, bottomImage1);
+		// listener(bottom2, top2, topImage2, bottomImage2);
+		// listener(bottom3, top3, topImage3, bottomImage3);
 
 	}
 
@@ -134,11 +141,14 @@ public class Controller implements Initializable {
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
 
-			counter = 10;
-			bottom1.set(((bottom1.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom1.get()) - 1);
-			bottom2.set(((bottom2.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom2.get()) - 1);
-			bottom3.set(((bottom3.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom3.get()) - 1);
-			transition.play();
+			// counter = 10;
+			// bottom1.set(((bottom1.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom1.get()) - 1);
+			// bottom2.set(((bottom2.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom2.get()) - 1);
+			// bottom3.set(((bottom3.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom3.get()) - 1);
+			// transition.play();
+			figura1.roll();
+			figura2.roll();
+			figura3.roll();
 
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
 			
@@ -164,19 +174,9 @@ public class Controller implements Initializable {
 
 		if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
 
-			Imagen i1 = Imagen.randomImagen();
-			imagen1Property.set(i1.getImagen());
-			valor1 = i1.getValor();
 
-			Imagen i2 = Imagen.randomImagen();
-			imagen2Property.set(i2.getImagen());
-			valor2 = i2.getValor();
 
-			Imagen i3 = Imagen.randomImagen();
-			imagen3Property.set(i3.getImagen());
-			valor3 = i3.getValor();
-
-			sumaPuntos += recompensas(valor1, valor2, valor3, numeroApuesta) - numeroApuesta;
+			sumaPuntos += recompensas(figura1.getValueImagen(),figura2.getValueImagen(),figura3.getValueImagen(), numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
 
 			bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));

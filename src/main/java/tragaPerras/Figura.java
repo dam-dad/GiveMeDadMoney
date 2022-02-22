@@ -15,9 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -62,14 +60,14 @@ public class Figura extends ScrollPane implements Initializable {
 		topTransition = new TranslateTransition();
 		topTransition.setNode(topImage);
 		topTransition.setFromY(10);
-		topTransition.setToY(bottomImage.getFitHeight() + 14);
+		topTransition.setToY(bottomImage.getFitHeight() + 22);
 		topTransition.setDuration(Duration.seconds(0.10));
 		topTransition.setInterpolator(Interpolator.LINEAR);
 		
 		bottomTransition = new TranslateTransition();
 		bottomTransition.setNode(bottomImage);
 		bottomTransition.setFromY(10);
-		bottomTransition.setToY(bottomImage.getFitHeight() + 14);
+		bottomTransition.setToY(bottomImage.getFitHeight() + 22);
 		bottomTransition.setDuration(Duration.seconds(0.10));
 		bottomTransition.setInterpolator(Interpolator.LINEAR);
 	
@@ -101,9 +99,14 @@ public class Figura extends ScrollPane implements Initializable {
 	public void roll() {
 		
 		counter = 10;
+		bottom.set((int) (Math.random() * Imagen.IMAGENES.size()));
 		bottom.set(((bottom.get() - 1) < 0 ? Imagen.IMAGENES.size() : bottom.get()) - 1);
 		transition.play();
 		
+	}
+	public int getValueImagen(){
+
+		return Imagen.IMAGENES.get(bottom.get()).getValor();
 	}
 
 }
