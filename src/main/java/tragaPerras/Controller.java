@@ -37,6 +37,7 @@ public class Controller implements Initializable {
 	private IntegerProperty bottom3 = new SimpleIntegerProperty();
 
 	private int sumaPuntos;
+	private int tiradas = 1;
 
 	private Figura figura1 = new Figura();
 	private Figura figura2 = new Figura();
@@ -54,7 +55,7 @@ public class Controller implements Initializable {
 	private Text puntosText;
 
 	@FXML
-    private HBox figuraContainers;
+	private HBox figuraContainers;
 
 	@FXML
 	private StackPane stackPagos;
@@ -78,7 +79,7 @@ public class Controller implements Initializable {
 		loader.setController(this);
 		loader.load();
 	}
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		figuraContainers.getChildren().add(figura1);
@@ -90,10 +91,7 @@ public class Controller implements Initializable {
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
-
 	}
-
-	
 
 	@FXML
 	void apuesta(ActionEvent event) {
@@ -103,9 +101,13 @@ public class Controller implements Initializable {
 			figura3.roll();
 
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
-			
-			//Guarda puntos
+
+			// Guarda puntos
 			Score.getInstance().setTotalScore(puntosTotales.intValue());
+			BaseController.getInstance().getEstadisticas().setPartidasCubo(tiradas);
+			tiradas++;
+			int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
+			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + puntosTotales.intValue());
 		} else {
 			GiveMeDADMoney.error("Error de formato.", "Carácter inválido.", "El valor introducido no es un número.");
 		}
@@ -126,9 +128,8 @@ public class Controller implements Initializable {
 
 		if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
 
-
-
-			sumaPuntos += recompensas(figura1.getValueImagen(),figura2.getValueImagen(),figura3.getValueImagen(), numeroApuesta) - numeroApuesta;
+			sumaPuntos += recompensas(figura1.getValueImagen(), figura2.getValueImagen(), figura3.getValueImagen(),
+					numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
 
 			bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));
@@ -170,29 +171,29 @@ public class Controller implements Initializable {
 		int numero = 0;
 
 		if (valor1 == valor2 && valor1 == valor3) {
-			
+
 			switch (valor1) {
-				case 10:
-					numero = valor1 * 2;
-					break;
-				case 25:
-					numero = valor1 * 3;
-					break;
-				case 35:
-					numero = valor1 * 4;
-					break;
-				case 50:
-					numero = valor1 * 5;
-					break;
-				case 65:
-					numero = valor1 * 6;
-					break;
-				case 75:
-					numero = valor1 * 7;
-					break;
-				case 120:
-					numero = valor1 * 8;
-					break;
+			case 10:
+				numero = valor1 * 2;
+				break;
+			case 25:
+				numero = valor1 * 3;
+				break;
+			case 35:
+				numero = valor1 * 4;
+				break;
+			case 50:
+				numero = valor1 * 5;
+				break;
+			case 65:
+				numero = valor1 * 6;
+				break;
+			case 75:
+				numero = valor1 * 7;
+				break;
+			case 120:
+				numero = valor1 * 8;
+				break;
 
 			}
 			numero += numeroApuesta;
@@ -200,27 +201,27 @@ public class Controller implements Initializable {
 		} else if (valor1 == valor2) {
 
 			switch (valor1) {
-				case 10:
-					numero = (int) (valor1 * 0.5);
-					break;
-				case 25:
-					numero = (int) (valor1 * 0.75);
-					break;
-				case 35:
-					numero = valor1;
-					break;
-				case 50:
-					numero = (int) (valor1 * 1.25);
-					break;
-				case 65:
-					numero = (int) (valor1 * 1.5);
-					break;
-				case 75:
-					numero = (int) (valor1 * 2.5);
-					break;
-				case 120:
-					numero = valor1 * 3;
-					break;
+			case 10:
+				numero = (int) (valor1 * 0.5);
+				break;
+			case 25:
+				numero = (int) (valor1 * 0.75);
+				break;
+			case 35:
+				numero = valor1;
+				break;
+			case 50:
+				numero = (int) (valor1 * 1.25);
+				break;
+			case 65:
+				numero = (int) (valor1 * 1.5);
+				break;
+			case 75:
+				numero = (int) (valor1 * 2.5);
+				break;
+			case 120:
+				numero = valor1 * 3;
+				break;
 
 			}
 			numero += numeroApuesta;
@@ -229,27 +230,27 @@ public class Controller implements Initializable {
 		if (valor2 == valor3) {
 
 			switch (valor2) {
-				case 10:
-					numero = (int) (valor2 * 0.5);
-					break;
-				case 25:
-					numero = (int) (valor2 * 0.75);
-					break;
-				case 35:
-					numero = valor2;
-					break;
-				case 50:
-					numero = (int) (valor2 * 1.5);
-					break;
-				case 65:
-					numero = valor2 * 2;
-					break;
-				case 75:
-					numero = (int) (valor2 * 2.5);
-					break;
-				case 120:
-					numero = valor2 * 3;
-					break;
+			case 10:
+				numero = (int) (valor2 * 0.5);
+				break;
+			case 25:
+				numero = (int) (valor2 * 0.75);
+				break;
+			case 35:
+				numero = valor2;
+				break;
+			case 50:
+				numero = (int) (valor2 * 1.5);
+				break;
+			case 65:
+				numero = valor2 * 2;
+				break;
+			case 75:
+				numero = (int) (valor2 * 2.5);
+				break;
+			case 120:
+				numero = valor2 * 3;
+				break;
 
 			}
 			numero += numeroApuesta;

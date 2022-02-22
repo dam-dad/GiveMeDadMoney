@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import cubeTower.CubeTowerController;
 import cubeTower.Niveles;
+import estasdisticas.Estasdisticas;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.media.MediaPlayer;
 import main.GiveMeDADMoney;
 import main.Music;
 import mayorOMenor.MayorOMenorController;
+import score.Score;
 import store.StoreController;
 import tragaPerras.Controller;
 
@@ -39,6 +41,7 @@ public class BaseController implements Initializable {
 	private CubeTowerController cubeTower = new CubeTowerController();;
 	private Niveles cubeLevel = new Niveles();
 	
+	private Estasdisticas estadiscticas;
 	
 	//Tienda
 	private StoreController store = new StoreController();
@@ -65,6 +68,10 @@ public class BaseController implements Initializable {
 		}
 		
 		showMenu();
+		
+		estadiscticas=new Estasdisticas();
+		estadiscticas.setPuntosDespues(Score.getInstance().getTotalScore());
+		estadiscticas.setPuntosAntes(Score.getInstance().getTotalScore());
 	}
 
 	public void showSetting() {
@@ -121,6 +128,10 @@ public class BaseController implements Initializable {
 			}
 		}
 		return instance;
+	}
+	
+	public Estasdisticas getEstadisticas() {
+		return estadiscticas;
 	}
 
 }

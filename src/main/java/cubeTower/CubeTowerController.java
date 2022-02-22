@@ -34,6 +34,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private int size;
 	private int bonificacion;
 	private String nivelPuntos;
+	private int partidas = 1;
+	private int puntos;
 
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty info= new SimpleStringProperty();
@@ -106,7 +108,9 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 
 	private void you_win(String nivelPuntos) {
 		score.set(score.get() + Integer.parseInt(nivelPuntos));
+		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
 		Score.getInstance().setTotalScore(score.intValue());
+		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos+score.intValue());
 	}
 
 	@Override
@@ -178,7 +182,8 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		play = false;
 		cube = new Cube(0, tower.getRows() - 1, getSize());// setsize();
 		tower.clear();
-
+		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		partidas++;
 		last = System.nanoTime();
 		start();
 	}

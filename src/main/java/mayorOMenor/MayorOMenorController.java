@@ -67,7 +67,7 @@ public class MayorOMenorController implements Initializable {
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty apuesta = new SimpleStringProperty();
 	
-
+	private int partidas=1;
 
 	private BooleanProperty activa = new SimpleBooleanProperty();	
 	private BooleanProperty apostable = new SimpleBooleanProperty();
@@ -180,6 +180,8 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
+		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		partidas++;
 	}
 
 	@FXML
@@ -191,6 +193,8 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
+		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		partidas++;
 	}
 
 	@FXML
@@ -202,16 +206,22 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
+		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		partidas++;
 	}
 	
 	private void you_loose() {
 		score.set(score.get() - Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
+		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
+		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos-score.intValue());
 	}
 
 	private void you_win() {
 		score.set(score.get() + Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
+		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
+		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos+score.intValue());
 	}
 
 	
