@@ -1,6 +1,5 @@
 package tragaPerras;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -201,44 +199,6 @@ public class Controller implements Initializable {
 			alertaVbox.setVisible(true);
 			info.set("Puntos Insuficientes. \n Necesitas mas puntos para poder jugar.");
 		}
-
-	}
-
-	/**
-	 * Translate transition translate transition.
-	 *
-	 * @param top    the top
-	 * @param bottom the bottom
-	 * @return the translate transition
-	 */
-	public TranslateTransition translateTransition(ImageView top, ImageView bottom) {
-		TranslateTransition transition = new TranslateTransition();
-
-		transition.setNode(top);
-		transition.setFromY(10);
-		transition.setToY(bottom.getFitHeight() + 20);
-		transition.setDuration(Duration.seconds(0.10));
-		transition.setInterpolator(Interpolator.LINEAR);
-		return transition;
-
-	}
-
-	/**
-	 * Listener.
-	 *
-	 * @param bottomProperty the bottom property
-	 * @param topProperty    the top property
-	 * @param top            the top
-	 * @param bottom         the bottom
-	 */
-	public static void listener(IntegerProperty bottomProperty, IntegerProperty topProperty, ImageView top,
-			ImageView bottom) {
-
-		bottomProperty.addListener((o, ov, nv) -> {
-			topProperty.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			bottom.setImage(top.getImage());
-			top.setImage(Imagen.IMAGENES.get(bottomProperty.get()).getImagen());
-		});
 
 	}
 
