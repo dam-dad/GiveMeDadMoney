@@ -31,9 +31,6 @@ import score.Score;
 public class Controller implements Initializable {
 
 	private IntegerProperty puntosTotales = new SimpleIntegerProperty();
-	private IntegerProperty bottom1 = new SimpleIntegerProperty();
-	private IntegerProperty bottom2 = new SimpleIntegerProperty();
-	private IntegerProperty bottom3 = new SimpleIntegerProperty();
 
 	private int sumaPuntos;
 	private int tiradas = 1;
@@ -60,7 +57,7 @@ public class Controller implements Initializable {
 	private TextField apuestaText;
 
 	@FXML
-	private HBox resultTextContainer, cabeceraBox;
+	private HBox resultTextContainer, cabeceraBox, centerBox;
 
 	@FXML
 	private BorderPane view;
@@ -94,7 +91,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-		cabeceraBox.getChildren().add(tablaPagos);
+		centerBox.getChildren().add(tablaPagos.getView());
 		//tablaPagos.setVisible(true);
 
 	}
@@ -159,10 +156,6 @@ public class Controller implements Initializable {
 			sumaPuntos += recompensas(figura1.getValueImagen(), figura2.getValueImagen(), figura3.getValueImagen(),
 					numeroApuesta) - numeroApuesta;
 			puntosTotales.set(sumaPuntos);
-
-			bottom1.set((int) (Math.random() * Imagen.IMAGENES.size()));
-			bottom2.set((int) (Math.random() * Imagen.IMAGENES.size()));
-			bottom3.set((int) (Math.random() * Imagen.IMAGENES.size()));
 
 		} else {
 			alertaVbox.setVisible(true);

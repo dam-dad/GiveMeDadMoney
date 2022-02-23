@@ -5,7 +5,7 @@
 .points {
     -fx-text-fill: white;
     -fx-font-family:Elephant;
-    -fx-background-color: transparent;
+    -fx-background-image: url("../images/TragaPerras/black_translparent.png");
 }
 .button{
 	-fx-background-image: url("../images/TragaPerras/button.png");

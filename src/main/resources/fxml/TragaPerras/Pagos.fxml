@@ -13,7 +13,7 @@
 
 <VBox fx:id="view" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" styleClass="points" stylesheets="@../../css/stylePagos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox styleClass="points">
+      <HBox>
          <children>
             <Label styleClass="title" text="Pagos" />
          </children>
@@ -21,7 +21,7 @@
             <Insets top="10.0" />
          </padding>
       </HBox>
-      <GridPane id="payoutsGrid" alignment="CENTER" hgap="8.0" styleClass="points" vgap="16.0">
+      <GridPane id="payoutsGrid" alignment="CENTER" hgap="8.0" vgap="16.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

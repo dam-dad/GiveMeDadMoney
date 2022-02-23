@@ -16,11 +16,9 @@ public class App extends Application {
 
         pagos = new Pagos();
 
-        VBox root = new VBox(5, pagos);
-        root.setAlignment(Pos.CENTER);
-
+        Scene scene = new Scene(pagos.getView());
         primaryStage.setTitle("Prueba Pagos");
-        primaryStage.setScene(new Scene(root, 320, 200));
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
