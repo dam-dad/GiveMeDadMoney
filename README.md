@@ -18,10 +18,11 @@ INFO
 ## Wiki
 
 INFO
+- [Diego Alejandro Garcia Deus](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
 
 ## Autores
 
-​		Los integrantes del equipo encargados de desarrollar LudopatApp:
+​		Los integrantes del equipo encargados de desarrollar GiveMeDadMoney:
 
 - [Pablo Suarez Romero](https://github.com/PabloSR06)
 - [Diego Alejandro Garcia Deus](https://github.com/Diego04012002)
