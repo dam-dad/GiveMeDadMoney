@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="view" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/CubeTower/cubeTower.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+	<center>
+		<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+			<children>
+				<Button mnemonicParsing="false" onAction="#onFacilAction" prefHeight="26.0" prefWidth="71.0" styleClass="botonesDefault" text="Fácil" VBox.vgrow="ALWAYS" />
+				<Button mnemonicParsing="false" onAction="#onMedioAction" prefHeight="26.0" prefWidth="71.0" styleClass="botonesDefault" text="Medio" VBox.vgrow="ALWAYS" />
+				<Button mnemonicParsing="false" onAction="#onDificilAction" prefHeight="26.0" prefWidth="71.0" styleClass="botonesDefault" text="Dificil" VBox.vgrow="ALWAYS" />
+			</children>
+		</VBox>
+	</center>
+	<top>
+		<Button mnemonicParsing="false" onAction="#onAtrasAction" prefHeight="26.0" prefWidth="71.0" styleClass="botonesDefault" text="Atras" BorderPane.alignment="CENTER_LEFT" />
+	</top>
+	<padding>
+		<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+	</padding>
+</BorderPane>

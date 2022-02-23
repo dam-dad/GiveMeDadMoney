@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <bottom>
+        <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="biggerButton" mnemonicParsing="false" onAction="#onBiggerAction" prefWidth="62.0" styleClass="botonesDefault" text="Mayor" />
+                <Button fx:id="equalButton" mnemonicParsing="false" onAction="#onEqualButton" prefWidth="62.0" styleClass="botonesDefault" text="Igual" />
+                <Button fx:id="lessButton" mnemonicParsing="false" onAction="#onLessButton" prefWidth="62.0" styleClass="botonesDefault" text="Menor" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+    </bottom>
+    <left>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="125.0" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Tu carta:" />
+            <ImageView fx:id="myCard" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/MayorOMenor/backCarta.png" />
+               </image>
+            </ImageView>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </left>
+    <right>
+        <VBox alignment="CENTER" prefWidth="125.0" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Carta de la casa:">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Label>
+            <ImageView fx:id="homeCard" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/MayorOMenor/backCarta.png" />
+               </image>
+            </ImageView>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </right>
+    <top>
+        <HBox spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAction" prefWidth="60.0" styleClass="botonesDefault" text="Volver" />
+                <Region HBox.hgrow="ALWAYS" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+    </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+              <VBox alignment="CENTER">
+                  <children>
+                  <Button fx:id="shuffleButton" mnemonicParsing="false" onAction="#onShuffleAction" styleClass="botonesDefault" text="BARAJAR" />
+                      <HBox alignment="CENTER" spacing="5.0">
+                          <children>
+                              <Label text="Tus puntos:">
+                                  <font>
+                                      <Font name="System Bold" size="12.0" />
+                                  </font>
+                              </Label>
+                              <Label fx:id="puntosLabel" text="null" />
+                          </children>
+                          <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                          </padding>
+                      </HBox>
+                      <HBox alignment="CENTER" spacing="5.0">
+                          <children>
+                              <TextField fx:id="apuestaText" />
+                          </children>
+                          <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                          </padding>
+                      </HBox>
+                  </children>
+              </VBox>
+            <VBox fx:id="alertaBox" alignment="CENTER" fillWidth="false" visible="false">
+               <children>
+                  <VBox alignment="CENTER" styleClass="alertVbox">
+                     <children>
+                        <Label fx:id="alertaInfo" text="Label">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Button fx:id="continuarButton" mnemonicParsing="false" onAction="#onContinuarAction" text="Continuar">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

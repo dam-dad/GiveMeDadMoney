@@ -1,0 +1,23 @@
+@font-face{
+	font-family: Elephant;
+	src: url("../fonts/ELEPHNT.TTF");
+}
+.points {
+    -fx-text-fill: white;
+    -fx-font-family:Elephant;
+    -fx-background-image: url("../images/TragaPerras/black_translparent.png");
+}
+.button{
+	-fx-background-image: url("../images/TragaPerras/button.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-color:transparent;
+
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
+.button:hover{
+	-fx-background-size:102%;
+}
+
