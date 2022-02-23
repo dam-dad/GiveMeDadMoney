@@ -39,7 +39,8 @@ public class Controller implements Initializable {
 	private Figura figura2 = new Figura();
 	private Figura figura3 = new Figura();
 
-	private Pagos tablaPagos = new Pagos();
+	private  Pagos tablaPagos = new Pagos();
+	private static Controller instance;
 
 	@FXML
 	private Button apuestaButton, volverButton;
@@ -57,7 +58,7 @@ public class Controller implements Initializable {
 	private TextField apuestaText;
 
 	@FXML
-	private HBox resultTextContainer, cabeceraBox, centerBox;
+	private HBox resultTextContainer, cabeceraBox;
 
 	@FXML
 	private BorderPane view;
@@ -86,13 +87,11 @@ public class Controller implements Initializable {
 	@FXML
 	void onContinuarAction(ActionEvent event) {
 		alertaVbox.setVisible(false);
-
 	}
 
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-		centerBox.getChildren().add(tablaPagos.getView());
-		//tablaPagos.setVisible(true);
+		view.setCenter(tablaPagos.getView());
 
 	}
 
@@ -110,8 +109,6 @@ public class Controller implements Initializable {
 		figuraContainers.getChildren().add(figura2);
 		figuraContainers.getChildren().add(figura3);
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
-
-
 
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
@@ -279,6 +276,20 @@ public class Controller implements Initializable {
 		}
 
 		return numero;
+	}
+	public static Controller getInstance() {
+		if (instance == null) {
+			try {
+				instance = new Controller();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return instance;
+	}
+
+	public void showTragaPerras() {
+		view.setCenter(getView());
 	}
 
 	public void load_score() {
