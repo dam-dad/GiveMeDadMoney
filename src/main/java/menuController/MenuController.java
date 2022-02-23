@@ -17,7 +17,7 @@ import score.Score;
 
 
 /**
- * The type Menu controller.
+ * The type Menu controller. Controllador del Menu
  */
 public class MenuController implements Initializable {
 
@@ -71,14 +71,14 @@ public class MenuController implements Initializable {
 	}
 
 	/**
-	 * Load score.
+	 * Load score. Carga los puntos del la instancia Score al IntegerProperty del score
 	 */
 	public void load_score() {
 		total_score.set(Score.getInstance().getTotalScore());
 	}
 
 	/**
-	 * On tragaperras action.
+	 * On tragaperras action. Pone en pantalla el juego Tragaperras
 	 *
 	 * @param event the event
 	 */
@@ -88,7 +88,7 @@ public class MenuController implements Initializable {
     }
 
 	/**
-	 * On settings action.
+	 * On settings action. Pone en pantalla los ajustes
 	 *
 	 * @param event the event
 	 * @throws IOException the io exception
@@ -100,7 +100,7 @@ public class MenuController implements Initializable {
 	}
 
 	/**
-	 * On mayor o menor action.
+	 * On mayor o menor action. Pone en pantalla el juego Mayor o menor
 	 *
 	 * @param event the event
 	 */
@@ -110,7 +110,7 @@ public class MenuController implements Initializable {
     }
 
 	/**
-	 * On cube tower action.
+	 * On cube tower action. Pone en pantalla el juego cubeTower
 	 *
 	 * @param event the event
 	 */
@@ -120,7 +120,7 @@ public class MenuController implements Initializable {
 	}
 
 	/**
-	 * On store action.
+	 * On store action. Pone en pantalla la tienda
 	 *
 	 * @param event the event
 	 */

@@ -20,7 +20,7 @@ import menuController.BaseController;
 import score.Score;
 
 /**
- * The type Store controller.
+ * The type Store controller. Controlador de la tienda 
  */
 public class StoreController implements Initializable {
 
@@ -67,7 +67,10 @@ public class StoreController implements Initializable {
     
     private StringProperty info = new SimpleStringProperty();
 
-
+	/**
+	 * Esconde la alerta
+	 * @param event
+	 */
     @FXML
     void onContinuarAction(ActionEvent event) {
     	alertaVbox.setVisible(false);
@@ -75,7 +78,7 @@ public class StoreController implements Initializable {
 
 
 	/**
-	 * On menu action.
+	 * On menu action. Vuelve al menu
 	 *
 	 * @param event the event
 	 */
@@ -106,13 +109,13 @@ public class StoreController implements Initializable {
 	}
 
 	/**
-	 * On dinero action.
+	 * On dinero action. Comprar un premio de clase dinero, y resta los precios
 	 *
 	 * @param event the event
 	 */
 	@FXML
 	void onDineroAction(ActionEvent event) {
-		if (lose_money(500 + "") == true) {
+		if (lose_money(505 + "") == true) {
 			rewardVBox.setVisible(true);
 			gifView.setImage(premios.getGifDinero());
 		}else {
@@ -121,14 +124,14 @@ public class StoreController implements Initializable {
 		}
 	}
 	/**
-	 * On okay action.
+	 * On okay action. Comprar un premio de clase okay, y resta los precios
 	 *
 	 * @param event the event
 	 */
 
 	@FXML
 	void onOkayAction(ActionEvent event) {
-		if (lose_money(500 + "") == true) {
+		if (lose_money(757 + "") == true) {
 			rewardVBox.setVisible(true);
 			gifView.setImage(premios.getGifOkay());
 		}else {
@@ -139,13 +142,13 @@ public class StoreController implements Initializable {
 	}
 
 	/**
-	 * On xokas action.
+	 * On xokas action. Comprar un premio de la clase xokas, y resta los precios
 	 *
 	 * @param event the event
 	 */
 	@FXML
 	void onXokasAction(ActionEvent event) {
-		if (lose_money(500 + "") == true) {
+		if (lose_money(620 + "") == true) {
 			rewardVBox.setVisible(true);
 			gifView.setImage(premios.getGifXokas());
 		}else {

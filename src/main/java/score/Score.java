@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-
 /**
- * The type Score.
+ * The type Score. Controllador del xml donde se guardan los puntos que se usan
+ * en la aplicacion
  */
 @XmlType
 @XmlRootElement
@@ -32,17 +32,24 @@ public class Score {
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
 
 	}
+
+	/**
+	 * Comprueba si el fichero de puntos en la carpeta del usuario existe y si no lo
+	 * crea.
+	 * 
+	 * @throws Exception
+	 */
 	private static void crear() throws Exception {
-			if (file.exists()) {
-				read();
-			}else {
-				file.createNewFile();
-				save();
-			}
+		if (file.exists()) {
+			read();
+		} else {
+			file.createNewFile();
+			save();
+		}
 	}
 
 	/**
-	 * Save.
+	 * Save. Guarda el fichero de puntos con los cambios que tenga
 	 *
 	 * @param file the file
 	 * @throws Exception the exception
@@ -55,7 +62,7 @@ public class Score {
 	}
 
 	/**
-	 * Save.
+	 * Save. Guarda el fichero de puntos predeterminado, sin determinar File
 	 *
 	 * @throws Exception the exception
 	 */
@@ -64,7 +71,7 @@ public class Score {
 	}
 
 	/**
-	 * Read score.
+	 * Read score. Lee el fichero de puntos predeterminado
 	 *
 	 * @param file the file
 	 * @return the score
@@ -77,7 +84,7 @@ public class Score {
 	}
 
 	/**
-	 * Read score.
+	 * Read score. Lee el fichero de puntos predeterminado, sin determinar File
 	 *
 	 * @return the score
 	 * @throws Exception the exception
@@ -85,7 +92,6 @@ public class Score {
 	public static Score read() throws Exception {
 		return read(file);
 	}
-
 
 	/**
 	 * Total score property integer property.
@@ -115,9 +121,8 @@ public class Score {
 		this.totalScoreProperty().set(totalScore);
 	}
 
-
 	/**
-	 * Gets instance.
+	 * Gets instance. Genera la instancia usando el metodo singleton.
 	 *
 	 * @return the instance
 	 */
@@ -126,7 +131,7 @@ public class Score {
 		if (instance == null) {
 			try {
 				instance = new Score();
-				crear();	
+				crear();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}

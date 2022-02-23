@@ -18,7 +18,7 @@ import tragaPerras.Controller;
 import tragaPerras.Pagos;
 
 /**
- * The type Base controller.
+ * The type Base controller. La base de toda la aplicacion, donde incia todos los controladores
  */
 public class BaseController implements Initializable {
 
@@ -58,7 +58,6 @@ public class BaseController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		getView().getStylesheets().add("/css/style.css");
 		
-
 		try {
 			musica = new Music("/media/Broken_Heart.mp3");
 			
@@ -163,7 +162,7 @@ public class BaseController implements Initializable {
 	}
 
 	/**
-	 * Gets instance.
+	 * Gets instance. 
 	 *
 	 * @return the instance
 	 */
