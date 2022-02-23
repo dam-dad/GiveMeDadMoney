@@ -1,5 +1,8 @@
 package estasdisticas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Estasdisticas {
 	
 	private int tiradas;
@@ -7,6 +10,7 @@ public class Estasdisticas {
 	private int partidasMayorOMenor;
 	private int puntosAntes;
 	private int puntosDespues;
+	private List<Integer> listaEstadisticas;
 	
 	public Estasdisticas() {
 		this.tiradas=0;
@@ -17,7 +21,7 @@ public class Estasdisticas {
 	}
 
 	public int getTiradas() {
-		return tiradas;
+		return 10;
 	}
 
 	public void setTiradas(int tiradas) {
@@ -25,7 +29,7 @@ public class Estasdisticas {
 	}
 
 	public int getPartidasCubo() {
-		return partidasCubo;
+		return 10;
 	}
 
 	public void setPartidasCubo(int partidasCubo) {
