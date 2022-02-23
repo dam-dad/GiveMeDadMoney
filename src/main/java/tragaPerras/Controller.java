@@ -42,7 +42,7 @@ public class Controller implements Initializable {
 	private Figura figura2 = new Figura();
 	private Figura figura3 = new Figura();
 
-	private  Pagos tablaPagos = new Pagos();
+	
 	private static Controller instance;
 
 	@FXML
@@ -109,7 +109,7 @@ public class Controller implements Initializable {
 	 */
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-		view.setCenter(tablaPagos.getView());
+		BaseController.getInstance().showTablaPagos();
 
 	}
 

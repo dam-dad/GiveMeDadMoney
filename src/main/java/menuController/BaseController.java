@@ -15,6 +15,7 @@ import mayorOMenor.MayorOMenorController;
 import score.Score;
 import store.StoreController;
 import tragaPerras.Controller;
+import tragaPerras.Pagos;
 
 /**
  * The type Base controller.
@@ -32,6 +33,7 @@ public class BaseController implements Initializable {
 
 	// CONTROLLER JUEGO
 	private Controller tragaPerrasController = new Controller();
+	private Pagos TablaPagos = new Pagos();
 	private MayorOMenorController mayorOMenor = new MayorOMenorController();
 	private CubeTowerController cubeTower = new CubeTowerController();;
 	private Niveles cubeLevel = new Niveles();
@@ -86,6 +88,11 @@ public class BaseController implements Initializable {
 	public void showTragaPerras() {
 		root.setCenter(tragaPerrasController.getView());
 		tragaPerrasController.load_score();
+	}
+	
+	public void showTablaPagos() {
+		root.setCenter(TablaPagos.getView());
+		
 	}
 
 	/**

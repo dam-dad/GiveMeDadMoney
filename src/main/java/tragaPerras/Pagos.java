@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import menuController.BaseController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,7 +46,7 @@ public class Pagos implements Initializable {
      */
     @FXML
     void onVolverAction(ActionEvent event) {
-        Controller.getInstance().getView();
+        BaseController.getInstance().showTragaPerras();
     }
 
     /**
