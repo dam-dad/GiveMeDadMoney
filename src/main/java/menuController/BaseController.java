@@ -93,6 +93,10 @@ public class BaseController implements Initializable {
 		root.setCenter(TablaPagos.getView());
 		
 	}
+	
+	public void play_sound() {
+		musica.sonido_tragaperras();
+	}
 
 	/**
 	 * Show cube tower.

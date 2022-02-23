@@ -143,7 +143,7 @@ public class Controller implements Initializable {
 	@FXML
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
-
+			BaseController.getInstance().play_sound();
 
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
 
