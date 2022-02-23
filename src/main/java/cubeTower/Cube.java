@@ -114,6 +114,10 @@ public class Cube {
 		}
 	}
 
+	/**
+	 * Revisa si colisiona contra uno de los bordes
+	 */
+	
 	private boolean checkCollision(Tower tower) {
 		return (x == 0 && direction == -1) || (x + size == tower.getCols() && direction == 1);
 	}
@@ -123,6 +127,7 @@ public class Cube {
 	 *
 	 * @param diff  the diff
 	 * @param tower the tower
+	 * Actualiza el movimiento del cubo de izquierda a derecha
 	 */
 	public void update(double diff, Tower tower) {
 		time += diff;
@@ -137,6 +142,7 @@ public class Cube {
 
 	/**
 	 * Move up.
+	 * Sube de nivel el cubo
 	 */
 	public void moveUp() {
 		y -= 1;
@@ -147,6 +153,7 @@ public class Cube {
 	 * Reduce.
 	 *
 	 * @param tower the tower
+	 * Reduce el rango del cubo si has fallado un cubo
 	 */
 	public void reduce(Tower tower) {
 		int duracion = 0;
@@ -170,7 +177,6 @@ public class Cube {
 					tower.draw(node, "transparent");
 				});
 				cuboCaida.play();
-				// cuboCaida.stop();
 				tower.draw(i, y, "rgba(255, 255, 255, .7)");
 			}
 		}
