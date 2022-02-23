@@ -8,7 +8,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 /**
- * The type Music.
+ * The type Music. Controllador de la Musica de fondo y de otros sonidos.
  */
 public class Music {
 
@@ -16,9 +16,6 @@ public class Music {
 	 * The Musica fondo.
 	 */
 	public Media musicaFondo;
-	/**
-	 * The Fondo reproductor.
-	 */
 	public MediaPlayer fondoReproductor;
 
 	/**
@@ -28,7 +25,7 @@ public class Music {
 	public MediaPlayer sonidoReproductor;
 
 	/**
-	 * Instantiates a new Music.
+	 * Instantiates a new Music. Crea la musica de fondo del menu
 	 *
 	 * @param path the path
 	 */
@@ -54,7 +51,7 @@ public class Music {
 
 
 	/**
-	 * Play sound.
+	 * Play sound. Crea la musica para sonidos esporadicos
 	 *
 	 * @param path the path
 	 */
@@ -79,14 +76,14 @@ public class Music {
 	}
 
 	/**
-	 * Play.
+	 * Play. Retoma la reproduccion de la muscia de fondo
 	 */
 	public void play(){
 		fondoReproductor.play();
 	}
 
 	/**
-	 * Pause.
+	 * Pause. Para la reproduccion de la muscia de fondo
 	 *
 	 * @throws UnsupportedAudioFileException the unsupported audio file exception
 	 * @throws IOException                   the io exception
@@ -97,7 +94,7 @@ public class Music {
 	}
 
 	/**
-	 * Stop.
+	 * Stop. Detiene la reproduccion de la muscia de fondo
 	 *
 	 * @throws UnsupportedAudioFileException the unsupported audio file exception
 	 * @throws IOException                   the io exception
@@ -108,7 +105,7 @@ public class Music {
 	}
 
 	/**
-	 * Sets volumen.
+	 * Sets volumen. Pone el volumen de la musica de fondo
 	 *
 	 * @param vol the vol
 	 */
@@ -117,7 +114,7 @@ public class Music {
 	}
 
 	/**
-	 * Gets volumen.
+	 * Gets volumen. Obtiene el volumen de la musica de fondo
 	 *
 	 * @return the volumen
 	 */

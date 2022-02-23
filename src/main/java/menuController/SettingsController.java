@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 
 /**
- * The type Settings controller.
+ * The type Settings controller. Controllador de los ajustes del juego
  */
 public class SettingsController implements Initializable {
 
@@ -55,7 +55,7 @@ public class SettingsController implements Initializable {
 
 
 	/**
-	 * On music stop acction.
+	 * On music stop acction. Para la musica de fondo
 	 *
 	 * @param event the event
 	 */
@@ -69,7 +69,7 @@ public class SettingsController implements Initializable {
 	}
 
 	/**
-	 * On music play acction.
+	 * On music play acction. Reproduce la musica de fondo
 	 *
 	 * @param event the event
 	 */
@@ -83,7 +83,7 @@ public class SettingsController implements Initializable {
 	}
 
 	/**
-	 * On back acction.
+	 * On back acction. Vuelve al menu
 	 *
 	 * @param event the event
 	 */
