@@ -17,7 +17,6 @@ INFO
 
 ## Wiki
 
-INFO
 - [Cube Tower](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
 
 ## Autores
