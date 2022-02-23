@@ -23,6 +23,9 @@ import javafx.scene.layout.VBox;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Cube tower controller.
+ */
 public class CubeTowerController extends AnimationTimer implements Initializable {
 
 	private long last;
@@ -61,6 +64,11 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	@FXML
 	private BorderPane view;
 
+	/**
+	 * Instantiates a new Cube tower controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public CubeTowerController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CubeTower/View.fxml"));
 		loader.setController(this);
@@ -98,10 +106,18 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		load_score();
 	}
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return view;
 	}
 
+	/**
+	 * Load score.
+	 */
 	public void load_score() {
 		score.set(Score.getInstance().getTotalScore());
 	}
@@ -134,10 +150,20 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 
 	}
 
+	/**
+	 * Gets nivel.
+	 *
+	 * @return the nivel
+	 */
 	public int getNivel() {
 		return tower.getRows() - cube.getY() - 1;
 	}
 
+	/**
+	 * On atras button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onAtrasButton(ActionEvent event) {
 		BaseController.getInstance().showMenu();
@@ -177,6 +203,10 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 			inicio = false;
 		}
 	}
+
+	/**
+	 * Play cubo.
+	 */
 	public void playCubo() {
 		inicio = true;
 		play = false;
@@ -188,12 +218,23 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		start();
 	}
 
+	/**
+	 * On niveles action.
+	 *
+	 * @param event the event
+	 * @throws IOException the io exception
+	 */
 	@FXML
 	void onNivelesAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showLevelTower();
 		alertaVbox.setVisible(false);
 	}
-	
+
+	/**
+	 * On cancelar action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onCancelarAction(ActionEvent event) {
 		alertaVbox.setVisible(false);
@@ -202,48 +243,103 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		stop();
     }
 
-    @FXML
+	/**
+	 * On continuar action.
+	 *
+	 * @param event the event
+	 */
+	@FXML
     void onContinuarAction(ActionEvent event) {
     	alertaVbox.setVisible(false);
     	playCubo();
     }
 
+	/**
+	 * Gets speed.
+	 *
+	 * @return the speed
+	 */
 	public double getSpeed() {
 		return speed;
 	}
 
+	/**
+	 * Sets speed.
+	 *
+	 * @param speed the speed
+	 */
 	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 
+	/**
+	 * Gets size.
+	 *
+	 * @return the size
+	 */
 	public int getSize() {
 		return size;
 	}
 
+	/**
+	 * Sets size.
+	 *
+	 * @param size the size
+	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
 
+	/**
+	 * Gets tower.
+	 *
+	 * @return the tower
+	 */
 	public Tower getTower() {
 		return tower;
 	}
 
+	/**
+	 * Sets tower.
+	 *
+	 * @param tower the tower
+	 */
 	public void setTower(Tower tower) {
 		this.tower = tower;
 	}
 
+	/**
+	 * Gets bonificacion.
+	 *
+	 * @return the bonificacion
+	 */
 	public int getBonificacion() {
 		return bonificacion;
 	}
 
+	/**
+	 * Sets bonificacion.
+	 *
+	 * @param bonificacion the bonificacion
+	 */
 	public void setBonificacion(int bonificacion) {
 		this.bonificacion = bonificacion;
 	}
 
+	/**
+	 * Gets pixeles.
+	 *
+	 * @return the pixeles
+	 */
 	public GridPane getPixeles() {
 		return pixeles;
 	}
 
+	/**
+	 * Sets pixeles.
+	 *
+	 * @param pixeles the pixeles
+	 */
 	public void setPixeles(GridPane pixeles) {
 		this.pixeles = pixeles;
 	}
