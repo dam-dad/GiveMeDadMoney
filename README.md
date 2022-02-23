@@ -22,6 +22,7 @@ O puedes ir directamente a la guia que deseas ver:
 - [Cube Tower](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
 - [Mayor O Menor](https://github.com/dam-dad/GiveMeDadMoney/wiki/MayorOMenor)
 - [Tragaperras](https://github.com/dam-dad/GiveMeDadMoney/wiki/Tragaperras)
+- [Tienda](https://github.com/dam-dad/GiveMeDadMoney/wiki/Store)
 
 ## Autores
 
