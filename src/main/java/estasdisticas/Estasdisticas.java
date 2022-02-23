@@ -10,7 +10,6 @@ public class Estasdisticas {
 	private int partidasMayorOMenor;
 	private int puntosAntes;
 	private int puntosDespues;
-	private List<Integer> listaEstadisticas;
 	
 	public Estasdisticas() {
 		this.tiradas=0;
@@ -21,7 +20,7 @@ public class Estasdisticas {
 	}
 
 	public int getTiradas() {
-		return 10;
+		return tiradas;
 	}
 
 	public void setTiradas(int tiradas) {
@@ -29,7 +28,7 @@ public class Estasdisticas {
 	}
 
 	public int getPartidasCubo() {
-		return 10;
+		return partidasCubo;
 	}
 
 	public void setPartidasCubo(int partidasCubo) {
