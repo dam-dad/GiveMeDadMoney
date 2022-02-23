@@ -72,7 +72,7 @@ public class Music {
 	 * Sonido tragaperras.
 	 */
 	public void sonido_tragaperras() {
-		play_sound("/media/sound1.mp3");
+		play_sound("/media/SlotMachineSound.mp3");
 	}
 
 	/**
