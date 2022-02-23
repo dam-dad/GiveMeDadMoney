@@ -19,6 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * The type Figura.
+ */
 public class Figura extends ScrollPane implements Initializable {
 	
 	private TranslateTransition topTransition;
@@ -39,7 +42,10 @@ public class Figura extends ScrollPane implements Initializable {
 	
 	@FXML
 	private ImageView bottomImage;
-	
+
+	/**
+	 * Instantiates a new Figura.
+	 */
 	public Figura() {
 		super();
 		try {
@@ -95,7 +101,10 @@ public class Figura extends ScrollPane implements Initializable {
 		bottom.set((int) (Math.random() * Imagen.IMAGENES.size()));
 		
 	}
-	
+
+	/**
+	 * Roll.
+	 */
 	public void roll() {
 		
 		counter = 10;
@@ -104,6 +113,12 @@ public class Figura extends ScrollPane implements Initializable {
 		transition.play();
 		
 	}
+
+	/**
+	 * Get value imagen int.
+	 *
+	 * @return the int
+	 */
 	public int getValueImagen(){
 
 		return Imagen.IMAGENES.get(bottom.get()).getValor();

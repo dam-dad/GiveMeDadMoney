@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * The type Settings controller.
+ */
 public class SettingsController implements Initializable {
 
 	@FXML
@@ -30,7 +33,11 @@ public class SettingsController implements Initializable {
     private Slider volumenSlider;
 
 
-
+	/**
+	 * Instantiates a new Settings controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public SettingsController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/SettingsView.fxml"));
 		loader.setController(this);
@@ -46,7 +53,12 @@ public class SettingsController implements Initializable {
         });
 	}
 
-	
+
+	/**
+	 * On music stop acction.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onMusicStopAcction(ActionEvent event) {
 		try {
@@ -56,6 +68,11 @@ public class SettingsController implements Initializable {
 		}
 	}
 
+	/**
+	 * On music play acction.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onMusicPlayAcction(ActionEvent event) {
 		try {
@@ -64,13 +81,23 @@ public class SettingsController implements Initializable {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
+	/**
+	 * On back acction.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBackAcction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return settingsView;
 	}
