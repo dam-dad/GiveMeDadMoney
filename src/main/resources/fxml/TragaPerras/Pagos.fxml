@@ -17,7 +17,7 @@
    <children>
       <HBox alignment="CENTER_LEFT">
          <children>
-            <Button ellipsisString="" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Volver" />
+            <Button fx:id="volverButton" ellipsisString="" mnemonicParsing="false" onAction="#onVolverAction" prefHeight="23.0" prefWidth="62.0" text="Volver" />
             <Region prefWidth="250.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Pagos" HBox.hgrow="SOMETIMES">
                <font>
