@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Give me dad money.
+ */
 public class GiveMeDADMoney extends Application {
 
 	private static Stage primaryStage;
@@ -30,10 +33,20 @@ public class GiveMeDADMoney extends Application {
 		super.stop();
 	}
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 
+	/**
+	 * Gets primary stage.
+	 *
+	 * @return the primary stage
+	 */
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}

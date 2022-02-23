@@ -28,6 +28,9 @@ import javafx.util.Duration;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Controller.
+ */
 public class Controller implements Initializable {
 
 	private IntegerProperty puntosTotales = new SimpleIntegerProperty();
@@ -39,7 +42,8 @@ public class Controller implements Initializable {
 	private Figura figura2 = new Figura();
 	private Figura figura3 = new Figura();
 
-	private Pagos tablaPagos = new Pagos();
+	private  Pagos tablaPagos = new Pagos();
+	private static Controller instance;
 
 	@FXML
 	private Button apuestaButton, volverButton;
@@ -57,7 +61,7 @@ public class Controller implements Initializable {
 	private TextField apuestaText;
 
 	@FXML
-	private HBox resultTextContainer, cabeceraBox, centerBox;
+	private HBox resultTextContainer, cabeceraBox;
 
 	@FXML
 	private BorderPane view;
@@ -77,25 +81,43 @@ public class Controller implements Initializable {
 	@FXML
 	private VBox alertaVbox;
 
+	/**
+	 * On cancelar action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onCancelarAction(ActionEvent event) {
 		alertaVbox.setVisible(false);
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * On continuar action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onContinuarAction(ActionEvent event) {
 		alertaVbox.setVisible(false);
-
 	}
 
+	/**
+	 * Mostrar pagos.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void MostrarPagos(ActionEvent event) {
-		centerBox.getChildren().add(tablaPagos.getView());
-		//tablaPagos.setVisible(true);
+		view.setCenter(tablaPagos.getView());
 
 	}
 
+	/**
+	 * Instantiates a new Controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public Controller() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TragaPerras/MaquinaTP.fxml"));
 		loader.setController(this);
@@ -111,12 +133,15 @@ public class Controller implements Initializable {
 		figuraContainers.getChildren().add(figura3);
 		apuestaButton.disableProperty().bind(apuestaText.textProperty().isEmpty());
 
-
-
 		puntosText.textProperty().bind(puntosTotales.asString());
 		load_score();
 	}
 
+	/**
+	 * Apuesta.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
@@ -138,15 +163,30 @@ public class Controller implements Initializable {
 		}
 	}
 
+	/**
+	 * Volver.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void volver(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return view;
 	}
 
+	/**
+	 * Juego.
+	 *
+	 * @param numeroApuesta the numero apuesta
+	 */
 	public void juego(int numeroApuesta) {
 
 		sumaPuntos = puntosTotales.get();
@@ -164,6 +204,13 @@ public class Controller implements Initializable {
 
 	}
 
+	/**
+	 * Translate transition translate transition.
+	 *
+	 * @param top    the top
+	 * @param bottom the bottom
+	 * @return the translate transition
+	 */
 	public TranslateTransition translateTransition(ImageView top, ImageView bottom) {
 		TranslateTransition transition = new TranslateTransition();
 
@@ -176,6 +223,14 @@ public class Controller implements Initializable {
 
 	}
 
+	/**
+	 * Listener.
+	 *
+	 * @param bottomProperty the bottom property
+	 * @param topProperty    the top property
+	 * @param top            the top
+	 * @param bottom         the bottom
+	 */
 	public static void listener(IntegerProperty bottomProperty, IntegerProperty topProperty, ImageView top,
 			ImageView bottom) {
 
@@ -187,6 +242,15 @@ public class Controller implements Initializable {
 
 	}
 
+	/**
+	 * Recompensas int.
+	 *
+	 * @param valor1        the valor 1
+	 * @param valor2        the valor 2
+	 * @param valor3        the valor 3
+	 * @param numeroApuesta the numero apuesta
+	 * @return the int
+	 */
 	public int recompensas(int valor1, int valor2, int valor3, int numeroApuesta) {
 
 		int numero = 0;
@@ -281,10 +345,42 @@ public class Controller implements Initializable {
 		return numero;
 	}
 
+	/**
+	 * Gets instance.
+	 *
+	 * @return the instance
+	 */
+	public static Controller getInstance() {
+		if (instance == null) {
+			try {
+				instance = new Controller();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return instance;
+	}
+
+	/**
+	 * Show traga perras.
+	 */
+	public void showTragaPerras() {
+		view.setCenter(getView());
+	}
+
+	/**
+	 * Load score.
+	 */
 	public void load_score() {
 		puntosTotales.set(Score.getInstance().getTotalScore());
 	}
 
+	/**
+	 * Is numeric boolean.
+	 *
+	 * @param cadena the cadena
+	 * @return the boolean
+	 */
 	public static boolean isNumeric(String cadena) {
 
 		boolean resultado;

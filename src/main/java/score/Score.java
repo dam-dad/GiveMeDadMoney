@@ -11,6 +11,9 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 
+/**
+ * The type Score.
+ */
 @XmlType
 @XmlRootElement
 public class Score {
@@ -22,6 +25,9 @@ public class Score {
 	private static String user = System.getProperty("user.home");
 	private static File file = new File(user + "/score.xml");
 
+	/**
+	 * Instantiates a new Score.
+	 */
 	public Score() {
 		totalScore = new SimpleIntegerProperty(this, "totalScore");
 
@@ -35,6 +41,12 @@ public class Score {
 			}
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @param file the file
+	 * @throws Exception the exception
+	 */
 	public static void save(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Score.class);
 		Marshaller marshaller = context.createMarshaller();
@@ -42,35 +54,73 @@ public class Score {
 		marshaller.marshal(getInstance(), file);
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @throws Exception the exception
+	 */
 	public static void save() throws Exception {
 		save(file);
 	}
 
+	/**
+	 * Read score.
+	 *
+	 * @param file the file
+	 * @return the score
+	 * @throws Exception the exception
+	 */
 	public static Score read(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Score.class);
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		return (Score) unmarshaller.unmarshal(file);
 	}
 
+	/**
+	 * Read score.
+	 *
+	 * @return the score
+	 * @throws Exception the exception
+	 */
 	public static Score read() throws Exception {
 		return read(file);
 	}
 
 
+	/**
+	 * Total score property integer property.
+	 *
+	 * @return the integer property
+	 */
 	public final IntegerProperty totalScoreProperty() {
 		return totalScore;
 	}
 
+	/**
+	 * Gets total score.
+	 *
+	 * @return the total score
+	 */
 	@XmlElement
 	public final int getTotalScore() {
 		return this.totalScoreProperty().get();
 	}
 
+	/**
+	 * Sets total score.
+	 *
+	 * @param totalScore the total score
+	 */
 	public final void setTotalScore(final int totalScore) {
 		this.totalScoreProperty().set(totalScore);
 	}
 
 
+	/**
+	 * Gets instance.
+	 *
+	 * @return the instance
+	 */
 	@SuppressWarnings("static-access")
 	public static Score getInstance() {
 		if (instance == null) {

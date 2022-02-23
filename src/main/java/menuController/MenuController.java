@@ -16,6 +16,9 @@ import javafx.scene.text.Font;
 import score.Score;
 
 
+/**
+ * The type Menu controller.
+ */
 public class MenuController implements Initializable {
 
 	
@@ -43,8 +46,13 @@ public class MenuController implements Initializable {
 	
 	// MODEL
 	private IntegerProperty total_score = new SimpleIntegerProperty();
-	
 
+
+	/**
+	 * Instantiates a new Menu controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public MenuController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuView.fxml"));
 		loader.setController(this);
@@ -61,36 +69,71 @@ public class MenuController implements Initializable {
 		load_score(); 
 		
 	}
+
+	/**
+	 * Load score.
+	 */
 	public void load_score() {
 		total_score.set(Score.getInstance().getTotalScore());
 	}
-	
+
+	/**
+	 * On tragaperras action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onTragaperrasAction(ActionEvent event) {
 		BaseController.getInstance().showTragaPerras();
     }
-		
+
+	/**
+	 * On settings action.
+	 *
+	 * @param event the event
+	 * @throws IOException the io exception
+	 */
 	@FXML
 	void onSettingsAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showSetting();
 
 	}
-	
+
+	/**
+	 * On mayor o menor action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onMayorOMenorAction(ActionEvent event) {
 		BaseController.getInstance().showMayorOMenor();
     }
 
+	/**
+	 * On cube tower action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onCubeTowerAction	(ActionEvent event) {
 		BaseController.getInstance().showCubeTower();
 	}
-	
+
+	/**
+	 * On store action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onStoreAction(ActionEvent event) {
 		BaseController.getInstance().showStore();
     }
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return menuRootView;
 	}

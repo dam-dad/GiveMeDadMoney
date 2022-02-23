@@ -17,6 +17,9 @@ import javafx.scene.layout.VBox;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Store controller.
+ */
 public class StoreController implements Initializable {
 
 	private Premios premios;
@@ -50,11 +53,21 @@ public class StoreController implements Initializable {
 	@FXML
 	private Label labelPuntos;
 
+	/**
+	 * On menu action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onMenuAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * Instantiates a new Store controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public StoreController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Store/Store.fxml"));
 		loader.setController(this);
@@ -68,6 +81,11 @@ public class StoreController implements Initializable {
 		load_score();
 	}
 
+	/**
+	 * On dinero action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onDineroAction(ActionEvent event) {
 		rewardVBox.setVisible(true);
@@ -75,6 +93,11 @@ public class StoreController implements Initializable {
 		you_lose(500+"");
 	}
 
+	/**
+	 * On okay action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onOkayAction(ActionEvent event) {
 		rewardVBox.setVisible(true);
@@ -82,6 +105,11 @@ public class StoreController implements Initializable {
 		you_lose(500+"");
 	}
 
+	/**
+	 * On xokas action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onXokasAction(ActionEvent event) {
 		rewardVBox.setVisible(true);
@@ -89,6 +117,11 @@ public class StoreController implements Initializable {
 		you_lose(500+"");
 	}
 
+	/**
+	 * On back action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBackAction(ActionEvent event) {
 		rewardVBox.setVisible(false);
@@ -98,11 +131,19 @@ public class StoreController implements Initializable {
 		score.set(score.get() - Integer.parseInt(nivelPuntos));
 		Score.getInstance().setTotalScore(score.intValue());
 	}
-	
+
+	/**
+	 * Load score.
+	 */
 	public void load_score() {
 		score.set(Score.getInstance().getTotalScore());
 	}
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return root;
 	}

@@ -28,6 +28,9 @@ import javafx.util.Duration;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Mayor o menor controller.
+ */
 public class MayorOMenorController implements Initializable {
 
 	@FXML
@@ -71,8 +74,14 @@ public class MayorOMenorController implements Initializable {
 	private BooleanProperty activa = new SimpleBooleanProperty();
 	private BooleanProperty apostable = new SimpleBooleanProperty();
 
-	// pruebas
+	/**
+	 * The Carta casa.
+	 */
+// pruebas
 	TranslateTransition carta_casa = new TranslateTransition();
+	/**
+	 * The Carta propia.
+	 */
 	TranslateTransition carta_propia = new TranslateTransition();
 
 	// Alerta
@@ -87,11 +96,21 @@ public class MayorOMenorController implements Initializable {
 
 	private StringProperty info = new SimpleStringProperty();
 
+	/**
+	 * On continuar action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onContinuarAction(ActionEvent event) {
 		alertaBox.setVisible(false);
 	}
 
+	/**
+	 * Instantiates a new Mayor o menor controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public MayorOMenorController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MayorOMenor/MayorOMenor.fxml"));
 		loader.setController(this);
@@ -138,6 +157,9 @@ public class MayorOMenorController implements Initializable {
 		shuffle();
 	}
 
+	/**
+	 * Load score.
+	 */
 	public void load_score() {
 		score.set(Score.getInstance().getTotalScore());
 	}
@@ -189,12 +211,22 @@ public class MayorOMenorController implements Initializable {
 
 	}
 
+	/**
+	 * On shuffle action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onShuffleAction(ActionEvent event) {
 		shuffle();
 		apuestaText.setDisable(false);
 	}
 
+	/**
+	 * On bigger action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBiggerAction(ActionEvent event) {
 		cargar_carta();
@@ -208,6 +240,11 @@ public class MayorOMenorController implements Initializable {
 		partidas++;
 	}
 
+	/**
+	 * On less button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onLessButton(ActionEvent event) {
 		cargar_carta();
@@ -221,6 +258,11 @@ public class MayorOMenorController implements Initializable {
 		partidas++;
 	}
 
+	/**
+	 * On equal button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onEqualButton(ActionEvent event) {
 		cargar_carta();
@@ -248,11 +290,21 @@ public class MayorOMenorController implements Initializable {
 		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + score.intValue());
 	}
 
+	/**
+	 * On back action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBackAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return root;
 	}
