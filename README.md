@@ -18,7 +18,7 @@ INFO
 ## Wiki
 
 INFO
-- [Diego Alejandro Garcia Deus](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
+- [Cube Tower](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
 
 ## Autores
 
