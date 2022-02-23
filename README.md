@@ -16,8 +16,11 @@ Casino y salón recreativo virtual
 INFO
 
 ## Wiki
+Para acceder a nuestra guia de como usar nuestra aplicación puedes acceder directamente desde aqui [WIKI](https://github.com/dam-dad/GiveMeDadMoney/wiki).
 
+O puedes ir directamente a la guia que deseas ver:
 - [Cube Tower](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
+- [Mayor O Menor](https://github.com/dam-dad/GiveMeDadMoney/wiki/MayorOMenor)
 
 ## Autores
 
@@ -27,6 +30,7 @@ INFO
 - [Diego Alejandro Garcia Deus](https://github.com/Diego04012002)
 - [David Alexander González Suárez](https://github.com/dalextf)
 - [Alejandro Herrera Pestana](https://github.com/AlejandroHP96)
+
 
 ## Licencia
 
