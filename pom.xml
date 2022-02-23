@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dad</groupId>
 	<artifactId>GiveMeDADMoney</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -10,7 +10,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<exec.mainClass>main.Main</exec.mainClass>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -39,7 +38,6 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
 	<developers>
 		<developer>
 			<name>Pablo Suarez Romero</name>
@@ -67,19 +65,20 @@
 				<version>1.6.3</version>
 				<executions>
 					<execution>
+						<id>bundling-for-windows</id>
 						<phase>package</phase>
 						<goals>
 							<goal>package</goal>
 						</goals>
 						<configuration>
-							<mainClass>dad.calculadoraFXML.Main</mainClass>
+							<mainClass>main.Main</mainClass>
 							<bundleJre>true</bundleJre>
 							<additionalResources>
 								<additionalResource>README.md</additionalResource>
 							</additionalResources>
 							<winConfig>
 								<icoFile>icono.ico</icoFile>
-								<generateMsi>false</generateMsi>
+								<generateMsi>true</generateMsi>
 							</winConfig>
 							<createZipball>true</createZipball>
 						</configuration>
