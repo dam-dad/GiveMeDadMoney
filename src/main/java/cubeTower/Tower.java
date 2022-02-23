@@ -76,6 +76,7 @@ public class Tower {
 	 *
 	 * @param x the x
 	 * @param y the y
+	 * Pinta en transparente
 	 */
 	public void setTransparent(int x, int y) {
 		draw(x, y, "transparent");
@@ -86,6 +87,7 @@ public class Tower {
 	 *
 	 * @param x the x
 	 * @param y the y
+	 * Pinta en el color predefinido
 	 */
 	public void setColor(int x, int y) {
 		draw(x, y, "#FF7B00");
@@ -97,6 +99,7 @@ public class Tower {
 	 * @param x     the x
 	 * @param y     the y
 	 * @param color the color
+	 * Funcion que pinta el cubo exacto
 	 */
 	public void draw(int x, int y, String color) {
 		rectangles[x][y].setStyle("-fx-background-color:" + color);
@@ -107,6 +110,7 @@ public class Tower {
 	 *
 	 * @param node  the node
 	 * @param color the color
+	 * Lo mismo que el anterior pero se le pasa el nodo
 	 */
 	public void draw(Node node, String color) {
 		node.setStyle("-fx-background-color:" + color);
@@ -119,12 +123,10 @@ public class Tower {
 	 * @param x the x
 	 * @param y the y
 	 * @return the boolean
+	 * Revisa si es un cubo transparente
 	 */
 	public boolean isCube(int x, int y) {
 		return !getRectangle(x, y).getStyle().contains("transparent");
-			
-		
-		//return !getRectangle(x, y).getStyle().contains("transparent") || getRectangle(x, y).getStyle().contains("rgba(255, 255, 255, .9)");
 	}
 
 	/**
@@ -133,16 +135,15 @@ public class Tower {
 	 * @param x the x
 	 * @param y the y
 	 * @return the boolean
+	 * Revisa si es un cubo pintado
 	 */
 	public boolean isCubeFall(int x, int y) {
 		return  !getRectangle(x, y).getStyle().contains("rgba(255, 255, 255, .7)");
-			
-		
-		//return !getRectangle(x, y).getStyle().contains("transparent") || getRectangle(x, y).getStyle().contains("rgba(255, 255, 255, .9)");
 	}
 
 	/**
 	 * Clear.
+	 * Borra toda la torre dejandola vacia
 	 */
 	public void clear() {
 		for (int i = 0; i < cols; i++) {

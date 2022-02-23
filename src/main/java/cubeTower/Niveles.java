@@ -52,6 +52,7 @@ public class Niveles implements Initializable {
 	 * On facil action.
 	 *
 	 * @param event the event
+	 * Settea la velocidad y el numero de cubo inicial
 	 */
 	@FXML
 	void onFacilAction(ActionEvent event) {
@@ -69,6 +70,7 @@ public class Niveles implements Initializable {
 	 * On medio action.
 	 *
 	 * @param event the event
+	 * Settea la velocidad y el numero de cubo inicial
 	 */
 	@FXML
 	void onMedioAction(ActionEvent event) {
@@ -86,6 +88,7 @@ public class Niveles implements Initializable {
 	 * On dificil action.
 	 *
 	 * @param event the event
+	 * Settea la velocidad y el numero de cubo inicial
 	 */
 	@FXML
 	void onDificilAction(ActionEvent event) {

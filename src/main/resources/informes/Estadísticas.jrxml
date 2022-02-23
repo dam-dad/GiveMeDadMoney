@@ -2,6 +2,21 @@
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Estadisticas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1be1174-10be-4df1-b271-1fbc8431fe7b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Productos"/>
+	<parameter name="Cubo" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$P{Cubo}.getPartidasCubo()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Cartas" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$F{Cartas}.getPartidasMayorOMenor()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PuntosAntes" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$F{PuntosAntes}.getPuntosAntes()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PuntosDespues" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$F{PuntosDespues}.getPuntosDespues()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Tiradas" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$F{Tiradas}.getTiradas()]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -84,27 +99,27 @@
 			<textField>
 				<reportElement x="0" y="0" width="90" height="30" uuid="68cc3423-529f-497a-8505-2ee7226a3f4d"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Cubo}.getPartidasCubo()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Cubo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="135" y="0" width="90" height="30" uuid="15c91a2e-0672-46a9-99c9-df60c310a971"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Cartas}.getPartidasMayorOMenor()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Cartas}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="231" y="0" width="90" height="30" uuid="652b5a12-4879-45d9-b478-5a6663e7c80d"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{PuntosAntes}.getPuntosAntes()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PuntosAntes}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="330" y="0" width="110" height="30" uuid="a4be3770-bf2a-442a-8a75-279b0446964e"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{PuntosDespues}.getPuntosDespues()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PuntosDespues}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="446" y="0" width="104" height="30" uuid="ff97d546-e785-4a83-9810-f56b6147eeb6"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Tiradas}.getTiradas()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Tiradas}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -38,7 +38,6 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	private int bonificacion;
 	private String nivelPuntos;
 	private int partidas = 1;
-	private int puntos;
 
 	private IntegerProperty score = new SimpleIntegerProperty();
 	private StringProperty info= new SimpleStringProperty();
@@ -122,6 +121,10 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		score.set(Score.getInstance().getTotalScore());
 	}
 
+	/**
+	 *Guarda los puntos que ganas 
+	 */
+	
 	private void you_win(String nivelPuntos) {
 		score.set(score.get() + Integer.parseInt(nivelPuntos));
 		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
@@ -133,9 +136,13 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 	public void handle(long now) {
 		long diff = now - last;
 		last = now;
-		loop(diff / getSpeed()); // pasamos el tiempo transacurrido a segundos, getSpeed();
+		loop(diff / getSpeed());
 	}
 
+	/**
+	 * Va pintando los distintos cubos
+	 */
+	
 	private void loop(double time) {
 		// clear cube from tower
 		cube.setColor("transparent");
@@ -170,6 +177,10 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 		tower.clear();
 		stop();
 	}
+	
+	/**
+	 * Para el movimiento del cubo y revisa las distintas soluciones
+	 */
 
 	private void stopCubo() {
 
@@ -198,14 +209,13 @@ public class CubeTowerController extends AnimationTimer implements Initializable
 				}
 			}
 		} else {
-			// la primera vez sólo subimos el cubo un nivel
 			cube.moveUp();
 			inicio = false;
 		}
 	}
 
 	/**
-	 * Play cubo.
+	 * Empieza la partida
 	 */
 	public void playCubo() {
 		inicio = true;
