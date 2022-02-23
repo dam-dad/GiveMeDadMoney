@@ -21,6 +21,7 @@ Para acceder a nuestra guia de como usar nuestra aplicación puedes acceder dire
 O puedes ir directamente a la guia que deseas ver:
 - [Cube Tower](https://github.com/dam-dad/GiveMeDadMoney/wiki/Cube-Tower)
 - [Mayor O Menor](https://github.com/dam-dad/GiveMeDadMoney/wiki/MayorOMenor)
+- [Tragaperras](https://github.com/dam-dad/GiveMeDadMoney/wiki/Traga Perras)
 
 ## Autores
 
