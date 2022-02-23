@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,33 +27,52 @@ public class StoreController implements Initializable {
 	private Premios premios;
 
 	private IntegerProperty score = new SimpleIntegerProperty();
+	
 
 	@FXML
-	private Button backButton;
+    private Label alertaInfo;
 
-	@FXML
-	private Button dineroButton;
+    @FXML
+    private VBox alertaVbox;
 
-	@FXML
-	private Button dineroButton1;
+    @FXML
+    private Button backButton;
 
-	@FXML
-	private ImageView gifView;
+    @FXML
+    private Button continuarButton;
 
-	@FXML
-	private Button menuButton;
+    @FXML
+    private Button dineroButton;
 
-	@FXML
-	private VBox rewardVBox;
+    @FXML
+    private ImageView gifView;
 
-	@FXML
-	private BorderPane root;
+    @FXML
+    private Label labelPuntos;
 
-	@FXML
-	private Button xokasButton;
+    @FXML
+    private Button menuButton;
 
-	@FXML
-	private Label labelPuntos;
+    @FXML
+    private Button okayButton;
+
+    @FXML
+    private VBox rewardVBox;
+
+    @FXML
+    private BorderPane root;
+
+    @FXML
+    private Button xokasButton;
+    
+    private StringProperty info = new SimpleStringProperty();
+
+
+    @FXML
+    void onContinuarAction(ActionEvent event) {
+    	alertaVbox.setVisible(false);
+    }
+
 
 	/**
 	 * On menu action.
@@ -76,6 +97,9 @@ public class StoreController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		alertaInfo.textProperty().bind(info);
+
 		labelPuntos.textProperty().bind(score.asString());
 		premios = new Premios();
 		load_score();
@@ -88,21 +112,30 @@ public class StoreController implements Initializable {
 	 */
 	@FXML
 	void onDineroAction(ActionEvent event) {
-		rewardVBox.setVisible(true);
-		gifView.setImage(premios.getGifDinero());
-		you_lose(500+"");
+		if (lose_money(500 + "") == true) {
+			rewardVBox.setVisible(true);
+			gifView.setImage(premios.getGifDinero());
+		}else {
+	    	alertaVbox.setVisible(true);
+	    	info.set("Puntos Insuficientes. \n No tienes tantos puntos para pagar.");
+		}
 	}
-
 	/**
 	 * On okay action.
 	 *
 	 * @param event the event
 	 */
+
 	@FXML
 	void onOkayAction(ActionEvent event) {
-		rewardVBox.setVisible(true);
-		gifView.setImage(premios.getGifOkay());
-		you_lose(500+"");
+		if (lose_money(500 + "") == true) {
+			rewardVBox.setVisible(true);
+			gifView.setImage(premios.getGifOkay());
+		}else {
+	    	alertaVbox.setVisible(true);
+	    	info.set("Puntos Insuficientes. \n No tienes tantos puntos para pagar.");
+
+		}
 	}
 
 	/**
@@ -112,9 +145,13 @@ public class StoreController implements Initializable {
 	 */
 	@FXML
 	void onXokasAction(ActionEvent event) {
-		rewardVBox.setVisible(true);
-		gifView.setImage(premios.getGifXokas());
-		you_lose(500+"");
+		if (lose_money(500 + "") == true) {
+			rewardVBox.setVisible(true);
+			gifView.setImage(premios.getGifXokas());
+		}else {
+			alertaVbox.setVisible(true);
+			info.set("Puntos Insuficientes. \n No tienes tantos puntos para pagar.");
+		}
 	}
 
 	/**
@@ -127,9 +164,16 @@ public class StoreController implements Initializable {
 		rewardVBox.setVisible(false);
 	}
 
-	private void you_lose(String nivelPuntos) {
-		score.set(score.get() - Integer.parseInt(nivelPuntos));
-		Score.getInstance().setTotalScore(score.intValue());
+	private boolean lose_money(String precio) {
+		int cantidad = Integer.parseInt(precio);
+		if (score.get() >= cantidad) {
+			score.set(score.get() - cantidad);
+			Score.getInstance().setTotalScore(score.intValue());
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/**
