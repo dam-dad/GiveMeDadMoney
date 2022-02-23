@@ -143,9 +143,7 @@ public class Controller implements Initializable {
 	@FXML
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
-			figura1.roll();
-			figura2.roll();
-			figura3.roll();
+
 
 			juego(Integer.parseInt(apuestaText.textProperty().getValue()));
 
@@ -190,6 +188,9 @@ public class Controller implements Initializable {
 		sumaPuntos = puntosTotales.get();
 
 		if (sumaPuntos >= numeroApuesta && sumaPuntos != 0) {
+			figura1.roll();
+			figura2.roll();
+			figura3.roll();
 
 			sumaPuntos += recompensas(figura1.getValueImagen(), figura2.getValueImagen(), figura3.getValueImagen(),
 					numeroApuesta) - numeroApuesta;
