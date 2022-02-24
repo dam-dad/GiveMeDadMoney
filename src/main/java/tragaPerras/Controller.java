@@ -149,7 +149,7 @@ public class Controller implements Initializable {
 
 			// Guarda puntos
 			Score.getInstance().setTotalScore(puntosTotales.intValue());
-			BaseController.getInstance().getEstadisticas().setPartidasCubo(tiradas);
+			BaseController.getInstance().getEstadisticas().setTiradas(tiradas);
 			tiradas++;
 			int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
 			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + puntosTotales.intValue());
