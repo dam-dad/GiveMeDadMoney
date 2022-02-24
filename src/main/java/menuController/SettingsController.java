@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import main.GiveMeDADMoney;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -51,7 +52,7 @@ public class SettingsController implements Initializable {
 	@FXML
 	private Slider volumenSlider;
 	
-	private FileChooser fileChooser = new FileChooser();
+	private FileChooser fileChooser;
 
 	/**
 	 * Instantiates a new Settings controller.
@@ -66,6 +67,9 @@ public class SettingsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		fileChooser = new FileChooser();
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("PDF (*.pdf)", "*.pdf"));
 
 		volumenSlider.valueProperty().addListener((o, ov, nv) -> {
 			BaseController.getInstance().musica.fondoReproductor.volumeProperty().bind(volumenSlider.valueProperty());
@@ -110,25 +114,36 @@ public class SettingsController implements Initializable {
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * Gererar Informe jasperReport
+	 * @param event
+	 * @throws JRException
+	 * @throws IOException 
+	 */
 	@FXML
-	void onGenerarAction(ActionEvent event) throws JRException {
-		// compila el informe
-		JasperReport report = JasperCompileManager.compileReport(SettingsController.class.getResourceAsStream(JRXML));
+	void onGenerarAction(ActionEvent event){
+		try {
+			// compila el informe
+			JasperReport report = JasperCompileManager.compileReport(SettingsController.class.getResourceAsStream(JRXML));
 
-		// mapa de parámetros para el informe
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("anyo", 2014); // no lo uso, pero se lo paso
+			// mapa de parámetros para el informe
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("anyo", 2014); // no lo uso, pero se lo paso
 
-		// generamos el informe (combinamos el informe compilado con los datos)
-		JasperPrint print = JasperFillManager.fillReport(report, parameters,new JRBeanCollectionDataSource(EstadisticasLista.getPersonas()));
-		
-		File file = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
+			// generamos el informe (combinamos el informe compilado con los datos)
+			JasperPrint print = JasperFillManager.fillReport(report, parameters,new JRBeanCollectionDataSource(EstadisticasLista.getPersonas()));
+			
+			
+			File file = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
 
-//		// exporta el informe a un fichero PDF
-		JasperExportManager.exportReportToPdfFile(print, file.getPath());
-//
-//		// Abre el archivo PDF generado con el programa predeterminado del sistema
-//		Desktop.getDesktop().open(new File(PDF_FILE));
+			// exporta el informe a un fichero PDF
+			JasperExportManager.exportReportToPdfFile(print, file.getPath());
+	
+			// Abre el archivo PDF generado con el programa predeterminado del sistema
+			Desktop.getDesktop().open(new File(file.getPath()));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	/**
