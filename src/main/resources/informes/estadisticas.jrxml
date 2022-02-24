@@ -54,24 +54,24 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Partifdas Cartas]]></text>
+				<text><![CDATA[Partidas Cartas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="0" width="90" height="20" uuid="4c24bfea-73d8-49bd-a2d8-0a524f9f8139"/>
+				<reportElement x="350" y="0" width="90" height="20" uuid="4c24bfea-73d8-49bd-a2d8-0a524f9f8139"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Puntos Antes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="330" y="2" width="114" height="20" uuid="33859f5b-a280-4db4-a370-31640bc1fa88"/>
+				<reportElement x="440" y="0" width="114" height="20" uuid="33859f5b-a280-4db4-a370-31640bc1fa88"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Puntos Despues]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="446" y="2" width="114" height="20" uuid="8b4dc928-3419-4445-9616-cfd63a13436a"/>
+				<reportElement x="231" y="0" width="114" height="20" uuid="8b4dc928-3419-4445-9616-cfd63a13436a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -92,17 +92,17 @@
 				<textFieldExpression><![CDATA[$F{partidasMayorOMenor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="231" y="0" width="90" height="30" uuid="652b5a12-4879-45d9-b478-5a6663e7c80d"/>
+				<reportElement x="354" y="0" width="90" height="30" uuid="652b5a12-4879-45d9-b478-5a6663e7c80d"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{puntosAntes}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="0" width="110" height="30" uuid="a4be3770-bf2a-442a-8a75-279b0446964e"/>
+				<reportElement x="440" y="0" width="110" height="30" uuid="a4be3770-bf2a-442a-8a75-279b0446964e"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{puntosDespues}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="446" y="0" width="104" height="30" uuid="ff97d546-e785-4a83-9810-f56b6147eeb6"/>
+				<reportElement x="236" y="0" width="104" height="30" uuid="ff97d546-e785-4a83-9810-f56b6147eeb6"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{tiradas}]]></textFieldExpression>
 			</textField>
