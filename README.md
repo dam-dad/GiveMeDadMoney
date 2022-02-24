@@ -1,4 +1,4 @@
-![GiveMeDadMoney](https://github.com/dam-dad/GiveMeDadMoney/blob/developing/src/main/resources/images/Menu/icono.png)
+![GiveMeDadMoney](https://github.com/dam-dad/GiveMeDadMoney/blob/main/src/main/resources/images/Menu/icono.png)
 # GiveMeDadMoney 
 
 Casino y salón recreativo virtual
