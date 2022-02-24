@@ -59,9 +59,9 @@ O puedes ir directamente a la guia que deseas ver:
 
 - [JavaPackager](https://github.com/fvarrui/JavaPackager)
 - [JasperReport](https://github.com/dam-dad/JasperReports)
-- [Org.openjfx](https://mvnrepository.com/artifact/org.openjfx)
-- [Jakarta.xml.bind](https://mvnrepository.com/artifact/jakarta.xml.bind)
-- [Com.sum.xml.bind](https://mvnrepository.com/artifact/com.sun.xml.bind)
+- [OpenJFX](https://mvnrepository.com/artifact/org.openjfx)
+- [Jakarta XML Bind](https://mvnrepository.com/artifact/jakarta.xml.bind)
+- [Sun XML Bind](https://mvnrepository.com/artifact/com.sun.xml.bind)
 
 ## Licencia
 
