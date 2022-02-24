@@ -32,10 +32,6 @@
 				</textElement>
 				<text><![CDATA[Estadísticas]]></text>
 			</staticText>
-			<image>
-				<reportElement x="484" y="-10" width="66" height="62" uuid="0610b28d-b27d-43ea-85dc-94f014872736"/>
-				<imageExpression><![CDATA["/src/main/resources/images/Menu/icono.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<columnHeader>

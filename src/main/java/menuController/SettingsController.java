@@ -31,7 +31,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  */
 public class SettingsController implements Initializable {
 	
-	private static String JRXML="informes/estadisticas.jrxml";
+	private static String JRXML="/informes/estadisticas.jrxml";
 
 	@FXML
 	private Button backButton;
@@ -123,8 +123,6 @@ public class SettingsController implements Initializable {
 		JasperPrint print = JasperFillManager.fillReport(report, parameters,new JRBeanCollectionDataSource(EstadisticasLista.getPersonas()));
 		
 		File file = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
-		
-		
 
 //		// exporta el informe a un fichero PDF
 		JasperExportManager.exportReportToPdfFile(print, file.getPath());

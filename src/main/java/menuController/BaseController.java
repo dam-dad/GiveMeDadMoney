@@ -38,7 +38,7 @@ public class BaseController implements Initializable {
 	private CubeTowerController cubeTower = new CubeTowerController();;
 	private Niveles cubeLevel = new Niveles();
 	
-	private Estasdisticas estadiscticas;
+	private Estasdisticas estadiscticas=new Estasdisticas();
 	
 	//Tienda
 	private StoreController store = new StoreController();
@@ -68,7 +68,7 @@ public class BaseController implements Initializable {
 		
 		showMenu();
 		
-		estadiscticas=new Estasdisticas();
+		
 		estadiscticas.setPuntosDespues(Score.getInstance().getTotalScore());
 		estadiscticas.setPuntosAntes(Score.getInstance().getTotalScore());
 	}
