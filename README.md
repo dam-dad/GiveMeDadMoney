@@ -58,6 +58,7 @@ O puedes ir directamente a la guia que deseas ver:
 ## Bibliografía
 
 - [JavaPackager](https://github.com/fvarrui/JavaPackager)
+- [JasperReport](https://github.com/dam-dad/JasperReports)
 
 ## Licencia
 
