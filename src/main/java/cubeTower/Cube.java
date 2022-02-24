@@ -116,6 +116,7 @@ public class Cube {
 
 	/**
 	 * Revisa si colisiona contra uno de los bordes
+	 * @return the collision
 	 */
 	
 	private boolean checkCollision(Tower tower) {
@@ -150,8 +151,7 @@ public class Cube {
 	}
 
 	/**
-	 * Reduce.
-	 *
+	 * 
 	 * @param tower the tower
 	 * Reduce el rango del cubo si has fallado un cubo
 	 */

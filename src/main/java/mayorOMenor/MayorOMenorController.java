@@ -253,7 +253,7 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
-		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		BaseController.getInstance().getEstadisticas().setPartidasMayorOMenor(partidas);
 		partidas++;
 	}
 
@@ -271,7 +271,7 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
-		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		BaseController.getInstance().getEstadisticas().setPartidasMayorOMenor(partidas);
 		partidas++;
 	}
 
@@ -289,7 +289,7 @@ public class MayorOMenorController implements Initializable {
 			you_loose();
 		}
 		reveal_homeCard();
-		BaseController.getInstance().getEstadisticas().setPartidasCubo(partidas);
+		BaseController.getInstance().getEstadisticas().setPartidasMayorOMenor(partidas);
 		partidas++;
 	}
 

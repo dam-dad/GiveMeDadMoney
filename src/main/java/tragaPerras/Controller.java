@@ -141,6 +141,7 @@ public class Controller implements Initializable {
 	 * @param event the event
 	 */
 	@FXML
+	private int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
 	void apuesta(ActionEvent event) {
 		if (isNumeric(apuestaText.textProperty().getValue())) {
 			BaseController.getInstance().play_sound();
@@ -151,7 +152,6 @@ public class Controller implements Initializable {
 			Score.getInstance().setTotalScore(puntosTotales.intValue());
 			BaseController.getInstance().getEstadisticas().setTiradas(tiradas);
 			tiradas++;
-			int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
 			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + puntosTotales.intValue());
 		} else {
 			alertaVbox.setVisible(true);
