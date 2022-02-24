@@ -103,6 +103,7 @@ public class BaseController implements Initializable {
 	 */
 	public void showCubeTower() {
 		root.setCenter(cubeTower.getView());
+		cubeTower.load_score();
 	}
 
 	/**
