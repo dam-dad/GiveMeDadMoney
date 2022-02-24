@@ -59,6 +59,7 @@ O puedes ir directamente a la guia que deseas ver:
 
 - [JavaPackager](https://github.com/fvarrui/JavaPackager)
 - [JasperReport](https://github.com/dam-dad/JasperReports)
+- [Dependecia: org.openjfx](https://mvnrepository.com/artifact/org.openjfx)
 
 ## Licencia
 
