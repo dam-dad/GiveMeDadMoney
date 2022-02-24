@@ -3,6 +3,9 @@
 
 Casino y salón recreativo virtual
 
+![image](https://user-images.githubusercontent.com/47283527/155526881-de0741ad-02fb-4403-89b5-d9615998e907.png)
+
+
 ## Indice 
 
 - [Instalación](#instalación)
