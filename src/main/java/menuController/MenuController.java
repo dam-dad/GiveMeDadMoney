@@ -16,6 +16,9 @@ import javafx.scene.text.Font;
 import score.Score;
 
 
+/**
+ * The type Menu controller. Controllador del Menu
+ */
 public class MenuController implements Initializable {
 
 	
@@ -43,8 +46,13 @@ public class MenuController implements Initializable {
 	
 	// MODEL
 	private IntegerProperty total_score = new SimpleIntegerProperty();
-	
 
+
+	/**
+	 * Instantiates a new Menu controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public MenuController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Menu/MenuView.fxml"));
 		loader.setController(this);
@@ -61,36 +69,71 @@ public class MenuController implements Initializable {
 		load_score(); 
 		
 	}
+
+	/**
+	 * Load score. Carga los puntos del la instancia Score al IntegerProperty del score
+	 */
 	public void load_score() {
 		total_score.set(Score.getInstance().getTotalScore());
 	}
-	
+
+	/**
+	 * On tragaperras action. Pone en pantalla el juego Tragaperras
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onTragaperrasAction(ActionEvent event) {
 		BaseController.getInstance().showTragaPerras();
     }
-		
+
+	/**
+	 * On settings action. Pone en pantalla los ajustes
+	 *
+	 * @param event the event
+	 * @throws IOException the io exception
+	 */
 	@FXML
 	void onSettingsAction(ActionEvent event) throws IOException {
 		BaseController.getInstance().showSetting();
 
 	}
-	
+
+	/**
+	 * On mayor o menor action. Pone en pantalla el juego Mayor o menor
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onMayorOMenorAction(ActionEvent event) {
 		BaseController.getInstance().showMayorOMenor();
     }
 
+	/**
+	 * On cube tower action. Pone en pantalla el juego cubeTower
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onCubeTowerAction	(ActionEvent event) {
 		BaseController.getInstance().showCubeTower();
 	}
-	
+
+	/**
+	 * On store action. Pone en pantalla la tienda
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void onStoreAction(ActionEvent event) {
 		BaseController.getInstance().showStore();
     }
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return menuRootView;
 	}

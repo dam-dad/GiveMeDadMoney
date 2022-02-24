@@ -8,9 +8,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * The type Figura.
+ */
 public class Figura extends ScrollPane implements Initializable {
 	
 	private TranslateTransition topTransition;
@@ -27,7 +28,6 @@ public class Figura extends ScrollPane implements Initializable {
 	
 	private IntegerProperty top = new SimpleIntegerProperty();
 	private IntegerProperty bottom = new SimpleIntegerProperty();
-	private ObjectProperty<Imagen> current = new SimpleObjectProperty<>();
 	
 	private int counter;
 	
@@ -39,7 +39,10 @@ public class Figura extends ScrollPane implements Initializable {
 	
 	@FXML
 	private ImageView bottomImage;
-	
+
+	/**
+	 * Instantiates a new Figura. Se carga el fxml de Figura
+	 */
 	public Figura() {
 		super();
 		try {
@@ -88,14 +91,16 @@ public class Figura extends ScrollPane implements Initializable {
 		
 		bottom.addListener((o, ov, nv) -> {
 			top.set((nv.intValue() + 1) % Imagen.IMAGENES.size());
-			//System.out.println("posicion: " + bottom.getValue() + "/" + top.getValue());
 			bottomImage.setImage(topImage.getImage());
 			topImage.setImage(Imagen.IMAGENES.get(bottom.get()).getImagen());
 		});
 		bottom.set((int) (Math.random() * Imagen.IMAGENES.size()));
 		
 	}
-	
+
+	/**
+	 * Roll. Hace el efecto de "giro"
+	 */
 	public void roll() {
 		
 		counter = 10;
@@ -104,6 +109,12 @@ public class Figura extends ScrollPane implements Initializable {
 		transition.play();
 		
 	}
+
+	/**
+	 * Get value imagen int. Devuelve el valor de la imagen
+	 *
+	 * @return the int
+	 */
 	public int getValueImagen(){
 
 		return Imagen.IMAGENES.get(bottom.get()).getValor();

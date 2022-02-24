@@ -28,6 +28,9 @@ import javafx.util.Duration;
 import menuController.BaseController;
 import score.Score;
 
+/**
+ * The type Mayor o menor controller.
+ */
 public class MayorOMenorController implements Initializable {
 
 	@FXML
@@ -71,7 +74,6 @@ public class MayorOMenorController implements Initializable {
 	private BooleanProperty activa = new SimpleBooleanProperty();
 	private BooleanProperty apostable = new SimpleBooleanProperty();
 
-	// pruebas
 	TranslateTransition carta_casa = new TranslateTransition();
 	TranslateTransition carta_propia = new TranslateTransition();
 
@@ -87,11 +89,21 @@ public class MayorOMenorController implements Initializable {
 
 	private StringProperty info = new SimpleStringProperty();
 
+	/**
+	 * On continuar action.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onContinuarAction(ActionEvent event) {
 		alertaBox.setVisible(false);
 	}
 
+	/**
+	 * Instantiates a new Mayor o menor controller.
+	 *
+	 * @throws IOException the io exception
+	 */
 	public MayorOMenorController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MayorOMenor/MayorOMenor.fxml"));
 		loader.setController(this);
@@ -118,11 +130,18 @@ public class MayorOMenorController implements Initializable {
 		apuesta.addListener((o, ov, nv) -> {
 			int num = 0;
 			if (!nv.equals("")) {
-				num = Integer.parseInt(nv);
+				try {
+					num = Integer.parseInt(nv);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
 			}
 			if (num > score.get()) {
 				alertaBox.setVisible(true);
+				apuesta.set("");
 				info.set("Puntos Insuficientes. \n No tienes tantos puntos para apostar.");
+				
 			}
 		});
 
@@ -138,10 +157,17 @@ public class MayorOMenorController implements Initializable {
 		shuffle();
 	}
 
+	/**
+	 * Carga los puntos del la instancia Score al IntegerProperty del score
+	 */
 	public void load_score() {
 		score.set(Score.getInstance().getTotalScore());
 	}
 
+	/**
+	 * Genera un numero aleatorio que se va a usar para seleccionar la foto que se
+	 * va a usar, a su vez inicia una animacion de la carta apareciendo.
+	 */
 	private void load_MyCard() {
 		int myCard_num = (int) (Math.random() * 10) + 1;
 		myNum.set(myCard_num);
@@ -156,11 +182,19 @@ public class MayorOMenorController implements Initializable {
 		carta_propia.playFromStart();
 	}
 
+	/**
+	 * Genera un numero aleatorio que se va a usar para seleccionar la foto que se
+	 * va a usar.
+	 */
 	private void load_HomeCard() {
 		int homeCard_num = (int) (Math.random() * 10) + 1;
 		homeNum.set(homeCard_num);
 	}
 
+	/**
+	 * Revela la carta de la casa la cual cambia la imagen del marco de la carta por
+	 * la carta que deberia tener
+	 */
 	private void reveal_homeCard() {
 		String url = "/images/MayorOMenor/" + homeNum.get() + ".png";
 		homeCard.setImage(new Image(url));
@@ -168,9 +202,11 @@ public class MayorOMenorController implements Initializable {
 		apuesta.set("");
 
 		apuestaText.setDisable(true);
-
 	}
 
+	/**
+	 * Activa la animacion de la carta al entrar
+	 */
 	private void cargar_carta() {
 		carta_casa.setNode(homeCard);
 		carta_casa.setFromY(-250);
@@ -180,21 +216,34 @@ public class MayorOMenorController implements Initializable {
 
 	}
 
+	/**
+	 * Baraja las cartas(pide una nueva), y reinicia todo el juego para volver a
+	 * jugar
+	 */
 	private void shuffle() {
 		String url = "/images/MayorOMenor/backCarta.png";
 		homeCard.setImage(new Image(url));
 		load_HomeCard();
 		load_MyCard();
 		activa.set(true);
-
 	}
 
+	/**
+	 * On shuffle action. Baraja las cartas y prohibe apostar
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onShuffleAction(ActionEvent event) {
 		shuffle();
 		apuestaText.setDisable(false);
 	}
 
+	/**
+	 * On bigger action.Comprueba si acertaste en la apuesta y aumenta una las partidas jugadas para las estadisticas
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBiggerAction(ActionEvent event) {
 		cargar_carta();
@@ -208,6 +257,11 @@ public class MayorOMenorController implements Initializable {
 		partidas++;
 	}
 
+	/**
+	 * On less button. Comprueba si acertaste en la apuesta y aumenta una las partidas jugadas para las estadisticas
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onLessButton(ActionEvent event) {
 		cargar_carta();
@@ -221,6 +275,11 @@ public class MayorOMenorController implements Initializable {
 		partidas++;
 	}
 
+	/**
+	 * On equal button. Comprueba si acertaste en la apuesta y aumenta una las partidas jugadas para las estadisticas
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onEqualButton(ActionEvent event) {
 		cargar_carta();
@@ -234,25 +293,52 @@ public class MayorOMenorController implements Initializable {
 		partidas++;
 	}
 
+	/**
+	 * Ajusta los puntos dependiendo de cuanto has apostado
+	 */
 	private void you_loose() {
 		score.set(score.get() - Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
-		int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
-		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos - score.intValue());
+		estadisticas(false);
 	}
 
+	/**
+	 * Ajusta los puntos dependiendo de cuanto has apostado
+	 */
 	private void you_win() {
 		score.set(score.get() + Integer.parseInt(apuesta.get()));
 		Score.getInstance().setTotalScore(score.intValue());
-		int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
-		BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + score.intValue());
+		estadisticas(true);
 	}
 
+	/**
+	 * 
+	 * @param operando TRUE has ganado puntos, FALSE has perdido
+	 */
+	private void estadisticas(Boolean operando) {
+		int antesPuntos = BaseController.getInstance().getEstadisticas().getPuntosAntes();
+		if (operando == true) {
+			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos + score.intValue());
+		} else {
+			BaseController.getInstance().getEstadisticas().setPuntosDespues(antesPuntos - score.intValue());
+		}
+	}
+
+	/**
+	 * On back action. Vuelve al menu de la aplicacion
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void onBackAction(ActionEvent event) {
 		BaseController.getInstance().showMenu();
 	}
 
+	/**
+	 * Gets view.
+	 *
+	 * @return the view
+	 */
 	public BorderPane getView() {
 		return root;
 	}
