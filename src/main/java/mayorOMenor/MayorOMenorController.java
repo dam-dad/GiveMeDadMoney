@@ -130,11 +130,18 @@ public class MayorOMenorController implements Initializable {
 		apuesta.addListener((o, ov, nv) -> {
 			int num = 0;
 			if (!nv.equals("")) {
-				num = Integer.parseInt(nv);
+				try {
+					num = Integer.parseInt(nv);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
 			}
 			if (num > score.get()) {
 				alertaBox.setVisible(true);
+				apuesta.set("");
 				info.set("Puntos Insuficientes. \n No tienes tantos puntos para apostar.");
+				
 			}
 		});
 
