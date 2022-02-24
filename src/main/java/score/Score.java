@@ -23,7 +23,7 @@ public class Score {
 	private static IntegerProperty totalScore;
 
 	private static String user = System.getProperty("user.home");
-	private static File file = new File(user + "/score.xml");
+	private static File file = new File(user + "/.GiveMeDADMoney/score.xml");
 
 	/**
 	 * Instantiates a new Score.
@@ -43,6 +43,8 @@ public class Score {
 		if (file.exists()) {
 			read();
 		} else {
+			File carpeta = new File(user + "/.GiveMeDADMoney/");
+			carpeta.mkdir();
 			file.createNewFile();
 			save();
 		}
