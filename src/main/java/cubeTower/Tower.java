@@ -110,7 +110,7 @@ public class Tower {
 	 *
 	 * @param node  the node
 	 * @param color the color
-	 * Lo mismo que el anterior pero se le pasa el nodo
+	 * Lo mismo que el anterior pero se le pasa el nodo directamente
 	 */
 	public void draw(Node node, String color) {
 		node.setStyle("-fx-background-color:" + color);
