@@ -55,6 +55,9 @@ O puedes ir directamente a la guia que deseas ver:
 - [David Alexander González Suárez](https://github.com/dalextf)
 - [Alejandro Herrera Pestana](https://github.com/AlejandroHP96)
 
+## Bibliografía
+
+INFO
 
 ## Licencia
 
