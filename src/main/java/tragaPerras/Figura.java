@@ -8,9 +8,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,7 +28,6 @@ public class Figura extends ScrollPane implements Initializable {
 	
 	private IntegerProperty top = new SimpleIntegerProperty();
 	private IntegerProperty bottom = new SimpleIntegerProperty();
-	private ObjectProperty<Imagen> current = new SimpleObjectProperty<>();
 	
 	private int counter;
 	
@@ -44,7 +41,7 @@ public class Figura extends ScrollPane implements Initializable {
 	private ImageView bottomImage;
 
 	/**
-	 * Instantiates a new Figura.
+	 * Instantiates a new Figura. Se carga el fxml de Figura
 	 */
 	public Figura() {
 		super();
@@ -103,7 +100,7 @@ public class Figura extends ScrollPane implements Initializable {
 	}
 
 	/**
-	 * Roll.
+	 * Roll. Hace el efecto de "giro"
 	 */
 	public void roll() {
 		
@@ -115,7 +112,7 @@ public class Figura extends ScrollPane implements Initializable {
 	}
 
 	/**
-	 * Get value imagen int.
+	 * Get value imagen int. Devuelve el valor de la imagen
 	 *
 	 * @return the int
 	 */

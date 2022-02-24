@@ -170,7 +170,7 @@ public class Controller implements Initializable {
 	}
 
 	/**
-	 * Gets view.
+	 * Gets view. Obtienes la vista de la tragaperras
 	 *
 	 * @return the view
 	 */
@@ -179,7 +179,7 @@ public class Controller implements Initializable {
 	}
 
 	/**
-	 * Juego.
+	 * Juego. Recoge la información necesaria y la envía a otra función
 	 *
 	 * @param numeroApuesta the numero apuesta
 	 */
@@ -204,7 +204,7 @@ public class Controller implements Initializable {
 	}
 
 	/**
-	 * Recompensas int.
+	 * Recompensas int. Se hace el calculo de los valores de la imagen
 	 *
 	 * @param valor1        the valor 1
 	 * @param valor2        the valor 2
@@ -330,14 +330,14 @@ public class Controller implements Initializable {
 	}
 
 	/**
-	 * Load score.
+	 * Load score. Carga los puntos del la instancia Score al IntegerProperty del score
 	 */
 	public void load_score() {
 		puntosTotales.set(Score.getInstance().getTotalScore());
 	}
 
 	/**
-	 * Is numeric boolean.
+	 * Is numeric boolean. Comprueba si los datos introducidos son numeros y no letras
 	 *
 	 * @param cadena the cadena
 	 * @return the boolean
