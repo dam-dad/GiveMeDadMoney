@@ -18,7 +18,7 @@ Casino y salón recreativo virtual
 
 Podras acceder al instalador dandole a [Instalador](https://github.com/dam-dad/GiveMeDadMoney/releases)
 
-Le damos a descargar el archivo GiveMeDADMoney_1.0.0.exe o lo que queramos descargar.
+Le damos a descargar el archivo GiveMeDADMoney.exe o lo que queramos descargar.
 
 Una vez descargado lo iniciamos y escogemos el idioma
 
