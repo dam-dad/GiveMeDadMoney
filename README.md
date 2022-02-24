@@ -57,7 +57,7 @@ O puedes ir directamente a la guia que deseas ver:
 
 ## Bibliografía
 
-INFO
+- [JavaPackager](https://github.com/fvarrui/JavaPackager)
 
 ## Licencia
 
