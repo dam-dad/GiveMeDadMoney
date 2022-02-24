@@ -46,7 +46,7 @@ public class Estasdisticas {
 	 * @return the partidas cubo
 	 */
 	public int getPartidasCubo() {
-		return 10;
+		return partidasCubo;
 	}
 
 	/**

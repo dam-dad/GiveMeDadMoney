@@ -7,7 +7,7 @@ public class EstadisticasLista {
 	
 	public static List<Estasdisticas> getPersonas() {
 		List<Estasdisticas> personas = new ArrayList<>();
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 0; i <1; i++) {
 			Estasdisticas p = new Estasdisticas();
 			p.setPartidasCubo(p.getPartidasCubo());
 			p.setPartidasMayorOMenor(p.getPartidasMayorOMenor());
