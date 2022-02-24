@@ -33,6 +33,17 @@
       				<Slider fx:id="volumenSlider" max="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="171.0" showTickMarks="true" styleClass="sliderVolumen" value="0.1" />
 					</children>
 				</HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Button fx:id="generarButton" mnemonicParsing="false" onAction="#onGenerarAction" text="GENERAR INFORME" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
 			</children>
 		</VBox>
 	</center>

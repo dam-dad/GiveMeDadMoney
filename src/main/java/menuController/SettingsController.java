@@ -19,6 +19,8 @@ public class SettingsController implements Initializable {
 	@FXML
     private Button backButton;
 
+    @FXML
+    private Button generarButton;
 
     @FXML
     private Button playMusicButton;
@@ -31,6 +33,12 @@ public class SettingsController implements Initializable {
 
     @FXML
     private Slider volumenSlider;
+
+
+    @FXML
+    void onGenerarAction(ActionEvent event) {
+
+    }
 
 
 	/**
