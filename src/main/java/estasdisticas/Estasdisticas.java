@@ -1,8 +1,5 @@
 package estasdisticas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * The type Estasdisticas.
  */
@@ -49,7 +46,7 @@ public class Estasdisticas {
 	 * @return the partidas cubo
 	 */
 	public int getPartidasCubo() {
-		return partidasCubo;
+		return 10;
 	}
 
 	/**

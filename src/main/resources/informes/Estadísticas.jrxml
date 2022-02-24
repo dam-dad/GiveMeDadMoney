@@ -2,8 +2,8 @@
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Estadisticas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1be1174-10be-4df1-b271-1fbc8431fe7b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Productos"/>
-	<parameter name="Cubo" class="estasdisticas.Estasdisticas">
-		<defaultValueExpression><![CDATA[$P{Cubo}.getPartidasCubo()]]></defaultValueExpression>
+	<parameter name="partidasCubo" class="estasdisticas.Estasdisticas">
+		<defaultValueExpression><![CDATA[$P{partidasCubo}.getPartidasCubo()]]></defaultValueExpression>
 	</parameter>
 	<parameter name="Cartas" class="estasdisticas.Estasdisticas">
 		<defaultValueExpression><![CDATA[$F{Cartas}.getPartidasMayorOMenor()]]></defaultValueExpression>
@@ -35,11 +35,14 @@
 	<field name="Tiradas" class="estasdisticas.Estasdisticas">
 		<fieldDescription><![CDATA[Tiradas]]></fieldDescription>
 	</field>
+	<variable name="partidasCubo" class="estasdisticas.Estasdisticas">
+		<variableExpression><![CDATA[$P{partidasCubo}.getPartidasCubo()]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="340" height="50" uuid="07d340f1-4dba-4057-bd46-81cdc474f96e"/>
 				<textElement textAlignment="Left" verticalAlignment="Top">
@@ -47,6 +50,10 @@
 				</textElement>
 				<text><![CDATA[Estadísticas]]></text>
 			</staticText>
+			<image>
+				<reportElement x="484" y="-10" width="66" height="62" uuid="0610b28d-b27d-43ea-85dc-94f014872736"/>
+				<imageExpression><![CDATA["/src/main/resources/images/Menu/icono.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
