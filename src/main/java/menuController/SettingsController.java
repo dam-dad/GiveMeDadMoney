@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import main.GiveMeDADMoney;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -47,6 +50,8 @@ public class SettingsController implements Initializable {
 
 	@FXML
 	private Slider volumenSlider;
+	
+	private FileChooser fileChooser = new FileChooser();
 
 	/**
 	 * Instantiates a new Settings controller.
@@ -106,7 +111,7 @@ public class SettingsController implements Initializable {
 	}
 
 	@FXML
-	void onGenerarAction(ActionEvent event) {
+	void onGenerarAction(ActionEvent event) throws JRException {
 		// compila el informe
 		JasperReport report = JasperCompileManager.compileReport(SettingsController.class.getResourceAsStream(JRXML));
 
@@ -115,14 +120,17 @@ public class SettingsController implements Initializable {
 		parameters.put("anyo", 2014); // no lo uso, pero se lo paso
 
 		// generamos el informe (combinamos el informe compilado con los datos)
-		JasperPrint print = JasperFillManager.fillReport(report, parameters,
-				new JRBeanCollectionDataSource(EstadisticasLista.getPersonas()));
+		JasperPrint print = JasperFillManager.fillReport(report, parameters,new JRBeanCollectionDataSource(EstadisticasLista.getPersonas()));
+		
+		File file = fileChooser.showSaveDialog(GiveMeDADMoney.getPrimaryStage());
+		
+		
 
-		// exporta el informe a un fichero PDF
-		JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
-
-		// Abre el archivo PDF generado con el programa predeterminado del sistema
-		Desktop.getDesktop().open(new File(PDF_FILE));
+//		// exporta el informe a un fichero PDF
+		JasperExportManager.exportReportToPdfFile(print, file.getPath());
+//
+//		// Abre el archivo PDF generado con el programa predeterminado del sistema
+//		Desktop.getDesktop().open(new File(PDF_FILE));
 	}
 
 	/**
