@@ -140,9 +140,9 @@ public class Controller implements Initializable {
 	 *
 	 * @param event the event
 	 */
-	@FXML
-	private int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
+	@FXML 
 	void apuesta(ActionEvent event) {
+		int antesPuntos=BaseController.getInstance().getEstadisticas().getPuntosAntes();
 		if (isNumeric(apuestaText.textProperty().getValue())) {
 			BaseController.getInstance().play_sound();
 
